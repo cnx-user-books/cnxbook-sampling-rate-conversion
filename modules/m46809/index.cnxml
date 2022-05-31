@@ -1,0 +1,529 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Decimation and Downsampling</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46809</md:content-id>
+  <md:title>Decimation and Downsampling</md:title>
+  <md:abstract/>
+  <md:uuid>a7c13e4f-5e3a-4d65-8b99-f6358db851df</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1"><title>Decimation and Downsampling</title><section id="eip-653"><title>Pure Downsampling</title>
+
+<para id="id62189">The easiest case consists in
+reducing the sampling rate by simply dropping samples.
+This procedure is called <emphasis effect="italics">Downsampling</emphasis>.
+However, we need to be careful on the effect of this procedure. We note immediately,
+that the new sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> needs to be still above Nyquist, i.e., <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> in order
+to avoid aliasing.</para>
+      <list id="id62591" display="block" list-type="bulleted">
+        <item id="uid1"><emphasis effect="bold">Downsampling</emphasis> Assume that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>.
+
+<equation id="id62649"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo><m:mo>→</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mo>↓</m:mo><m:mi>M</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>→</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>M</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+      </list>
+      <para id="id62988"><emphasis effect="bold">Effect in the frequency domain</emphasis>
+In continuous time, downsampling the signal <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> corresponds to passing to the signal <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>M</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+Indeed, sampling <m:math overflow="scroll"><m:mi>z</m:mi></m:math> at the same frequency as <m:math overflow="scroll"><m:mi>y</m:mi></m:math> we obtain the samples
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mrow><m:mi>k</m:mi><m:mi>M</m:mi></m:mrow></m:msub></m:mrow></m:math> as we should. In summary, using the properties of the Fourier transform</para>
+      <equation id="id63082">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>M</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mspace width="2.em"/>
+            <m:mi>Z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>M</m:mi>
+            </m:mfrac>
+            <m:mi>Y</m:mi>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mi>f</m:mi>
+                <m:mi>M</m:mi>
+              </m:mfrac>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63151">This tells us, that the spectral copies of <m:math overflow="scroll"><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub></m:math> (the Fourier transform of the sampled signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>)
+should have the same overall shape
+and at the same distance <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> as those of <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math>, but they are stretched in frequency by
+a factor <m:math overflow="scroll"><m:mi>M</m:mi></m:math> and squeezed in amplitude by a factor <m:math overflow="scroll"><m:mi>M</m:mi></m:math>.</para>
+      <para id="id63236">Indeed, we arrive at the same conclusion computing via the sampled signals, using <link target-id="uid5" document="m46833"/>:</para><equation id="id63242">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>Z</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>k</m:mi>
+            </m:munder>
+            <m:mi>τ</m:mi>
+            <m:msub>
+              <m:mi>z</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>k</m:mi>
+            </m:munder>
+            <m:mi>τ</m:mi>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mi>M</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>M</m:mi>
+            </m:mfrac>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>k</m:mi>
+            </m:munder>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>M</m:mi>
+              <m:mi>τ</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mi>M</m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>f</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>M</m:mi>
+                <m:mo>)</m:mo>
+                <m:mi>k</m:mi>
+                <m:mo>(</m:mo>
+                <m:mi>M</m:mi>
+                <m:mi>τ</m:mi>
+                <m:mo>)</m:mo>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>M</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>Y</m:mi>
+              <m:mi>d</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>f</m:mi>
+                <m:mi>M</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63450">Recall that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Y</m:mi><m:mi>d</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, the Fourier transform of <m:math overflow="scroll"><m:mi>y</m:mi></m:math> sampled at frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math>, looks like
+<m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math> except that its spectral copies lie at distance <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub></m:math>, thus <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times closer than those of <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math>.</para>
+      <para id="id63561">For the <emphasis effect="italics">discrete Fourier Transform</emphasis> we should expect to see roughly the same behavior. Recall, though, that the relation between continuous and discrete Fourier transform is only approximative.</para>
+      
+<figure id="uid2"><subfigure id="fs-id1167636407121">
+  <media id="uid2_media" alt="downsampled digital filter and sync for comparison">
+   <image mime-type="image/png" src="../../media/filter0125down.png" id="uid2_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125down.eps" id="uid2_printimage"/>
+  </media>
+  <caption/>
+ </subfigure>
+ <subfigure id="fs-id1167636375294">
+  <media id="uid3_media" alt="IDFTI squared downsampled filter with sync for comparison">
+   <image mime-type="image/png" src="../../media/filter0125downfft.png" id="uid3_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125downfft.eps" id="uid3_printimage"/>
+  </media>
+  <caption>
+</caption></subfigure>
+      <caption>The result of downsampling the filter from <link target-id="uid15" document="m46833"/> by a factor <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>
+on the left, and its power spectrum <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mtext>DFT</m:mtext><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> on the right (black and red). Again, the ideal sinc filter in blue for comparison.
+Note that the filter's cutoff frequency has increased by <m:math overflow="scroll"><m:mi>M</m:mi></m:math> (stretching of the spectrum
+by <m:math overflow="scroll"><m:mi>M</m:mi></m:math>)
+and that its <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mtext>DFT</m:mtext><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> values have decreased by <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:msup><m:mi>M</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>25</m:mn></m:mrow></m:math> (see text).
+The power computed from either
+side is 0.003829 (recall <link target-id="uid4" document="m46811"/>): downsampling of a signal with
+<m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> does not change power.</caption></figure><para id="id63728"><emphasis effect="bold">Aliasing</emphasis>: We give two examples.</para>
+      <para id="id63736">First, downsampling to a sampling rate that is too low can lead to aliasing.
+Downsampling the image of <link target-id="uid7" document="m46833"/> left leads to the same effect as visible in the same figure center.</para><para id="id63744">Second, downsampling a simple signal such as the
+filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math> of <link target-id="uid15" document="m46833"/> by <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math> results in a new filter <m:math overflow="scroll"><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup></m:math>
+with twice the cutoff frequency, i.e. <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>f</m:mi><m:mi>c</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>4</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>25</m:mn></m:mrow></m:math>,
+but with a value <m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:mi>b</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> over the pass-band,
+thus a power spectral value <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>4</m:mn><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:msup><m:mi>M</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> over the pass-band
+(see <link target-id="uid2" document="m46809"/>). No aliasing occurs since the condition <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> is satisfied.</para><para id="id63912"><emphasis effect="bold">Power</emphasis>:
+We consider first the case of a <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. Then, <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>M</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> has period <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math>.
+Substituting <m:math overflow="scroll"><m:mrow><m:mi>s</m:mi><m:mo>=</m:mo><m:mi>t</m:mi><m:mi>M</m:mi></m:mrow></m:math> with <m:math overflow="scroll"><m:mrow><m:mi>d</m:mi><m:mi>s</m:mi><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:math> we get</para>
+      <equation id="id64011">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msub>
+                  <m:mi>P</m:mi>
+                  <m:mi>z</m:mi>
+                </m:msub>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>M</m:mi>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>M</m:mi>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>z</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mi>M</m:mi>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>M</m:mi>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>M</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mi>T</m:mi>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>s</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:msub>
+                    <m:mi>P</m:mi>
+                    <m:mi>y</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id64201">From the simple properties we know
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>k</m:mi></m:msub><m:msub><m:mrow><m:msub><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>Y</m:mi><m:mi>k</m:mi></m:msub><m:mo>|</m:mo></m:mrow><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:msub></m:mrow></m:math>
+(same complex amplitudes<footnote id="uid4">There is no contradiction between <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>Y</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math> and
+<m:math overflow="scroll"><m:mrow><m:mi>Z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>f</m:mi><m:mi>M</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Both express that <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>M</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>, both allow to
+conclude that power does not change under downsampling, and both imply that
+the DFT of <m:math overflow="scroll"><m:mi>z</m:mi></m:math> is <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times smaller and corresponds to frequencies which
+are <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times further apart than those of <m:math overflow="scroll"><m:mi>y</m:mi></m:math>. Indeed, using <link target-id="uid2" document="m46804"/>
+we get
+<equation id="id64406"><m:math overflow="scroll" mode="display"><m:mrow><m:msub><m:mover accent="true"><m:mi>z</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msub><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>K</m:mi><m:mi>M</m:mi></m:mfrac><m:msub><m:mi>Z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mi>K</m:mi><m:msub><m:mi>Y</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:msub><m:mover accent="true"><m:mi>y</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msub><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:msub></m:mrow></m:math></equation>
+and using <link target-id="uid1" document="m46816"/> with <m:math overflow="scroll"><m:mi>L</m:mi></m:math> equal to the correct period and number of samples
+(<m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> respectively <m:math overflow="scroll"><m:mi>T</m:mi></m:math> and <m:math overflow="scroll"><m:mi>K</m:mi></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>) we get again
+<equation id="id64613"><m:math overflow="scroll" mode="display"><m:mrow><m:msub><m:mover accent="true"><m:mi>z</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msub><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>K</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac><m:mi>Z</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mi>K</m:mi><m:mi>T</m:mi></m:mfrac><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mfrac><m:mi>k</m:mi><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mfrac><m:mi>K</m:mi><m:mi>T</m:mi></m:mfrac><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>k</m:mi><m:mi>T</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:msub><m:mover accent="true"><m:mi>y</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msub><m:mo>|</m:mo><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>k</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:msub></m:mrow></m:math></equation></footnote>, but belonging to
+different frequencies). Using Parseval we see again that the power does not change.
+See properties of Fourier Series.</para>
+      <para id="id64810">Note that the energy of a finite energy signal would change under downsampling: computing in time</para>
+      <equation id="id64814">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msup>
+                  <m:mrow>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                    <m:mi>z</m:mi>
+                    <m:mo>|</m:mo>
+                    <m:mo>|</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                </m:msup>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>z</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>M</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>M</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>s</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>s</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>M</m:mi>
+                  </m:mfrac>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                      <m:mi>y</m:mi>
+                      <m:mo>|</m:mo>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id65010">A simliar computation can be done in frequency. See <link target-id="id65020">Comment 6</link>.</para><para id="id65020"><emphasis effect="bold">Comment 6</emphasis> 
+Computing in frequency with <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>g</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>d</m:mi><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>M</m:mi><m:mi>d</m:mi><m:mi>g</m:mi></m:mrow></m:math>:
+<equation id="id65078"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>Z</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>Z</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>f</m:mi><m:mo>=</m:mo><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>f</m:mi><m:mi>M</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>f</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>g</m:mi><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>Y</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></para><para id="id65286">For a discrete signal we are naturally in the periodic case. From the above we should
+expect that power stays approximatively the same under downsampling provided that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>.
+Also, we noted earlier that power should not depend
+on the sampling rate, as long as the samples faithfully represent the signal, and at least
+approximatively.</para>
+      <para id="id65319">For the simple signal <m:math overflow="scroll"><m:mi>b</m:mi></m:math>, the filter from <link target-id="uid15" document="m46833"/>, we may verify this explicitly.
+Denote the downsampled filter by <m:math overflow="scroll"><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup></m:math> (see <link target-id="uid2" document="m46809"/> for an illustration with <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>).
+Since no aliasing occurs during downsampling, the pass-band is now <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times longer,
+meaning that <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times more of the <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> are different from zero (this makes the power
+increase by <m:math overflow="scroll"><m:mi>M</m:mi></m:math>).
+Further, their power spectral values <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mover accent="true"><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> are by <m:math overflow="scroll"><m:msup><m:mi>M</m:mi><m:mn>2</m:mn></m:msup></m:math> smaller (this makes the power
+decrease by <m:math overflow="scroll"><m:msup><m:mi>M</m:mi><m:mn>2</m:mn></m:msup></m:math>).
+Finally, the sample length is now <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times shorter (this increases the power my <m:math overflow="scroll"><m:mi>M</m:mi></m:math>; recall <link target-id="uid4" document="m46811"/>).</para><para id="id65507">All in all,
+power is not changed, at least approximatively.
+One finds <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:msup><m:mn>003</m:mn><m:mo>'</m:mo></m:msup><m:mn>829</m:mn></m:mrow></m:math> which has to be compared
+to the power <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:msup><m:mn>003</m:mn><m:mo>'</m:mo></m:msup><m:mn>891</m:mn></m:mrow></m:math> of the original filter.</para>
+      <para id="id65580">To obtain a low-pass filter one would have to normalize <m:math overflow="scroll"><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup></m:math> to <m:math overflow="scroll"><m:mrow><m:msup><m:mi>b</m:mi><m:mrow><m:mo>'</m:mo><m:mo>'</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:msup><m:mi>b</m:mi><m:mo>'</m:mo></m:msup></m:mrow></m:math>.</para>
+  
+</section>
+
+    
+
+<section id="eip-id1164596726815"><title>Decimation</title>
+
+      <para id="id65638">Let us now drop the assumption <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mi>M</m:mi><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>.</para>
+      <para id="id65668">To resample a signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> at an <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times lower rate, a first attempt
+would be to discard all but every <m:math overflow="scroll"><m:mi>M</m:mi></m:math>-th sample: <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mi>k</m:mi><m:mi>M</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mi>M</m:mi><m:mi>τ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. This step is called <emphasis effect="italics">downsampling</emphasis> as we have seen above. However,
+to avoid aliasing effects caused by downsampling below Nyquist rate
+a low-pass filtering at cutoff <m:math overflow="scroll"><m:mrow><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>M</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is required <emphasis effect="italics">before</emphasis>
+downsamling. The filter used is called <emphasis effect="italics">anti-aliasing filter</emphasis>.
+The <emphasis effect="italics">new utilized bandwidth</emphasis> will be only <m:math overflow="scroll"><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup></m:math>.</para>
+      <para id="id65825">The procedure of first applying an anti-aliasing filter and then downsampling is called
+<emphasis effect="italics">decimation</emphasis>.</para>
+      <para id="id65835">Agreeably, the filtering before downsampling destroys information about <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+However, this loss occurs in a controllable manner: It removes high-frequency
+information. For an audio signal, we loose the high pitch sound. For an image
+we loose sharpness of edges. This should be compared to an uncontrolled loss
+of quality when no anti-aliasing filter is applied (see <link target-id="uid7" document="m46833"/>).</para><para id="id65862">In summary, <emphasis effect="bold">Decimation by <m:math overflow="scroll"><m:mi>M</m:mi></m:math></emphasis> means to resample at <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times lower rate
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> and consists of two steps:</para>
+      <list id="id65925" display="block" list-type="enumerated">
+        <item id="uid6"><emphasis effect="bold">low-pass filtering</emphasis> the samples at cutoff frequency <m:math overflow="scroll"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:mfrac></m:math><equation id="id65990"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo><m:mo>→</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mo>∩</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>→</m:mo><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+        <item id="uid7"><emphasis effect="bold">Down-sampling</emphasis> (in French: decimation)
+
+<equation id="id66142"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo><m:mo>→</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:mo>↓</m:mo><m:mi>M</m:mi></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>→</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>M</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+      </list>
+      <para id="id66302">Low-pass filtering will reduce power, as high frequencies are attenuated. Down-sampling will leave
+the new power roughly the same.</para>
+      <para id="id66307">The matlab commands are <code display="inline">decimate</code> and <code display="inline">downsample</code>.</para>
+    </section></section></content>
+</document>

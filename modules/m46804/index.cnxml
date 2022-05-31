@@ -1,0 +1,642 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Discrete Fourier Transform</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46804</md:content-id>
+  <md:title>Discrete Fourier Transform</md:title>
+  <md:abstract/>
+  <md:uuid>2aec76d1-2e3f-40d2-a30c-bc43506ffd45</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Discrete Fourier Transform</title>
+      <para id="id62182">The Discrete Fourier Transform, from now on DFT, of a finite length sequence <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mi>K</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>)</m:mo></m:mrow></m:math> is defined as</para>
+      <equation id="uid1"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x̂</m:mi>
+              
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mi>k</m:mi>
+                <m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+              </m:mrow>
+            </m:msup>
+            <m:mspace width="2.em"/>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>,</m:mo>
+              <m:mo>...</m:mo>
+              <m:mo>,</m:mo>
+              <m:mi>K</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id62850">To motivate this transform think of <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:math> as equally spaced samples of a <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic
+signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> over a period, e.g., <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Then, using the Riemann Sum as an
+approximation of an integral, i.e.,</para>
+      <equation id="id62925">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mi>T</m:mi>
+                </m:mrow>
+                <m:mi>K</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mfrac>
+              <m:mi>T</m:mi>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:mo>≃</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mn>0</m:mn>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mi>f</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63005">we find</para>
+      <equation id="uid2"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mi>n</m:mi>
+                  <m:mi>T</m:mi>
+                </m:mrow>
+                <m:mi>K</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mi>n</m:mi>
+                    <m:mi>T</m:mi>
+                  </m:mrow>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+                <m:mi>k</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mi>K</m:mi>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mn>0</m:mn>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mi>t</m:mi>
+                <m:mi>k</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>K</m:mi>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63177">Note that the approximation is better, the larger the sample size <m:math overflow="scroll"><m:mi>K</m:mi></m:math> is.</para>
+      <para id="id63191">Remark on why the factor <m:math overflow="scroll"><m:mi>K</m:mi></m:math> in <link target-id="uid2"/>: recall that <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> is an average while
+<m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> is a sum. Take for instance <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>: <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mn>0</m:mn></m:msub></m:math> is the average of the signal while <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mn>0</m:mn></m:msub></m:math>
+is the sum of the samples.</para>
+      <para id="id63285">From the above we may hope that a development similar to the Fourier series
+<link target-id="uid5" document="m46817"/> should also exist in the discrete case.
+To this end, we note first that the DFT is a linear transform and can be
+represented by a matrix multiplication (the “exponent” <m:math overflow="scroll"><m:mi>T</m:mi></m:math> means transpose):</para><equation id="id63302"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>x</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mo>,</m:mo>
+                <m:mo>...</m:mo>
+                <m:mo>,</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>x</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mrow>
+                    <m:mi>K</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi>D</m:mi>
+            <m:mi>F</m:mi>
+            <m:msub>
+              <m:mi>T</m:mi>
+              <m:mi>K</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mn>0</m:mn>
+                </m:msub>
+                <m:mo>,</m:mo>
+                <m:mo>...</m:mo>
+                <m:mo>,</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mi>K</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:msub>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63416">The matrix <m:math overflow="scroll">     <m:mrow>
+           
+            <m:msub>
+<m:mrow>
+ <m:mi>D</m:mi>
+            <m:mi>F</m:mi><m:mi>T</m:mi>
+</m:mrow>
+              
+              <m:mn>K</m:mn>
+            </m:msub></m:mrow></m:math> possesses <m:math overflow="scroll"><m:mi>K</m:mi></m:math> lines and <m:math overflow="scroll"><m:mi>K</m:mi></m:math> rows; the entry in line <m:math overflow="scroll"><m:mi>k</m:mi></m:math> row <m:math overflow="scroll"><m:mi>n</m:mi></m:math>
+is <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>j</m:mi><m:mi>k</m:mi><m:mi>n</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:msup></m:math>. A few examples are</para><equation id="id63500"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mrow>
+                <m:mi>D</m:mi>
+                <m:mi>F</m:mi>
+                <m:mi>T</m:mi>
+              </m:mrow>
+              <m:mn>1</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfenced open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mspace width="1.em"/>
+              <m:msub>
+              <m:mrow>
+                <m:mi>D</m:mi>
+                <m:mi>F</m:mi>
+                <m:mi>T</m:mi>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+            <m:mspace width="1.em"/>
+            <m:msub>
+              <m:mrow>
+                <m:mi>D</m:mi>
+                <m:mi>F</m:mi>
+                <m:mi>T</m:mi>
+              </m:mrow>
+              <m:mn>4</m:mn>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi>j</m:mi>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd>
+                    <m:mn>1</m:mn>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mi>j</m:mi>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                    </m:mrow>
+                  </m:mtd>
+                  <m:mtd>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63678">The rows are orthogonal<footnote id="uid3">The scalar product for complex vectors
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mi>K</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mi>K</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> is
+computed as
+<equation id="id63784"><m:math overflow="scroll" mode="display"><m:mrow><m:mi>x</m:mi><m:mo>·</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msubsup><m:mi>y</m:mi><m:mn>1</m:mn><m:mo>*</m:mo></m:msubsup><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msubsup><m:mi>y</m:mi><m:mn>2</m:mn><m:mo>*</m:mo></m:msubsup><m:mo>+</m:mo><m:mo>...</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mi>K</m:mi></m:msub><m:msubsup><m:mi>y</m:mi><m:mi>K</m:mi><m:mo>*</m:mo></m:msubsup><m:mo>,</m:mo></m:mrow></m:math></equation>
+where
+<m:math overflow="scroll"><m:msup><m:mi>a</m:mi><m:mo>*</m:mo></m:msup></m:math> is the conjugate complex of <m:math overflow="scroll"><m:mi>a</m:mi></m:math>. Orthogonal means <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>·</m:mo><m:mi>y</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>.
+</footnote> to each other.
+Also, all rows have length<footnote id="uid4">Length is computed as
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:mi>x</m:mi><m:mo>·</m:mo><m:mi>x</m:mi></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msubsup><m:mi>x</m:mi><m:mn>1</m:mn><m:mo>*</m:mo></m:msubsup><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msubsup><m:mi>x</m:mi><m:mn>2</m:mn><m:mo>*</m:mo></m:msubsup><m:mo>+</m:mo><m:mo>...</m:mo><m:mo>+</m:mo><m:msub><m:mi>x</m:mi><m:mi>K</m:mi></m:msub><m:msubsup><m:mi>x</m:mi><m:mi>K</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo>+</m:mo><m:mo>|</m:mo></m:mrow><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mo>...</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:msub><m:mi>x</m:mi><m:mi>K</m:mi></m:msub><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:msqrt></m:mrow></m:math>.</footnote><m:math overflow="scroll"><m:msqrt><m:mi>K</m:mi></m:msqrt></m:math>.
+Finally, the matrices are symmetric (exchanging lines for rows does not change the matrix). So, the multiplying DFT with its conjugate complex matrix <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:mi>D</m:mi><m:mi>F</m:mi><m:msub><m:mi>T</m:mi><m:mi>K</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup></m:math>
+we get <m:math overflow="scroll"><m:mi>K</m:mi></m:math> times the unit matrix (diagonal matrix with all diagonal elements equal to <m:math overflow="scroll"><m:mi>K</m:mi></m:math>).</para>
+      <para id="id64143">
+        <emphasis effect="bold">Inverse DFT</emphasis>
+      </para>
+      <para id="id64150">From all this we conclude that the inverse matrix of <m:math overflow="scroll"><m:mrow><m:mi>D</m:mi><m:mi>F</m:mi><m:msub><m:mi>T</m:mi><m:mi>K</m:mi></m:msub></m:mrow></m:math> is
+<m:math overflow="scroll"><m:mrow><m:mi>I</m:mi><m:mi>D</m:mi><m:mi>F</m:mi><m:msub><m:mi>T</m:mi><m:mi>K</m:mi></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow><m:mo>·</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mi>D</m:mi><m:mi>F</m:mi><m:msub><m:mi>T</m:mi><m:mi>K</m:mi></m:msub><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup></m:mrow></m:math>.
+Since <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>α</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mi>α</m:mi></m:msup></m:mrow></m:math> we find</para>
+      <equation id="uid5"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mi>k</m:mi>
+                <m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+              </m:mrow>
+            </m:msup>
+            <m:mspace width="2.em"/>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>n</m:mi>
+              <m:mo>=</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>,</m:mo>
+              <m:mo>...</m:mo>
+              <m:mo>,</m:mo>
+              <m:mi>K</m:mi>
+              <m:mo>-</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id64381">
+        <emphasis effect="bold">Spectral interpretation, symmetries, periodicity</emphasis>
+      </para>
+      <para id="id64388">Combining <link target-id="uid2"/> and <link target-id="uid5"/> we may now interpret <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> as
+the coefficient of the complex harmonic with frequency <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math> in a decomposition of the
+discrete signal <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:math>; its absolute value provides the amplitude of the harmonic and
+its argument the phase difference.</para><para id="id64448">If <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is even, <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> is real for all <m:math overflow="scroll"><m:mi>k</m:mi></m:math> and all harmonics are in phase.</para><para id="id64486">Using the periodicity of <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>j</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> we obtain <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mrow><m:mi>n</m:mi><m:mo>+</m:mo><m:mi>K</m:mi></m:mrow></m:msub></m:mrow></m:math> when evaluating
+<link target-id="uid5"/> for arbitrary <m:math overflow="scroll"><m:mi>n</m:mi></m:math>. Short, we can consider
+<m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:math> as equally-spaced samples of the <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> over any interval
+of length <m:math overflow="scroll"><m:mi>T</m:mi></m:math>:</para>
+      <equation id="uid6"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mi>k</m:mi>
+                <m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+              </m:mrow>
+            </m:msup>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id64689">Similarly, <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> is periodic: <m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>K</m:mi></m:mrow></m:msub></m:mrow></m:math>. Thus, it makes sense
+to evaluate <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> for any <m:math overflow="scroll"><m:mi>k</m:mi></m:math>. For instance, we can rewrite <link target-id="uid1"/> as</para><equation id="id64785"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+                <m:mi>k</m:mi>
+                <m:mfrac>
+                  <m:mi>n</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id64879">Since <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> corresponds to the frequency <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>,
+the period <m:math overflow="scroll"><m:mi>K</m:mi></m:math> of <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> corresponds to a period of <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math> in actual frequency.
+This is exactly the sampling frequency (or sampling rate) of the original signal
+(<m:math overflow="scroll"><m:mi>K</m:mi></m:math> samples per <m:math overflow="scroll"><m:mi>T</m:mi></m:math> time units). Compare to the spectral repetitions.</para><para id="id64980">However, the period <m:math overflow="scroll"><m:mi>T</m:mi></m:math> of the original signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is nowhere present in the formulas of the DFT
+(cpre. <link target-id="uid1"/> and <link target-id="uid5"/>). Thus, if nothing is known about <m:math overflow="scroll"><m:mi>T</m:mi></m:math>, it is assumed that the
+sampling rate is 1 (1 sample per time unit), meaning that <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>=</m:mo><m:mi>T</m:mi></m:mrow></m:math>.</para>
+      <para id="eip-545"><emphasis effect="bold">FFT</emphasis></para><para id="id65039">The Fast Fourier Transform (FFT) is a clever algorithm which implements
+the DFT in only <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo form="prefix">log</m:mo><m:mo>(</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:math> operations. Note that the matrix multiplication would
+require <m:math overflow="scroll"><m:msup><m:mi>K</m:mi><m:mn>2</m:mn></m:msup></m:math> operations.</para>
+      <para id="id65079">Matlab implements the FFT with the command <code display="inline">fft(x)</code> where <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is the input vector.
+Note that in Matlab the indices start always with 1! This means that the first entry of
+the Matlab vector <m:math overflow="scroll"><m:mi>x</m:mi></m:math>, i.e. <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math> is the sample point <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Similar, the last entry of the Matlab vector <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is, i.e. <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the sample point <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mrow><m:mi>K</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mrow><m:mo>(</m:mo><m:mi>K</m:mi><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>T</m:mi><m:mo>-</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+    </section>
+  </content>
+</document>

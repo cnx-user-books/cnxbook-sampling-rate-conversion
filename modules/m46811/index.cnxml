@@ -1,0 +1,773 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Energy and Power</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46811</md:content-id>
+  <md:title>Energy and Power</md:title>
+  <md:abstract/>
+  <md:uuid>74c6136b-e393-429d-86c4-299061d035cc</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Energy and Power</title>
+      <para id="id62182">The <emphasis effect="italics">energy</emphasis> of a continuous-time signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+is given as</para>
+      <equation id="id62545">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>:</m:mo>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:msup>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62787">Plancherel's theorem says (for more information see <link target-id="id62979">Comment 2</link>):
+If the signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> has finite energy then its Fourier
+transform <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> has the <emphasis effect="italics">same</emphasis> energy:</para><equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi>X</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>X</m:mi>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>f</m:mi>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:msup>
+              <m:mi>x</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mspace width="2.em"/>
+            <m:mtext>[finite</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>energy</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>case]</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id62979"><emphasis effect="bold">Comment 2</emphasis> 
+Plancherel theorem is a result in harmonic analysis, first proved by
+Michel Plancherel. In its simplest form it states that if a function
+f is in both <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, then its Fourier transform is in
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>; moreover the Fourier transform map is isometric. This implies
+that the Fourier transform map restricted to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>1</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>∩</m:mo><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math> has
+a unique extension to a linear isometric map <m:math overflow="scroll"><m:mrow><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>→</m:mo><m:msub><m:mi>L</m:mi><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">R</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. This
+isometry is actually a unitary map.
+
+
+
+
+</para><para id="id63247">Periodic signals have of course infinite energy; therefore, one introduces
+the <emphasis effect="italics">power</emphasis> <m:math overflow="scroll"><m:msub><m:mi>P</m:mi><m:mi>x</m:mi></m:msub></m:math> of the signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>,
+which is the average energy over one period. Energy is measured in Joule,
+power is measured in Watt=Joule/Sec.</para><para id="id63285">The analog of Plancherel's theorem is Parseval's theorem
+which applies to <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic signals and says</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>P</m:mi>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>T</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>T</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mi>X</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mspace width="2.em"/>
+            <m:mtext>[periodic</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>case]</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63427">We may derive Parseval's theorem as follows, using <link target-id="uid5" document="m46817"/> and <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi>a</m:mi><m:mo>·</m:mo><m:msup><m:mi>a</m:mi><m:mo>*</m:mo></m:msup></m:mrow></m:math>:</para><equation id="id63466">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msub>
+                  <m:mi>P</m:mi>
+                  <m:mi>x</m:mi>
+                </m:msub>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>x</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>t</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mfenced separators="" open="|" close="|">
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>k</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>-</m:mo>
+                          <m:mi>∞</m:mi>
+                        </m:mrow>
+                        <m:mi>∞</m:mi>
+                      </m:munderover>
+                      <m:msub>
+                        <m:mi>X</m:mi>
+                        <m:mi>k</m:mi>
+                      </m:msub>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                          <m:mi>k</m:mi>
+                          <m:mi>t</m:mi>
+                          <m:mo>/</m:mo>
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mfenced>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>X</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mfenced>
+                  <m:msup>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:munderover>
+                        <m:mo>∑</m:mo>
+                        <m:mrow>
+                          <m:mi>n</m:mi>
+                          <m:mo>=</m:mo>
+                          <m:mo>-</m:mo>
+                          <m:mi>∞</m:mi>
+                        </m:mrow>
+                        <m:mi>∞</m:mi>
+                      </m:munderover>
+                      <m:msub>
+                        <m:mi>X</m:mi>
+                        <m:mi>n</m:mi>
+                      </m:msub>
+                      <m:msup>
+                        <m:mi>e</m:mi>
+                        <m:mrow>
+                          <m:mi>j</m:mi>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                          <m:mi>n</m:mi>
+                          <m:mi>t</m:mi>
+                          <m:mo>/</m:mo>
+                          <m:mi>T</m:mi>
+                        </m:mrow>
+                      </m:msup>
+                    </m:mfenced>
+                    <m:mo>*</m:mo>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:munderover>
+                    <m:msub>
+                      <m:mi>X</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mfenced>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:munderover>
+                      <m:mo>∑</m:mo>
+                      <m:mrow>
+                        <m:mi>n</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mo>-</m:mo>
+                        <m:mi>∞</m:mi>
+                      </m:mrow>
+                      <m:mi>∞</m:mi>
+                    </m:munderover>
+                    <m:msubsup>
+                      <m:mi>X</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mo>*</m:mo>
+                    </m:msubsup>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>n</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mfenced>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:msubsup>
+                    <m:mi>X</m:mi>
+                    <m:mi>n</m:mi>
+                    <m:mo>*</m:mo>
+                  </m:msubsup>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>)</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>T</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:msubsup>
+                    <m:mi>X</m:mi>
+                    <m:mi>k</m:mi>
+                    <m:mo>*</m:mo>
+                  </m:msubsup>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:msub>
+                        <m:mi>X</m:mi>
+                        <m:mi>k</m:mi>
+                      </m:msub>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id64173">Here, we used that <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>-</m:mo><m:mi>n</m:mi><m:mo>)</m:mo><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math> equals <m:math overflow="scroll"><m:mi>T</m:mi></m:math>
+when <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>n</m:mi></m:mrow></m:math> (since <m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mn>0</m:mn></m:msup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>), but equals 0 when <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>≠</m:mo><m:mi>n</m:mi></m:mrow></m:math> since (since
+<m:math overflow="scroll"><m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>s</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mi>j</m:mi><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, which are integrated over several periods).</para>
+      <para id="id64338">A similar computation can be carried out for Plancherel's equation.
+However, some difficulties arise due to the integrals over infinite
+intervals (see <link target-id="id64609">Comment 3</link> below).
+Also, a justification of Plancherel could be given by performing
+a limit of infinite period in Parseval's equation (see <link target-id="id65518">Comment 4</link> below).</para><para id="id64355">For finite discrete signals the analog is simply the fact, that DFT is unitary up to a stretching factor.
+More precisely, the matrix <m:math overflow="scroll"><m:mrow><m:mi>D</m:mi><m:mi>F</m:mi><m:msub><m:mi>T</m:mi><m:mi>K</m:mi></m:msub></m:mrow></m:math>
+leaves angles intact and stretches length by <m:math overflow="scroll"><m:msqrt><m:mi>K</m:mi></m:msqrt></m:math>. Intuitively,
+one may think of the DFT as a rotation and a stretching. In other words, to perform a DFT simply
+means to change the coordinate system into a new one, and to change length measurement by
+a factor <m:math overflow="scroll"><m:msqrt><m:mi>K</m:mi></m:msqrt></m:math>. Thus:</para>
+      <equation id="uid4"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>K</m:mi>
+            </m:munderover>
+            <m:msubsup>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+              <m:mn>2</m:mn>
+            </m:msubsup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msup>
+                <m:mi>K</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>K</m:mi>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>x</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+            </m:msub>
+            <m:mspace width="2.em"/>
+            <m:mtext>[discrete</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>case]</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id64540">Note that the DFT Fourier coefficients are complex numbers; thus, the absolute value has
+to be taken (for a complex number <m:math overflow="scroll"><m:mi>a</m:mi></m:math> we have <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi>a</m:mi><m:mo>·</m:mo><m:msup><m:mi>a</m:mi><m:mo>*</m:mo></m:msup></m:mrow></m:math>, which is usually different
+from <m:math overflow="scroll"><m:msup><m:mi>a</m:mi><m:mn>2</m:mn></m:msup></m:math>—unless <m:math overflow="scroll"><m:mi>a</m:mi></m:math> is by chance real valued).</para>
+      <para id="id64609"><emphasis effect="bold">Comment 3</emphasis> A “hand-waving” argument for Plancherel's theorem runs as follows,
+using <link target-id="uid1" document="m46819"/> and <m:math overflow="scroll"><m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mi>a</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mi>a</m:mi><m:mo>·</m:mo><m:msup><m:mi>a</m:mi><m:mo>*</m:mo></m:msup></m:mrow></m:math>:
+
+<equation id="id64674"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mfenced separators="" open="|" close="|"><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mfenced><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mfenced separators="" open="(" close=")"><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mfenced><m:msup><m:mfenced separators="" open="(" close=")"><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>g</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>g</m:mi></m:mfenced><m:mo>*</m:mo></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mfenced separators="" open="(" close=")"><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mfenced><m:mfenced separators="" open="(" close=")"><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>g</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>g</m:mi></m:mfenced><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mi>X</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>-</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mspace width="0.166667em"/><m:mspace width="0.166667em"/><m:mi>d</m:mi><m:mi>f</m:mi><m:mi>d</m:mi><m:mi>g</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mi>X</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>-</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mi>d</m:mi><m:mi>f</m:mi><m:mi>d</m:mi><m:mi>g</m:mi></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mi>X</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>X</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation>
+Thereby, the step <m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>-</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>δ</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>-</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> would
+require some more care, but we content ourselves here with this intuitive computation.</para><figure id="uid7"><subfigure id="fs-id1165128989064">
+    <media id="uid7_media" alt="&gt;An important example of a band-limited signal: the sinc-function.   ">
+      <image mime-type="image/png" src="../../media/Sinc_function_(normalized).png" id="uid7_onlineimage" width="200"/>
+      <image mime-type="application/postscript" for="pdf" src="../../media/Sinc_function_normalized.eps" id="uid7_printimage"/>
+    </media>
+    <caption>An important example of a band-limited signal: the sinc-function.   </caption>
+  </subfigure>
+  <subfigure id="fs-id1165141635138">
+    <media id="uid8_media" alt="Sinc and the un-normalized version in comparison.">
+      <image mime-type="image/png" src="../../media/Sinc_function.png" id="uid8_onlineimage" width="200"/>
+      <image mime-type="application/postscript" for="pdf" src="../../media/Sinc_function.eps" id="uid8_printimage"/>
+    </media>
+    <caption>Sinc and the un-normalized version in comparison.</caption>
+  </subfigure>
+  <subfigure id="fs-id1165128987394">
+    <media id="uid9_media" alt="The power spectrum of sinc is Rect(f).">
+      <image mime-type="image/png" src="../../media/Rect.png" id="uid9_onlineimage" width="200"/>
+      <image mime-type="application/postscript" for="pdf" src="../../media/Rect.eps" id="uid9_printimage"/>
+    </media>
+    <caption>The power spectrum of sinc is Rect(f).</caption>
+  </subfigure>
+</figure><para id="id65518"><emphasis effect="bold">Comment 4</emphasis> With Parseval's equation established one may provide a
+derivation of Plancherel's formula which is more convincing, tho more difficult to make
+rigorous.
+
+Assume that the signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is time-limited, say defined on <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>&lt;</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>.
+Its Fourier-series coefficients are <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>T</m:mi><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msubsup><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:math>.
+Comparing to the Fourier transform we find
+thus <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>·</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. We may interpret <m:math overflow="scroll"><m:mi>x</m:mi></m:math> as being periodically extended and use
+Parseval's equation which says <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mo>∑</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>;
+this allows the following computation
+
+<equation id="id65771"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mi>x</m:mi><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>T</m:mi><m:mo>·</m:mo><m:msub><m:mi>P</m:mi><m:mi>x</m:mi></m:msub><m:mo>=</m:mo><m:mi>T</m:mi><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:munderover><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:munderover><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:msup><m:mi>T</m:mi><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>|</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:munderover><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>≃</m:mo><m:msubsup><m:mo>∫</m:mo><m:mrow><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation>
+In the last step we use a Riemann sum approximation of the integral.
+It remains to extend this to signals which are not time-limited.
+
+The approximations made are more believable than the step using the Dirac
+delta (see <link target-id="id64609">Comment 3</link> above).
+Although more intuitive and believable,
+these arguments are harder to make rigorous
+than making the computation of <link target-id="id64609">Comment 3</link> rigorous by passing through
+a correct, direct computation of the integrals avoiding the Dirac delta.
+</para></section>
+  </content>
+</document>

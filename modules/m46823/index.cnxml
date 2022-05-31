@@ -1,0 +1,797 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Noise-Shaping</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46823</md:content-id>
+  <md:title>Noise-Shaping</md:title>
+  <md:abstract/>
+  <md:uuid>72031036-e335-4a70-8c47-b78f15018ff8</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Noise-shaping</title>
+      <para id="id181597"><emphasis effect="italics">Noise shaping</emphasis> is a procedure which allows to put some color
+on an additive white noise. While this adds to the overall noise,
+one can shape the resulting noise such that its prevalent “color”
+lies in the high frequencies and at the same time reduce the
+presence of noise in the low frequencies.</para>
+      <figure id="uid1" orient="vertical"><subfigure id="fs-id1164959127594"><media id="uid1_media" alt="Usual quantization noise.">
+          <image mime-type="image/png" src="../../media/NoiseNoOversampling.png" id="uid1_onlineimage" width="600"><!-- NOTE: attribute width changes image size online (pixels). original width is 1500. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseNoOversampling.eps" id="uid1_printimage"/>
+        </media>
+        
+      <caption>Usual quantization noise.</caption></subfigure><subfigure id="uid2"><media id="uid2_media" alt="When Oversampling, only the part in the band">
+          <image mime-type="image/png" src="../../media/NoiseWithOversampling.png" id="uid2_onlineimage" width="600"><!-- NOTE: attribute width changes image size online (pixels). original width is 1500. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseWithOversampling.eps" id="uid2_printimage"/>
+        </media>
+        
+      <caption>When Oversampling,
+only the part in the band <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> will
+be relevant after down-sampling.</caption></subfigure><subfigure id="uid3"><media id="uid3_media" alt="Noise Shaping moves the noise away from the smaller frequencies.">
+          <image mime-type="image/png" src="../../media/NoiseShaping2.png" id="uid3_onlineimage" width="600"><!-- NOTE: attribute width changes image size online (pixels). original width is 1500. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseShaping2.eps" id="uid3_printimage"/>
+        </media>
+        
+      <caption>Noise Shaping
+moves the noise away from the smaller
+frequencies.</caption></subfigure></figure><para id="id182037">In the context of oversampling, noise shaping achieves an
+improvement if it is done so that it reduces noise in the band
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> and pushes it to the “colors” with frequencies in
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math>.</para>
+      <para id="id182159">The most simple version of noise shaping results in two noise terms,
+the one produced by the system, one added with a delay on purpose.
+Set <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>, then:
+</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>→</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>ε</m:mi>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                  </m:mrow>
+                  <m:mo>→</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                    <m:mo>-</m:mo>
+                    <m:msub>
+                      <m:mi>ε</m:mi>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>→</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>→</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mspace width="-0.166667em"/>
+                  <m:mrow>
+                    <m:mi>Q</m:mi>
+                    <m:mi>u</m:mi>
+                    <m:mi>a</m:mi>
+                    <m:mi>n</m:mi>
+                    <m:mi>t</m:mi>
+                    <m:mo>.</m:mo>
+                  </m:mrow>
+                  <m:mo>→</m:mo>
+                  <m:mfenced separators="" open="{" close="">
+                    <m:mtable>
+                      <m:mtr>
+                        <m:mtd columnalign="left">
+                          <m:msub>
+                            <m:mi>y</m:mi>
+                            <m:mi>k</m:mi>
+                          </m:msub>
+                        </m:mtd>
+                        <m:mtd columnalign="left">
+                          <m:mtext>output</m:mtext>
+                        </m:mtd>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mtd columnalign="left">
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>ε</m:mi>
+                              <m:mi>k</m:mi>
+                            </m:msub>
+                            <m:mo>=</m:mo>
+                            <m:msub>
+                              <m:mi>y</m:mi>
+                              <m:mi>k</m:mi>
+                            </m:msub>
+                            <m:mo>-</m:mo>
+                            <m:mrow>
+                              <m:mo>(</m:mo>
+                              <m:msub>
+                                <m:mi>x</m:mi>
+                                <m:mi>k</m:mi>
+                              </m:msub>
+                              <m:mo>-</m:mo>
+                              <m:msub>
+                                <m:mi>ε</m:mi>
+                                <m:mrow>
+                                  <m:mi>k</m:mi>
+                                  <m:mo>-</m:mo>
+                                  <m:mn>1</m:mn>
+                                </m:mrow>
+                              </m:msub>
+                              <m:mo>)</m:mo>
+                            </m:mrow>
+                          </m:mrow>
+                        </m:mtd>
+                        <m:mtd columnalign="left">
+                          <m:mtext>feedback</m:mtext>
+                        </m:mtd>
+                      </m:mtr>
+                    </m:mtable>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id182580">This assumes that we know or can know the error. Such is the case
+with quantization, where we can compute <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> simply as the
+difference between output and input of the quantization (see
+<link target-id="uid4"/>). This is not feasible in the example of a
+wireless channel with inference.</para>
+      <para id="id182603">To study the effect of noise shaping we compute the Fourier
+transform of the overall error <m:math overflow="scroll"><m:mrow><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math>. We find</para>
+      <equation id="id182640">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>n</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>-</m:mo>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id182700">or</para>
+      <equation id="id182706">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>n</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>y</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>e</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>τ</m:mi>
+                <m:mi>e</m:mi>
+              </m:msub>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id182781">with Fourier transform (use that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:msub><m:mi>τ</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math>)</para>
+      <equation id="id182814">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>N</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:msub>
+                        <m:mi>τ</m:mi>
+                        <m:mi>e</m:mi>
+                      </m:msub>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>-</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>f</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:msub>
+                          <m:mi>f</m:mi>
+                          <m:mi>e</m:mi>
+                        </m:msub>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mo form="prefix">sin</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>π</m:mi>
+                    <m:mi>f</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>e</m:mi>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>π</m:mi>
+                      <m:mi>f</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mi>e</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id183009">and power spectrum, (use that <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msup><m:mo form="prefix">sin</m:mo><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>)
+</para>
+      <equation id="id183064">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>N</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>E</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mn>2</m:mn>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>f</m:mi>
+                  </m:mrow>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                </m:mfrac>
+              </m:mfenced>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id183157">Note that the spectrum is no longer flat; in other words, the noise
+<m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub></m:math> is colored. We note that the colored spectrum is small for
+small <m:math overflow="scroll"><m:mi>f</m:mi></m:math>, and it is still spread over a period of length <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>.
+Thus, noise shaping results in a reduction of noise in
+the small frequencies (see <link target-id="uid1"/>).</para><para id="id183202">Now we continue as with simple oversampling: since the signal has
+been sampled at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mi>β</m:mi><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>, with <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>≥</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math> we
+may low-pass filter after noise shaping at cutoff frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>.
+Thus, we take advantage of the fact that most of the power of the
+“shaped” or “colored” noise is in the `high'-frequency bands
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> with very little noise at
+frequencies around 0.</para>
+      <para id="id183366">To assess the gain we compute the power of the noise after this
+low-pass filter. Note that the low-pass filter sets <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>
+for <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>&gt;</m:mo><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo></m:mrow><m:mo>&gt;</m:mo><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>: this removes much of the noise as demonstrated in the
+following computation; it also guarantees that power won't be changed
+when downsampling after filtering to <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:math>.
+Using again that <m:math overflow="scroll"><m:mrow><m:mi>E</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mn>12</m:mn></m:mrow></m:math> we get:</para>
+      <equation id="id183477">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:msub>
+                  <m:mi>P</m:mi>
+                  <m:mi> shaping </m:mi>
+                </m:msub>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>e</m:mi>
+                    </m:msub>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>N</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>f</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mi>d</m:mi>
+                  <m:mi>f</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>e</m:mi>
+                    </m:msub>
+                  </m:mfrac>
+                  <m:mn>2</m:mn>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msup>
+                    <m:mrow>
+                      <m:mo>|</m:mo>
+                      <m:mi>E</m:mi>
+                      <m:mrow>
+                        <m:mo>(</m:mo>
+                        <m:mi>f</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                      <m:mo>|</m:mo>
+                    </m:mrow>
+                    <m:mn>2</m:mn>
+                  </m:msup>
+                  <m:mn>2</m:mn>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mn>1</m:mn>
+                    <m:mo>-</m:mo>
+                    <m:mo form="prefix">cos</m:mo>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                          <m:mi>f</m:mi>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>f</m:mi>
+                          <m:mi>e</m:mi>
+                        </m:msub>
+                      </m:mfrac>
+                    </m:mfenced>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mrow>
+                      <m:mn>4</m:mn>
+                      <m:msup>
+                        <m:mi>Δ</m:mi>
+                        <m:mn>2</m:mn>
+                      </m:msup>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>12</m:mn>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mi>e</m:mi>
+                      </m:msub>
+                    </m:mrow>
+                  </m:mfrac>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>f</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mfrac>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mi>e</m:mi>
+                      </m:msub>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:mfrac>
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                          <m:mi>π</m:mi>
+                          <m:mi>f</m:mi>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>f</m:mi>
+                          <m:mi>e</m:mi>
+                        </m:msub>
+                      </m:mfrac>
+                    </m:mfenced>
+                  </m:mfenced>
+                  <m:msubsup>
+                    <m:mo>|</m:mo>
+                    <m:mrow>
+                      <m:mn>0</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>f</m:mi>
+                        <m:mn>0</m:mn>
+                      </m:msub>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>Δ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mn>12</m:mn>
+                  </m:mfrac>
+                  <m:mn>4</m:mn>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>β</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo>-</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:mo form="prefix">sin</m:mo>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:mfrac>
+                        <m:mi>π</m:mi>
+                        <m:mi>β</m:mi>
+                      </m:mfrac>
+                    </m:mfenced>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id183849">Using the approximation <m:math overflow="scroll"><m:mrow><m:mo form="prefix">sin</m:mo><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>≃</m:mo><m:mi>x</m:mi><m:mo>-</m:mo><m:msup><m:mi>x</m:mi><m:mn>3</m:mn></m:msup><m:mo>/</m:mo><m:mn>6</m:mn><m:mo>+</m:mo><m:msup><m:mi>x</m:mi><m:mn>5</m:mn></m:msup><m:mo>/</m:mo><m:mn>5</m:mn><m:mo>!</m:mo><m:mo>-</m:mo><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo></m:mrow></m:math> we find</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>P</m:mi>
+                <m:mi> shaping </m:mi>
+              </m:msub>
+              <m:msub>
+                <m:mi>P</m:mi>
+                <m:mi> noise </m:mi>
+              </m:msub>
+            </m:mfrac>
+            <m:mo>=</m:mo>
+            <m:mn>4</m:mn>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>β</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mi>π</m:mi>
+                  <m:mi>β</m:mi>
+                </m:mfrac>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mo>≃</m:mo>
+            <m:mn>4</m:mn>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>β</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>-</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mfrac>
+                  <m:mi>π</m:mi>
+                  <m:mi>β</m:mi>
+                </m:mfrac>
+                <m:mo>-</m:mo>
+                <m:mfrac>
+                  <m:msup>
+                    <m:mi>π</m:mi>
+                    <m:mn>3</m:mn>
+                  </m:msup>
+                  <m:mrow>
+                    <m:mn>6</m:mn>
+                    <m:mo>·</m:mo>
+                    <m:msup>
+                      <m:mi>β</m:mi>
+                      <m:mn>3</m:mn>
+                    </m:msup>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>π</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mn>3</m:mn>
+            </m:mfrac>
+            <m:msup>
+              <m:mi>β</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mn>3</m:mn>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id184093">
+        <emphasis effect="bold">Noise reduction under oversampling with noise-shaping</emphasis>
+      </para>
+      <para id="id184100">In conclusion, the SNR improves (as compared to no oversampling)
+under noise shaping by the inverse of the factor
+<link target-id="uid5"/>, thus roughly by <m:math overflow="scroll"><m:mrow><m:mfrac><m:mn>3</m:mn><m:msup><m:mi>π</m:mi><m:mn>2</m:mn></m:msup></m:mfrac><m:msup><m:mi>β</m:mi><m:mn>3</m:mn></m:msup></m:mrow></m:math>.
+In decibel, this corresponds to approximatively
+<m:math overflow="scroll"><m:mrow><m:mn>10</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow><m:mo>-</m:mo><m:mn>20</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>30</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>β</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>, thus,
+roughly 3 times more than with oversampling alone.</para>
+      <para id="id184204">
+        <emphasis effect="bold">Numerical Examples:</emphasis>
+      </para>
+      <para id="id184210">With an OSR of <m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>=</m:mo><m:mn>128</m:mn></m:mrow></m:math> the SNR improves</para>
+      <list id="id184226" display="block" list-type="bulleted">
+        <item id="uid6">under oversampling alone by <m:math overflow="scroll"><m:mrow><m:mn>10</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>128</m:mn><m:mo>)</m:mo></m:mrow><m:mo>≃</m:mo><m:mn>21</m:mn></m:mrow></m:math>dB
+</item>
+        <item id="uid7">under oversampling coupled with basic noise-shaping as
+above by approximatively <m:math overflow="scroll"><m:mrow><m:mn>10</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>)</m:mo></m:mrow><m:mo>-</m:mo><m:mn>20</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>π</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>30</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>128</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>58</m:mn><m:mo>.</m:mo><m:mn>0445</m:mn></m:mrow></m:math>dB, or roughly 3 times more.
+</item>
+      </list>
+      <para id="id184361">When doubling the OSR the SNR improves</para>
+      <list id="id184364" display="block" list-type="bulleted">
+        <item id="uid8">under oversampling alone by <m:math overflow="scroll"><m:mrow><m:mn>10</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mo>≃</m:mo><m:mn>3</m:mn><m:mo>.</m:mo><m:mn>01</m:mn></m:mrow></m:math>dB
+</item>
+        <item id="uid9">under oversampling with noise-shaping by
+approximatively <m:math overflow="scroll"><m:mrow><m:mn>30</m:mn><m:msub><m:mo form="prefix">log</m:mo><m:mn>10</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>9</m:mn><m:mo>.</m:mo><m:mn>03</m:mn></m:mrow></m:math>dB, or approximatively 3 times more.
+</item>
+      </list>
+    </section>
+  </content>
+</document>

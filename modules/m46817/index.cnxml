@@ -1,0 +1,977 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Fourier Series: Review</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46817</md:content-id>
+  <md:title>Fourier Series: Review</md:title>
+  <md:abstract/>
+  <md:uuid>e77faf7c-84c5-4f0c-b4d8-e177574afb96</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Fourier Series: Review</title>
+      <para id="id70698">A function or signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is called <emphasis effect="italics">periodic</emphasis> with period <m:math overflow="scroll"><m:mi>T</m:mi></m:math> if <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>T</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>.
+All “typical” <emphasis effect="italics">periodic</emphasis> function <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> with period <m:math overflow="scroll"><m:mi>T</m:mi></m:math> can be developed as follows</para>
+      <equation id="uid1"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mo>+</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mspace width="3.33333pt"/>
+            <m:mspace width="3.33333pt"/>
+            <m:msub>
+              <m:mi>a</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mtext>cos</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>b</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mtext>sin</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mfrac>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>T</m:mi>
+              </m:mfrac>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id71431">where the coefficients are computed as follows:</para>
+
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+     
+                <m:msub>
+                  <m:mi>a</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+            
+                <m:mo>=</m:mo>
+         
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>2</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mtext>cos</m:mtext>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mspace width="1.em"/>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>0</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+        
+        </m:math>
+      </equation>
+
+      <equation id="equation3">
+        <m:math overflow="scroll" mode="display">
+           
+                <m:msub>
+                  <m:mi>b</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+          
+                <m:mo>=</m:mo>
+             
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>2</m:mn>
+                    <m:mi>T</m:mi>
+                  </m:mfrac>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>T</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mtext>sin</m:mtext>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>t</m:mi>
+                  <m:mspace width="1.em"/>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mn>3</m:mn>
+                    <m:mo>,</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>.</m:mo>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+        </m:math>
+      </equation>
+
+
+
+
+
+      <para id="id71696">The natural interpretation of <link target-id="uid1"/> is as a decomposition
+of the signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> into individual oscillations where <m:math overflow="scroll"><m:msub><m:mi>a</m:mi><m:mi>k</m:mi></m:msub></m:math> indicates the
+amplitude of the even oscillation <m:math overflow="scroll"><m:mrow><m:mtext>cos</m:mtext><m:mo>(</m:mo><m:mi>k</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> of frequency <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math> (meaning its
+period is <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>), and <m:math overflow="scroll"><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub></m:math> indicates the
+amplitude of the odd oscillation <m:math overflow="scroll"><m:mrow><m:mtext>sin</m:mtext><m:mo>(</m:mo><m:mi>k</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> of frequency <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>.
+For an audio signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>, frequency corresponds to how high a sound is and amplitude to
+how loud it is. The oscillations appearing in the Fourier decomposition are often
+also called harmonics (first, second, third harmonic etc).</para>
+      <para id="id71863">Note: one can also integrate over <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>T</m:mi><m:mo>]</m:mo></m:mrow></m:math> or any other interval of length <m:math overflow="scroll"><m:mi>T</m:mi></m:math>.
+Note also, that the average value of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> over one period is equal to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>a</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>.</para>
+      <para id="id71925">
+        <emphasis effect="bold">Complex representation of Fourier series</emphasis>
+      </para>
+      <para id="id71932">Often it is more practical to work with complex numbers in the area of Fourier analysis.
+Using the famous formula</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>α</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mtext>cos</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>j</m:mi>
+            <m:mtext>sin</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id71989">it is possible to simplify several formulas at the price of working
+with complex numbers.
+Towards this end we write</para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>a</m:mi>
+            <m:mtext>cos</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>b</m:mi>
+            <m:mtext>sin</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>α</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>a</m:mi>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>α</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>+</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>α</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>+</m:mo>
+            <m:mi>b</m:mi>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>j</m:mi>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>α</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>α</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>j</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mi>α</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>+</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>a</m:mi>
+              <m:mo>+</m:mo>
+              <m:mi>b</m:mi>
+              <m:mi>j</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>α</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id72193">From this we observe that we may replace
+the cos and sin harmonics by a pair of exponential harmonics
+with opposite frequencies and with complex amplitudes which
+are conjugate complex to each other.
+In fact, we arrive at the more simple <emphasis effect="italics">complex Fourier series</emphasis>:</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mspace width="2.em"/>
+            <m:mtext>with</m:mtext>
+            <m:mspace width="1.em"/>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id72350">Note that <m:math overflow="scroll"><m:mi>X</m:mi></m:math> is complex, but <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is real-valued (the imaginary parts of all
+the terms in <m:math overflow="scroll"><m:mrow><m:mo>∑</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>k</m:mi><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math> add up to zero;
+in other words, they cancel each other out). The absolute value of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> gives
+the amplitude of the complex harmonic with frequency <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math> (meaning its
+period is <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>k</m:mi></m:mrow></m:math>); the argument of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> provides the phase difference between
+the complex harmonics.
+If <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is even, <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> is real for all <m:math overflow="scroll"><m:mi>k</m:mi></m:math> and all harmonics are in phase.</para>
+      <para id="id72493">To verify <link target-id="uid5"/> note that by <link target-id="uid2"/> and <link target-id="equation3"/> we have for positive <m:math overflow="scroll"><m:mi>k</m:mi></m:math></para><equation id="id72514">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mfenced separators="" open="[" close="]">
+              <m:mtext>cos</m:mtext>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>π</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>/</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+              <m:mo>-</m:mo>
+              <m:mi>j</m:mi>
+              <m:mtext>sin</m:mtext>
+              <m:mo>(</m:mo>
+              <m:mn>2</m:mn>
+              <m:mi>π</m:mi>
+              <m:mi>k</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>/</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mn>2</m:mn>
+            </m:mfrac>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msub>
+                <m:mi>a</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mo>-</m:mo>
+              <m:msub>
+                <m:mi>b</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mi>j</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id72653">For negative <m:math overflow="scroll"><m:mi>k</m:mi></m:math> we note that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msubsup><m:mi>X</m:mi><m:mi>k</m:mi><m:mo>*</m:mo></m:msubsup></m:mrow></m:math> by <link target-id="uid5"/>,
+where <m:math overflow="scroll"><m:msup><m:mrow><m:mo>(</m:mo><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo></m:msup></m:math> denotes
+the conjugate complex. By <link target-id="uid4"/>,
+the <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> are exactly as they are supposed to be.</para>
+      <para id="id72735">
+        <emphasis effect="bold">Properties</emphasis>
+      </para>
+      <list id="eip-630"><item>Linearity: The Fourier coefficients of the signal <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>c</m:mi><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+are simply</item></list><equation id="id72783">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>Z</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mi>c</m:mi>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>+</m:mo>
+            <m:msub>
+              <m:mi>Y</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <list id="eip-502"><item>Change of frequency: The signal <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>λ</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+has the period <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>/</m:mo><m:mi>λ</m:mi></m:mrow></m:math> and has the same Fourier coefficients
+as <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> — but they correspond to different
+frequencies <m:math overflow="scroll"><m:mi>f</m:mi></m:math>:</item></list><equation id="id72890">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>Z</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mo>|</m:mo>
+              <m:mrow>
+                <m:mi>f</m:mi>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mi>k</m:mi>
+                  <m:mrow>
+                    <m:mi>T</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mi>λ</m:mi>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msub>
+              <m:mo>|</m:mo>
+              <m:mrow>
+                <m:mi>f</m:mi>
+                <m:mo>=</m:mo>
+                <m:mfrac>
+                  <m:mi>k</m:mi>
+                  <m:mi>T</m:mi>
+                </m:mfrac>
+              </m:mrow>
+            </m:msub>
+            <m:mspace width="2.em"/>
+            <m:mtext>since</m:mtext>
+            <m:mspace width="2.em"/>
+            <m:mi>z</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>λ</m:mi>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>λ</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>Z</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>t</m:mi>
+                <m:mfrac>
+                  <m:mi>k</m:mi>
+                  <m:mrow>
+                    <m:mi>T</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mi>λ</m:mi>
+                  </m:mrow>
+                </m:mfrac>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id73093">The equation on the right allows to read off the Fourier coefficients and
+to establish <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math>. (For an alternative computation see <link target-id="id73128">Comment 1</link>)</para><para id="id73128"><emphasis effect="bold">Comment 1</emphasis>
+        <equation id="id73150">
+          <m:math overflow="scroll" mode="display">
+            <m:mtable displaystyle="true">
+              <m:mtr>
+                <m:mtd columnalign="right">
+                  <m:msub>
+                    <m:mi>Z</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                </m:mtd>
+                <m:mtd>
+                  <m:mo>=</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mrow>
+                        <m:mi>T</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>λ</m:mi>
+                      </m:mrow>
+                    </m:mfrac>
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>T</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>λ</m:mi>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mi>z</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>j</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mo>(</m:mo>
+                        <m:mi>T</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>λ</m:mi>
+                        <m:mo>)</m:mo>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>t</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mfrac>
+                      <m:mi>λ</m:mi>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mrow>
+                        <m:mi>T</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>λ</m:mi>
+                      </m:mrow>
+                    </m:msubsup>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mi>λ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>j</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mi>λ</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>t</m:mi>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+              <m:mtr>
+                <m:mtd/>
+                <m:mtd>
+                  <m:mo>=</m:mo>
+                </m:mtd>
+                <m:mtd columnalign="left">
+                  <m:mrow>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>T</m:mi>
+                    </m:mfrac>
+                    <m:msubsup>
+                      <m:mo>∫</m:mo>
+                      <m:mrow>
+                        <m:mn>0</m:mn>
+                      </m:mrow>
+                      <m:mi>T</m:mi>
+                    </m:msubsup>
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>s</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>j</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>s</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>T</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mi>d</m:mi>
+                    <m:mi>s</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:msub>
+                      <m:mi>X</m:mi>
+                      <m:mi>k</m:mi>
+                    </m:msub>
+                  </m:mrow>
+                </m:mtd>
+              </m:mtr>
+            </m:mtable>
+          </m:math>
+        </equation>
+      </para><list id="eip-999"><item>Shift: The Fourier coefficients of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>+</m:mo><m:mi>d</m:mi><m:mo>)</m:mo></m:mrow></m:math> are simply</item></list><equation id="id73435">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>Z</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                </m:mrow>
+                <m:mi>k</m:mi>
+                <m:mi>d</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id73483">The modulation is much more simple in complex writing
+then it would be with real coefficients.
+For the special shift by half a period, i.e., <m:math overflow="scroll"><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mi>T</m:mi><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>
+we have <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>π</m:mi><m:mi>k</m:mi></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mi>k</m:mi></m:msup><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math>.</para>
+      <list id="eip-902"><item>Derivative: The Fourier series of the derivative of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+with development <link target-id="uid1"/>
+can be obtained simply by taking the derivative of <link target-id="uid1"/>
+term by term:</item></list><equation id="id73599">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mi>x</m:mi>
+              <m:mo>'</m:mo>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:mi>k</m:mi>
+            <m:mfrac>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>j</m:mi>
+              </m:mrow>
+              <m:mi>T</m:mi>
+            </m:mfrac>
+            <m:mo>·</m:mo>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>T</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id73693">Short: when taking the derivative of a signal, the complex Fourier coefficients
+get multiplied by <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mfrac><m:mrow><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>j</m:mi></m:mrow><m:mi>T</m:mi></m:mfrac></m:mrow></m:math>. Consequently, the coefficients of the
+derivative decay slower.</para>
+      <para id="id73723">
+        <emphasis effect="bold">Examples</emphasis>
+      </para>
+      <list id="id73729" display="block" list-type="bulleted">
+        <item id="uid7">The pure oscillation (containing only one real but two complex
+frequencies)
+<equation id="id73745"><m:math overflow="scroll" mode="display"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mtext>sin</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>T</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="2.em"/><m:msub><m:mi>X</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mo>-</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mi>j</m:mi><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></equation>
+or <m:math overflow="scroll"><m:mrow><m:msub><m:mi>B</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>=</m:mo><m:mo>-</m:mo><m:msub><m:mi>B</m:mi><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math>, or <m:math overflow="scroll"><m:mrow><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, and all other coefficients are
+zero.
+This formula can be obtained without computing integrals by noting
+that <m:math overflow="scroll"><m:mrow><m:mtext>sin</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>α</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>α</m:mi></m:mrow></m:msup><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>α</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow><m:mo>/</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>j</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mi>j</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mi>α</m:mi></m:mrow></m:msup><m:mo>-</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mi>α</m:mi></m:mrow></m:msup><m:mo>)</m:mo></m:mrow></m:mrow></m:math> and setting <m:math overflow="scroll"><m:mrow><m:mi>α</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>.
+</item>
+        <item id="uid8">Functions which are <emphasis effect="italics">time-limited</emphasis>, i.e., defined on a finite interval can be periodically
+extended. Example with <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>π</m:mi></m:mrow></m:math>:
+<equation id="id74058"><m:math overflow="scroll" mode="display"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfenced separators="" open="{" close=""><m:mtable><m:mtr><m:mtd columnalign="left"><m:mn>1</m:mn></m:mtd><m:mtd columnalign="left"><m:mrow><m:mtext>for</m:mtext><m:mspace width="4.pt"/><m:mrow><m:mn>0</m:mn><m:mo>&lt;</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi>π</m:mi></m:mrow></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:mtd><m:mtd columnalign="left"><m:mrow><m:mtext>for</m:mtext><m:mspace width="4.pt"/><m:mrow><m:mo>-</m:mo><m:mi>π</m:mi><m:mo>&lt;</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mi>c</m:mi></m:mtd><m:mtd columnalign="left"><m:mrow><m:mtext>for</m:mtext><m:mspace width="4.pt"/><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mi>π</m:mi></m:mrow></m:mrow></m:mtd></m:mtr></m:mtable></m:mfenced><m:mspace width="2.em"/><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:msub><m:mi>B</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mn>4</m:mn><m:mrow><m:mi>π</m:mi><m:mi>k</m:mi></m:mrow></m:mfrac><m:mspace width="1.em"/><m:mtext>for</m:mtext><m:mspace width="4.pt"/><m:mtext>odd</m:mtext><m:mspace width="4.pt"/><m:mrow><m:mi>k</m:mi><m:mo>≥</m:mo><m:mn>1</m:mn></m:mrow></m:mrow></m:math></equation>
+and all other coefficients zero. Note that <m:math overflow="scroll"><m:mi>c</m:mi></m:math> is any constant; the value of <m:math overflow="scroll"><m:mi>c</m:mi></m:math>
+does not affect the coefficients <m:math overflow="scroll"><m:msub><m:mi>b</m:mi><m:mi>k</m:mi></m:msub></m:math>.
+We have for <m:math overflow="scroll"><m:mrow><m:mn>0</m:mn><m:mo>&lt;</m:mo><m:mi>t</m:mi><m:mo>&lt;</m:mo><m:mi>π</m:mi></m:mrow></m:math><equation id="id74292"><m:math overflow="scroll" mode="display"><m:mrow><m:mn>1</m:mn><m:mo>=</m:mo><m:mfrac><m:mn>4</m:mn><m:mi>π</m:mi></m:mfrac><m:mrow><m:mo>(</m:mo><m:mtext>sin</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mtext>sin</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>3</m:mn><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>5</m:mn></m:mfrac><m:mtext>sin</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>5</m:mn><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+Note that for <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> the value of the series on the
+right is 0, which is equal to <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>-</m:mo><m:mo>)</m:mo><m:mo>+</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>+</m:mo><m:mo>)</m:mo></m:mrow></m:math>, the middle of the jump
+of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> at 0, no matter what <m:math overflow="scroll"><m:mi>c</m:mi></m:math> is. Similar for <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>π</m:mi></m:mrow></m:math>.
+</item>
+      </list>
+    </section>
+  </content>
+</document>

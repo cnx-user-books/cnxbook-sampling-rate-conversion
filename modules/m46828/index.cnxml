@@ -1,0 +1,38 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Sampling Rate Conversion</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46828</md:content-id>
+  <md:title>Sampling Rate Conversion</md:title>
+  <md:abstract/>
+  <md:uuid>3a879ebb-d48e-4659-b720-6547e0ee6f85</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Sampling rate conversion</title>
+      <para id="id158148">In general, sampling rates are converted only in rational fractions
+such as from 32 to 48 kHz by a factor of 3/2 which are performed by
+appropriate sequences of up- and down-sampling.</para>
+      <para id="id158491">Practical considerations:</para>
+      <list id="id158494" display="block" list-type="bulleted">
+        <item id="uid1">First interpolate, then decimate (preserve signal quality)
+</item>
+        <item id="uid2">the low-pass filters used after upsampling (2nd step of interpolation)
+and before downsampling (1st step of decimation)
+can be combined into the one filter with the smaller pass-band.
+</item>
+        <item id="uid3">Interpolation and Decimation by large factors should be done in
+steps, keeping <m:math overflow="scroll"><m:mi>N</m:mi></m:math> and <m:math overflow="scroll"><m:mi>M</m:mi></m:math> below or at 6 at most.
+</item>
+        <item id="uid4">Matlab commands: <code display="inline">decimate</code>, <code display="inline">downsample</code>,
+<code display="inline">interp</code>, <code display="inline">upsample</code>, <code display="inline">resample</code>. See
+the corresponding help manual (<code display="inline">help decimate</code> etc).
+</item>
+        <item id="uid5">The ideal sinc filter is not realizable since it requires knowledge
+of the infinite past and future; one uses FIR filters with linear
+phase to avoid audible artifacts.
+</item>
+      </list>
+    </section>
+  </content>
+</document>

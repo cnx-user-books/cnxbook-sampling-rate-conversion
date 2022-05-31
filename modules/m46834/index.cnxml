@@ -1,0 +1,559 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Oversampling</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46834</md:content-id>
+  <md:title>Oversampling</md:title>
+  <md:abstract/>
+  <md:uuid>b0b6b0cc-287a-4490-9b5c-5aed7e72dc46</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Oversampling</title>
+      <para id="id62199">The principle of oversampling is simple: run ADC and DAC
+(Analog<m:math overflow="scroll"><m:mo>↔</m:mo></m:math>digital converters) at a sampling rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>
+well beyond Nyquist, say at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mi>β</m:mi><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math> where <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> is
+a sufficient sampling rate.</para>
+      <para id="id62608">We call <m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math> the <emphasis effect="italics">oversampling rate</emphasis> (OSR); it is usually
+an integer. For audio CD, <m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow></m:math> (data is sampled at
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo></m:mrow></m:math>176'100 samples/sec but stored on the disc at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo></m:mrow></m:math>44'100
+samples/sec).</para>
+      <para id="id62677">To understand the benefits of oversampling, one has to recall the
+typical schema <link target-id="uid1"/> of digital signal processing (DSP).
+First, in the ADC and DAC parts oversampling reduces the losses of
+quality due to working too close at Nyquist rate: sampling and
+reconstruction occur with a cutoff-frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> far from the
+Nyquist rate <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> allowing for simple filter design or even omission
+of filtering. Second, as an additional benefit, oversampling reduces
+noise created by quantification, sampling or other sources of
+errors.</para>
+      <para id="id62713">Note: down- and upsampling before and after processing (DSP: e.g.:
+de-noising, detection, enhancement, storage, transmission) allows
+for efficient computation and/or transmission at low rate.</para>
+      <equation id="uid1"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mi>b</m:mi>
+              <m:mi>a</m:mi>
+              <m:mi>n</m:mi>
+              <m:mi>d</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>l</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>m</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>t</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mi>A</m:mi>
+              <m:mi>D</m:mi>
+              <m:mi>C</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mo>↓</m:mo>
+              <m:mi>M</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mi>D</m:mi>
+              <m:mi>S</m:mi>
+              <m:mi>P</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mo>↑</m:mo>
+              <m:mi>M</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mi>D</m:mi>
+              <m:mi>A</m:mi>
+              <m:mi>C</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mi>s</m:mi>
+              <m:mi>m</m:mi>
+              <m:mi>o</m:mi>
+              <m:mi>o</m:mi>
+              <m:mi>t</m:mi>
+              <m:mi>h</m:mi>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63023">
+        <emphasis effect="bold">Noise reduction under oversampling</emphasis>
+      </para>
+      <para id="id63032">In the context of oversampling, the signal has been sampled (and
+thereby quantized) at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mi>β</m:mi><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub></m:mrow></m:math>, with <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> and OSR
+<m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>&gt;</m:mo><m:mo>&gt;</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Thus, we may decimate the quantized signal by a factor <m:math overflow="scroll"><m:mi>β</m:mi></m:math>
+and still keep the full signal quality. Decimation consists of
+digital low-pass filtering at
+cutoff frequency <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>β</m:mi><m:mo>)</m:mo></m:mrow></m:math> (which corresponds to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>), followed by downsampling.</para>
+      <para id="id63145">Low-pass filtering and downsampling will not change the signal since <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mn>0</m:mn></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>, and thus
+decimation will not change the signal power (cpre. <link target-id="uid5"/>, <link target-id="uid9"/>, <link target-id="fs-id1171251534466"/> magenta).
+However, <emphasis effect="italics">low-pass filtering
+will reduce the power of the noise</emphasis>; the factor of reduction is
+<m:math overflow="scroll"><m:mi>β</m:mi></m:math> if an ideal filter is
+used. We offer several arguments for this fact.</para><para id="id63188"><emphasis effect="bold">Spectral picture of noise reduction (ideal filter).</emphasis>
+During the first step, low-pass filtering, the high frequencies
+of the power spectrum of the noise are cut away:
+</para>
+      <equation id="uid2"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>P</m:mi>
+            <m:mo>·</m:mo>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mo>∩</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>β</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mspace width="3.33333pt"/>
+              <m:mi>i</m:mi>
+              <m:mi>d</m:mi>
+              <m:mi>e</m:mi>
+              <m:mi>a</m:mi>
+              <m:mi>l</m:mi><m:mspace width="2pt"/>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>l</m:mi>
+              <m:mi>t</m:mi>
+              <m:mi>e</m:mi>
+              <m:mi>r</m:mi><m:mspace width="2pt"/>
+              <m:mi>s</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>n</m:mi>
+              <m:mi>c</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi> ideal </m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>P</m:mi>
+            <m:mo>·</m:mo>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mi>β</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63334">After low-pass filtering,
+the noise is correctly band-limited (at a loss of power); consequently,
+downsampling will not change the power any further.</para>
+      <para id="id63341"><emphasis effect="bold">Spectral picture of noise reduction (digital filter).</emphasis>
+When using a digital filter <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> with energy <m:math overflow="scroll"><m:mrow><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:msubsup><m:mi>b</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>+</m:mo><m:msubsup><m:mi>b</m:mi><m:mi>q</m:mi><m:mn>2</m:mn></m:msubsup></m:mrow></m:math>
+to filter the samples <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>n</m:mi></m:msub></m:math>, the spectrum will change through filtering roughly as
+</para>
+      <equation id="uid3"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>P</m:mi>
+            <m:mo>·</m:mo>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mo>∩</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mi>β</m:mi>
+                </m:mrow>
+              </m:mfrac>
+              <m:mi>d</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>g</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>t</m:mi>
+              <m:mi>a</m:mi>
+              <m:mi>l</m:mi><m:mspace width="2pt"/>
+              <m:mi>f</m:mi>
+              <m:mi>i</m:mi>
+              <m:mi>l</m:mi>
+              <m:mi>t</m:mi>
+              <m:mi>e</m:mi>
+              <m:mi>r</m:mi><m:mspace width="2pt"/>
+              <m:mi>b</m:mi>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi> digital </m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≃</m:mo>
+            <m:mi>P</m:mi>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mi>E</m:mi>
+              <m:mi>b</m:mi>
+            </m:msub>
+            <m:mo>·</m:mo>
+            <m:mi>β</m:mi>
+            <m:mo>·</m:mo>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mi>β</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id63612">Here, we used that the DFT of a well-designed digital filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math>
+is roughly a rectangle of width <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math>, meaning that a fraction <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> of
+the samples <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>b</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> at the center take some constant value <m:math overflow="scroll"><m:mi>λ</m:mi></m:math>, the others are zero.
+It is easy to verify that <m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:msqrt><m:mrow><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mi>β</m:mi></m:mrow></m:msqrt></m:mrow></m:math> in order
+for the energy of <m:math overflow="scroll"><m:mi>b</m:mi></m:math> to be <m:math overflow="scroll"><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub></m:math> (see <link target-id="id63867">Comment 8</link>).
+Consequently, the portion <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> of the
+<m:math overflow="scroll"><m:mi>K</m:mi></m:math> samples <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>^</m:mo></m:mover><m:mi>n</m:mi></m:msub></m:math> will be multiplied by <m:math overflow="scroll"><m:mi>λ</m:mi></m:math>, the others will be set to zero.
+Using <link target-id="uid10" document="m46822"/> we see that <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:math> is multiplied by <m:math overflow="scroll"><m:mrow><m:msup><m:mi>λ</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mi>β</m:mi></m:mrow></m:math>
+for <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mi>K</m:mi><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>β</m:mi><m:mo>)</m:mo><m:mo>≤</m:mo><m:mi>k</m:mi><m:mo>≤</m:mo><m:mi>K</m:mi><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>β</m:mi><m:mo>)</m:mo></m:mrow></m:math>, and set to zero otherwise.</para><para id="id63867"><emphasis effect="bold">Comment 8</emphasis> 
+Let us denote by <m:math overflow="scroll"><m:mi>q</m:mi></m:math> the number of samples of the DFT of <m:math overflow="scroll"><m:mi>b</m:mi></m:math>.
+For a well designed digital filter there are roughly <m:math overflow="scroll"><m:mrow><m:mi>q</m:mi><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> samples equal to
+some constant <m:math overflow="scroll"><m:mi>λ</m:mi></m:math>, the remaining samples are zero. Since the DFT increases energy by
+factor equal to the sample size <m:math overflow="scroll"><m:mi>q</m:mi></m:math>, we get
+<equation id="id63937"><m:math overflow="scroll" mode="display"><m:mrow><m:mi>q</m:mi><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:msubsup><m:mover accent="true"><m:mi>b</m:mi><m:mo>ˆ</m:mo></m:mover><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>+</m:mo><m:msubsup><m:mover accent="true"><m:mi>b</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>q</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:msup><m:mi>λ</m:mi><m:mn>2</m:mn></m:msup><m:mi>q</m:mi><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math></equation><m:math overflow="scroll"><m:mrow><m:mi>λ</m:mi><m:mo>=</m:mo><m:msqrt><m:mrow><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mi>β</m:mi></m:mrow></m:msqrt></m:mrow></m:math>.
+
+
+
+
+</para><para id="id64050">According to <link target-id="uid20" document="m46833"/> we have <m:math overflow="scroll"><m:mrow><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mi>q</m:mi><m:msub><m:mi>P</m:mi><m:mi>b</m:mi></m:msub><m:mo>≃</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> for a digital
+filter that is well designed, meaning that <m:math overflow="scroll"><m:mrow><m:mi>c</m:mi><m:mo>≃</m:mo><m:mn>1</m:mn></m:mrow></m:math>. Thus, such a filter achieves approximatively the same power reduction
+as the ideal filter. Typically, however, <m:math overflow="scroll"><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub></m:math> is somewhat smaller than <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math>.</para><figure id="uid5" orient="vertical"><title>Noise samples</title><subfigure id="a1"><media id="uid5_media" alt="Noise samples">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimNoise.png" id="uid5_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimNoise.eps" id="uid5_printimage" print-width="200"/>
+        </media>
+      <caption>White Noise <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math></caption>
+</subfigure>
+
+<subfigure id="a4"><media id="uid8_media" alt="Noise samples">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimLow.png" id="uid8_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimLow.eps" id="uid8_printimage" print-width="200"/>
+        </media>
+      <caption><m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> after lowpass
+filtering <m:math overflow="scroll"><m:mrow><m:mo>∩</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:math></caption>
+</subfigure>
+
+<subfigure id="a7"><media id="uid11_media" alt="Noise samples">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDec.png" id="uid11_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDec.eps" id="uid11_printimage" print-width="200"/>
+        </media>
+      <caption><m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> filtered and downsampled
+</caption></subfigure>
+
+<subfigure id="a10"><media id="uid14_media" alt="Noise samples">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDown.png" id="uid14_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDown.eps" id="uid14_printimage" print-width="200"/>
+        </media>
+<caption> <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> only downsampled.</caption>
+      </subfigure>
+<caption>Black: White Noise under Decimation.<newline/>
+Magenta: For comparison, a signal with bandlimit B=0.0208 is subjected to the same manipulations as the Noise.<newline/>
+Details: <m:math overflow="scroll"><m:mrow><m:mi>Δ</m:mi><m:mo>=</m:mo><m:mn>10</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mn>12</m:mn><m:mo>=</m:mo><m:mn>8</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>5</m:mn></m:mrow></m:math>,
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>5</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>2</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>16</m:mn></m:mrow></m:math> (length <m:math overflow="scroll"><m:mrow><m:mi>q</m:mi><m:mo>=</m:mo><m:mn>20</m:mn></m:mrow></m:math>).
+<newline/><newline/>
+Note that the noise overwhelms the signal in rows 1 and 4; in rows 2 and 3 signal and noise
+are comparable. (The amplitude of the signal is kept unnaturally small for reasons of visualization).</caption></figure><figure id="uid9" orient="vertical"><title>Noise samples squared</title><subfigure id="a2"><media id="uid6_media" alt="Noise samples squared">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimNoise2.png" id="uid6_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimNoise2.eps" id="uid6_printimage" print-width="200"/>
+        </media>
+      <caption>White Noise <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>:</m:mo><m:mo>=</m:mo><m:mn>8.3</m:mn></m:math></caption></subfigure>
+
+
+<subfigure id="a5"><media id="uid9_media" alt="Noise samples squared">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimLow2.png" id="uid9_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimLow2.eps" id="uid9_printimage" print-width="200"/>
+        </media>
+      <caption>after lowpass: <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi> ideal </m:mi></m:msub><m:mo>=</m:mo><m:mi>P</m:mi><m:mo>/</m:mo><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>66</m:mn></m:mrow></m:math></caption></subfigure>
+
+
+<subfigure id="a8"><media id="uid12_media" alt="Noise samples squared">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDec2.png" id="uid12_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDec2.eps" id="uid12_printimage" print-width="200"/>
+        </media>
+      <caption>lowpass and downsampled: <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi> ideal </m:mi></m:msub><m:mo>=</m:mo><m:mi>P</m:mi><m:mo>/</m:mo><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>.</m:mo><m:mn>66</m:mn></m:mrow></m:math></caption></subfigure>
+
+<subfigure id="a11"><media id="uid15_media" alt="Noise samples squared">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDown2.png" id="uid15_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDown2.eps" id="uid15_printimage" print-width="200"/>
+        </media><caption> <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> only downsampled; <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>:</m:mo><m:mo>=</m:mo><m:mn>8.3</m:mn></m:math>
+</caption>
+      </subfigure>
+
+<caption>Black White Noise under Decimation. (details see figure 1)<newline/>
+Magenta: Signal for comparison, <newline/>
+Blue: the mean over 100 realizations of the noise.<newline/>
+Red: theoretical power; dashed with an ideal filter <link target-id="uid2"/>, solid with a digital filter <link target-id="uid3"/>.<newline/>
+<newline/>
+Note: the average of the squared noise terms (blue) is roughly constant at a level roughly equal to its power (red).</caption></figure><figure id="fs-id1171251534466" orient="vertical"><title>Estimation of S(f) by squared DFT</title><subfigure id="a3"><media id="uid7_media" alt="estimation of S of f">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimNoiseDFT.png" id="uid7_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimNoiseDFT.eps" id="uid7_printimage" print-width="200"/>
+        </media>
+      <caption>White Noise: <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>P</m:mi><m:mo>=</m:mo><m:mn>8.3</m:mn></m:mrow></m:mrow></m:math> flat</caption></subfigure>
+
+<subfigure id="a6"><media id="uid10_media" alt="estimation of S of f">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimLowDFTSetin.png" id="uid10_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimLowDFTSetin.eps" id="uid10_printimage" print-width="200"/>
+        </media>
+      <caption>after lowpass: <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> cut off at 
+<m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn><m:mtext>M</m:mtext><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>1</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mtext>P</m:mtext><m:mtext>ideal</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>P</m:mtext><m:mo>/</m:mo><m:mtext>M</m:mtext><m:mo>=</m:mo><m:mn>1.66</m:mn></m:mrow></m:math></caption></subfigure>
+
+<subfigure id="a9"><media id="uid13_media" alt="estimation of S of f">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDecDFT.png" id="uid13_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDecDFT.eps" id="uid13_printimage" print-width="200"/>
+        </media>
+      <caption>lowpass and downsampled: <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msub><m:mtext>P</m:mtext><m:mtext>ideal</m:mtext>
+</m:msub>
+<m:mo>=</m:mo>
+<m:mtext>P</m:mtext>
+<m:mo>/</m:mo>
+<m:mtext>M</m:mtext>
+<m:mo>=</m:mo>
+<m:mn>1.66</m:mn>
+</m:mrow></m:math> flat</caption></subfigure>
+
+<subfigure id="a12"><media id="uid16_media" alt="estimation of S of f">
+          <image mime-type="image/png" src="../../media/NoiseUnderDecimDownDFT.png" id="uid16_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/NoiseUnderDecimDownDFT.eps" id="uid16_printimage" print-width="200"/>
+        </media>
+      <caption>only downsampled: <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow>
+<m:mtext>P</m:mtext>
+<m:mo>=</m:mo>
+<m:mn>8.3</m:mn>
+</m:mrow></m:math> flat</caption></subfigure>
+<caption>Black: <m:math overflow="scroll"><m:msup><m:mfenced open="|" close="|"><m:mtext>DFT</m:mtext></m:mfenced><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mtext>K</m:mtext></m:math> of White Noise under Decimation (details see figure 1).<newline/>
+Magenta: Signal for comparison.<newline/>
+Blue: the mean over 100 realizations of the noise.<newline/>
+Red: theoretical power and S(f);
+dashed with an ideal filter <link target-id="uid2"/>,
+solid with a digital filter <link target-id="uid3"/>.<newline/>
+Note: the signal and its power are not changed because of band-limitation. The signal to noise ratio improves by a factor M when lowpass-filtering and downsampling (see (c)); it does not improve when only downsampling (see (d))</caption></figure><para id="id64803"><emphasis effect="bold">Temporal picture of noise reduction.</emphasis>
+One may argue that only the high frequencies of the noise are removed, which are
+not used anyway. In an audio signal, for instance, setting <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mi>β</m:mi><m:mo>·</m:mo><m:mn>44</m:mn><m:mi>k</m:mi><m:mi>H</m:mi><m:mi>z</m:mi></m:mrow></m:math>
+and decimating by <m:math overflow="scroll"><m:mi>β</m:mi></m:math> removes only the noise portion in the frequency range which can
+not be heard anyway. So, no benefit should result. This argumentation does not take into account
+that the power of noise is reduced which must result in smaller noise values. Comparing
+rows 2 and 4 in <link target-id="uid5"/>, we note that the noise magnitude has indeed
+decreased after filtering, but not under pure downsampling. Comparing the spectra <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+in <link target-id="uid9"/> we note in the low frequencies from -0.1 to 0.1 the same average level
+of the spectral samples of roughly <m:math overflow="scroll"><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mn>12</m:mn><m:mo>=</m:mo><m:mn>8</m:mn><m:mo>.</m:mo><m:mn>3</m:mn></m:mrow></m:math>; however, for the downsampled noise
+all spectral samples are at this average level, while the filtered noise possesses
+<m:math overflow="scroll"><m:mrow><m:mi>β</m:mi><m:mo>=</m:mo><m:mi>M</m:mi></m:mrow></m:math> more samples and only a portion <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> of them are that level, the others are at zero.
+Thus, the power of the filter noise is <m:math overflow="scroll"><m:mi>M</m:mi></m:math> times smaller than the power of the downsampled noise.
+(This despite the fact that only high-frequency noise has been removed.)</para><para id="id64950">Finally, we may also argue directly in the time domain using statistics.
+After filtering, the noise terms are
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>b</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>2</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mi>q</m:mi></m:mrow></m:msub></m:mrow></m:math>. Intuitively, this is some sort of average
+of the original noise, since <m:math overflow="scroll"><m:mrow><m:msub><m:mi>b</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>+</m:mo><m:msub><m:mi>b</m:mi><m:mi>q</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>. But an average is always closer to the
+theoretical mean than the samples themselves, and the mean is here zero. So, intuitively,
+the filtered noise <m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub></m:math> takes smaller values. Since the mean of the filtered noise terms
+<m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub></m:math> is zero, a meaningful
+measure of their size is their power, i.e., their variance (cpre. <link target-id="uid17" document="m46822"/>).</para><para id="id65113">Using simple rules from statistics<footnote id="uid17">The variance of a sum of independent random
+variables is the sum of the variances; when multiplying a random variable by a constant <m:math overflow="scroll"><m:mi>b</m:mi></m:math>
+the variance in multiplied by <m:math overflow="scroll"><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup></m:math>.</footnote> we get
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mrow><m:mo>[</m:mo><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msubsup><m:mi>b</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>+</m:mo><m:msubsup><m:mi>b</m:mi><m:mi>q</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>)</m:mo></m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mrow><m:mo>[</m:mo><m:mi>ε</m:mi><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub><m:mo>·</m:mo><m:mi>P</m:mi></m:mrow></m:math>. Short: the noise
+level (its power) reduces by a factor <m:math overflow="scroll"><m:msub><m:mi>E</m:mi><m:mi>b</m:mi></m:msub></m:math>,
+just as we have seen before.</para>
+      <para id="id65281">
+        <emphasis effect="bold">Illustration of noise reduction.</emphasis>
+      </para>
+      <para id="id65288">For a illustration see <link target-id="uid5"/>, <link target-id="uid9"/>, <link target-id="fs-id1171251534466"/>. The main comparison is row 3 (oversampled
+and decimated) with row 4 (sampled at lower frequency). While the signal is practically identical,
+the noise is reduced dramatically in row 3.</para><para id="id65295">Note also the dependence in the noise after lowpass filtering: it is possible to predict a few of the following noise terms. Indeed, the noise is not white and its spectrum is not flat. This dependence disappears almost entirely after downsampling: the prediction does not reach <m:math overflow="scroll"><m:mi>M</m:mi></m:math> samples into the future.</para>
+      <para id="id65310">Note the shape of the estimated S(f) is not exactly a rectangle because the filter is not ideal
+(length 25). A longer filter would result in better shapes but also in longer delay.</para>
+      <para id="id65315"><emphasis effect="bold">Conclusion</emphasis>
+In summary, low-pass filtering
+reduces power by a factor <m:math overflow="scroll"><m:mi>β</m:mi></m:math>: Only
+a portion <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> of the spectrum remains roughly unchanged
+the rest is set to zero. A formal calculation goes as follows,
+setting <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> as usual for digital filtering and <m:math overflow="scroll"><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mn>12</m:mn></m:mrow></m:math>
+for a quantization noise (why we are interested in noise, and not in the
+noisy signal, see <link target-id="id65544">Comment 9</link>)</para><equation id="id65396">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>P</m:mi>
+                    <m:mi> over </m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:msub>
+                    <m:mi>S</m:mi>
+                    <m:mi> filtered </m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>d</m:mi>
+                  <m:mi>f</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:msubsup>
+                    <m:mo>∫</m:mo>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mn>1</m:mn>
+                      <m:mo>/</m:mo>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>β</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mn>1</m:mn>
+                      <m:mo>/</m:mo>
+                      <m:mo>(</m:mo>
+                      <m:mn>2</m:mn>
+                      <m:mi>β</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:msubsup>
+                  <m:mi>P</m:mi>
+                  <m:mi>d</m:mi>
+                  <m:mi>f</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>β</m:mi>
+                  </m:mfrac>
+                  <m:mi>P</m:mi>
+                  <m:mo>=</m:mo>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>β</m:mi>
+                  </m:mfrac>
+                  <m:mfrac>
+                    <m:msup>
+                      <m:mi>Δ</m:mi>
+                      <m:mn>2</m:mn>
+                    </m:msup>
+                    <m:mn>12</m:mn>
+                  </m:mfrac>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id65544"><emphasis effect="bold">Comment 9</emphasis> We do not compare power of signal to power of noisy signal, because
+they are almost equal; also, a theory of the power of the noisy signal is hard
+to develop since power(signal+noise) is not power(signal)+power(noise), unless
+signal and noise are uncorrelated, e.g. if the signal changes slowly and the
+noise has mean 0.
+In conclusion, we compare the power of the signal to the power of the noise. The ratio is called SNR “Signal to Noise Ratio”.
+
+
+
+
+</para><para id="id65580">Since downsampling of a properly band-limited signal does not change its power
+(see <link target-id="uid5"/>, <link target-id="uid9"/>, <link target-id="fs-id1171251534466"/>), the factor <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math> is the overall change of power during
+decimation. In other words,
+the SNR<footnote id="uid19">The Signal to Noise Ratio (SNR) is the ratio of the
+power of signal and power of noise.
+Using Parseval's equation, it can be
+computed in the time or frequency domain:
+<equation id="id65614"><m:math overflow="scroll" mode="display"><m:mrow><m:mtext>SNR</m:mtext><m:mo>=</m:mo><m:mfrac><m:mrow><m:msup><m:mrow><m:mo>∫</m:mo><m:mo>|</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow><m:mrow><m:msup><m:mrow><m:mo>∫</m:mo><m:mo>|</m:mo><m:mi>n</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:msup><m:mrow><m:mo>∫</m:mo><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mrow><m:mrow><m:msup><m:mrow><m:mo>∫</m:mo><m:mo>|</m:mo><m:mi>N</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
+.
+</footnote>
+improves under oversampling with subsequent decimation by <m:math overflow="scroll"><m:mi>β</m:mi></m:math> (which includes low-pass filtering at <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn><m:mi>β</m:mi></m:mrow></m:math>!) by the factor
+<m:math overflow="scroll"><m:mi>β</m:mi></m:math>, i.e., it improves by the oversampling rate (OSR).
+For a statistical argumentation, see box <link target-id="id65796">Comment 10</link>.</para><para id="id65796"><emphasis effect="bold">Comment 10</emphasis> Statistical explanation of noise reduction.
+Short: filtering is a special way of averaging the samples.
+Averaging reduces variance, thus it reduces the noise power.
+In addition, the averaging is done in a special way as to leave
+small frequencies, i.e. slowly varying components, intact.
+Thus, the averaging reduces only noise, which is high frequency,
+i.e. quickly varying, and leave the signal intact.
+Somewhat more rigorously:
+Filtering noise means to compute
+<equation id="id65832"><m:math overflow="scroll" mode="display"><m:mrow><m:msubsup><m:mi>ε</m:mi><m:mi>k</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>M</m:mi></m:munderover><m:msub><m:mi>b</m:mi><m:mi>n</m:mi></m:msub><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mi>n</m:mi></m:mrow></m:msub></m:mrow></m:math></equation>
+Computing the variance of the resulting, filtered noise, we find:
+<equation id="id65898"><m:math overflow="scroll" mode="display"><m:mrow><m:mi> var </m:mi><m:mrow><m:mo>(</m:mo><m:msubsup><m:mi>ε</m:mi><m:mi>k</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>M</m:mi></m:munderover><m:msubsup><m:mi>b</m:mi><m:mi>n</m:mi><m:mn>2</m:mn></m:msubsup><m:mi> var </m:mi><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>-</m:mo><m:mi>n</m:mi></m:mrow></m:msub><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup><m:munderover><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>M</m:mi></m:munderover><m:msubsup><m:mi>b</m:mi><m:mi>n</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>.</m:mo></m:mrow></m:math></equation>
+Here, we use that the original noise is independent.
+See footnote <link target-id="uid17"/>.
+Now, for a FIR filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math> it is easy to verify, e.g. with matlab, that
+<m:math overflow="scroll"><m:mrow><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mi>M</m:mi></m:msubsup><m:msubsup><m:mi>b</m:mi><m:mi>n</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>≃</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math>. This approximation becomes more accurate
+the larger <m:math overflow="scroll"><m:mi>M</m:mi></m:math> is; it reflects the fact that the power of <m:math overflow="scroll"><m:mi>b</m:mi></m:math>
+is close to the power of the ideal lowpass filter <m:math overflow="scroll"><m:mi>c</m:mi></m:math> and the power of
+<m:math overflow="scroll"><m:mi>c</m:mi></m:math> is exactly <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>β</m:mi></m:mrow></m:math>.
+A similar approximation holds also for any least square filter <m:math overflow="scroll"><m:mi>a</m:mi></m:math>:
+This is due to the fact that <m:math overflow="scroll"><m:mi>a</m:mi></m:math> approximates the ideal lowpass filter <m:math overflow="scroll"><m:mi>c</m:mi></m:math>
+in the least square sense. More precisely, let us denote
+the norm of <m:math overflow="scroll"><m:mi>c</m:mi></m:math>, i.e. the “length” of <m:math overflow="scroll"><m:mi>c</m:mi></m:math> by <m:math overflow="scroll"><m:mrow><m:mo>∥</m:mo><m:mi>c</m:mi><m:mo>∥</m:mo></m:mrow></m:math>. A well
+known formula says that <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>∥</m:mo><m:mi>c</m:mi><m:mo>∥</m:mo></m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:msubsup><m:mi>c</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>...</m:mo><m:mo>+</m:mo><m:msubsup><m:mi>c</m:mi><m:mi>M</m:mi><m:mn>2</m:mn></m:msubsup></m:mrow></m:msqrt></m:mrow></m:math>. To approximate <m:math overflow="scroll"><m:mi>c</m:mi></m:math>
+in the least square sense means that <m:math overflow="scroll"><m:mrow><m:mo>∥</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>c</m:mi><m:mo>∥</m:mo></m:mrow></m:math> is made as small as possible.
+But another well known fact says that <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mspace width="3.33333pt"/><m:mo>∥</m:mo><m:mi>a</m:mi><m:mo>∥</m:mo><m:mo>-</m:mo><m:mo>∥</m:mo><m:mi>c</m:mi><m:mo>∥</m:mo><m:mspace width="3.33333pt"/><m:mo>|</m:mo><m:mo>≤</m:mo><m:mo>∥</m:mo><m:mi>a</m:mi><m:mo>-</m:mo><m:mi>c</m:mi><m:mo>∥</m:mo></m:mrow></m:math>. This means,
+that the norms of <m:math overflow="scroll"><m:mi>a</m:mi></m:math> and <m:math overflow="scroll"><m:mi>c</m:mi></m:math>, thus their energies, are almost identical.
+In summary,
+<equation id="id66343"><m:math overflow="scroll" mode="display"><m:mrow><m:mi> var </m:mi><m:mrow><m:mo>(</m:mo><m:msubsup><m:mi>ε</m:mi><m:mi>k</m:mi><m:mo>'</m:mo></m:msubsup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mi>β</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation>
+In other words, the average power per sample is reduced be a factor <m:math overflow="scroll"><m:mi>β</m:mi></m:math>.
+
+
+
+
+</para></section>
+  </content>
+</document>

@@ -1,0 +1,148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Fourier Integral</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46819</md:content-id>
+  <md:title>Fourier Integral</md:title>
+  <md:abstract/>
+  <md:uuid>df0d0750-2464-4022-a11f-de223f3c2792</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Fourier Integral</title>
+      <para id="id180164">Continuous-time signals <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> which are not periodic can still be understood as superpositions
+of pure oscillations <m:math overflow="scroll"><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:math> where now all frequencies are
+present in the signal. The coefficients <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> of the
+oscillations can be computed as follows:</para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mspace width="2.em"/>
+            <m:mtext>[Fourier</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>transform]</m:mtext>
+            <m:mspace width="2.em"/>
+            <m:mspace width="2.em"/>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id180828">The representation as a superposition takes then the following form:</para>
+      <equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>t</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>f</m:mi>
+            <m:mspace width="2.em"/>
+            <m:mtext>[Inverse</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>Fourier</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>transform]</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id180918">We call <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> the <emphasis effect="italics">Fourier transform</emphasis> of <m:math overflow="scroll"><m:mi>x</m:mi></m:math> and write also
+<m:math overflow="scroll"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced open="{" close="}"><m:mi>x</m:mi></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> instead of <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> to indicate clearly which signal
+has been transformed. The “Fourier spectrum”, or simply the
+<emphasis effect="italics">spectrum</emphasis>, or also the “power spectrum” of the signal is the
+squared amplitude <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math>. This is the function usually plotted,
+while the phase of <m:math overflow="scroll"><m:mi>X</m:mi></m:math> is not shown.
+Nevertheless, the plots are usually —and erroneously— labeled
+with <m:math overflow="scroll"><m:mi>X</m:mi></m:math> instead of <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> (see <link target-id="uid7" document="m46811"/>).</para><para id="id181064">A signal is called <emphasis effect="italics">bandlimited</emphasis> if its Fourier transform <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+is zero for high frequencies, i.e. for large <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo></m:mrow></m:math>. Similarly we say that
+a signal is <emphasis effect="italics">time-limited</emphasis> if it is zero for large times, i.e., for large <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>t</m:mi><m:mo>|</m:mo></m:mrow></m:math>.
+By Heisenberg's principle a bandlimited signal can not be time-limited.
+Since bandlimited signals are of great importance, there is a need to study
+signals which are not time-limited and, thus, the Fourier integral.</para>
+      <para id="id181122">
+        <emphasis effect="bold">Properties</emphasis>
+      </para>
+      <list id="id181128" display="block" list-type="bulleted"><item id="uid3">Linearity:
+<equation id="id181143"><m:math overflow="scroll" mode="display"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>a</m:mi><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>y</m:mi></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>a</m:mi><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation></item>
+        <item id="uid4">Convolution
+<equation id="id181220"><m:math overflow="scroll" mode="display"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mo>*</m:mo><m:mi>y</m:mi></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>·</m:mo><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="2.em"/><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mo>·</m:mo><m:mi>y</m:mi></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo><m:mi>Y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation></item>
+        <item id="uid5">Change of time scale
+<equation id="id181345"><m:math overflow="scroll" mode="display"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mfrac><m:mn>1</m:mn><m:mi>a</m:mi></m:mfrac><m:mi>x</m:mi><m:mfenced separators="" open="(" close=")"><m:mfrac><m:mi>t</m:mi><m:mi>a</m:mi></m:mfrac></m:mfenced></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>a</m:mi><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="2.em"/><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>a</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>a</m:mi></m:mfrac><m:mi>X</m:mi><m:mfenced separators="" open="(" close=")"><m:mfrac><m:mi>f</m:mi><m:mi>a</m:mi></m:mfrac></m:mfenced></m:mrow></m:math></equation></item>
+        <item id="uid6">Translation in time and frequency
+<equation id="id181484"><m:math overflow="scroll" mode="display"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mfenced separators="" open="(" close=")"><m:mi>t</m:mi><m:mo>-</m:mo><m:mi>b</m:mi></m:mfenced></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mo>-</m:mo><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>b</m:mi><m:mi>f</m:mi></m:mrow></m:msup><m:mspace width="2.em"/><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mfenced open="(" close=")"><m:mi>t</m:mi></m:mfenced><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>b</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>-</m:mo><m:mi>b</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation></item>
+        <item id="uid7">Symmetries and Fourier pairs
+The symmetry of <link target-id="uid2"/> and <link target-id="uid1"/> leads one to
+consider <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> as a Fourier pair. Indeed, the Fourier
+transform of <m:math overflow="scroll"><m:mi>X</m:mi></m:math> is almost <m:math overflow="scroll"><m:mi>x</m:mi></m:math>: <m:math overflow="scroll"><m:mrow><m:mi mathvariant="script">F</m:mi><m:mfenced open="{" close="}"><m:mi>X</m:mi></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>. Clearly, the
+symmetry is not perfect since <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> is in general complex, while
+<m:math overflow="scroll"><m:mi>x</m:mi></m:math> is real.
+However: If <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is symmetric, i.e. <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mo>-</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> then <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> is
+real-valued, and vice versa!
+</item>
+      </list><para id="eip-508">In summary:
+<emphasis effect="italics">Symmetric real signals have symmetric real
+Fourier transforms and vice versa.</emphasis>
+As we will see below, they also
+possess the same energy.</para></section>
+  </content>
+</document>

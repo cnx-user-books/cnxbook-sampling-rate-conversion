@@ -1,0 +1,653 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Estimation of Spectrum and Power via DFT</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46816</md:content-id>
+  <md:title>Estimation of Spectrum and Power via DFT</md:title>
+  <md:abstract/>
+  <md:uuid>479d905c-1866-45c5-97b9-ed89ad844fcb</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Estimation of Spectrum and Power via DFT</title>
+      <para id="id232183">
+        <emphasis effect="bold">Spectrum for finite energy signals</emphasis>
+      </para>
+      <para id="id232527">The Fourier integral is intended for non-periodic signals, since the periodicity
+will lead to problems with the convergence of the integral. In fact, the Fourier integral <link target-id="uid1" document="m46819"/>
+is defined rigorously only for signals with finite energy (see next section below).
+Recall that finite energy signals can never be periodic. For an alternative way
+of defining <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> for periodic signals see
+the next bullet just below).</para><para id="id232552">However, in order to make the DFT also useful for non-periodic finite energy signals, we can consider
+any signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> as being restricted to the interval
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>L</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mi>L</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math> and then extended periodically.
+Denote this new <m:math overflow="scroll"><m:mi>L</m:mi></m:math>-periodic
+signal by <m:math overflow="scroll"><m:mrow><m:mover accent="true"><m:mi>x</m:mi><m:mo>˜</m:mo></m:mover><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> with Fourier coefficients <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>X</m:mi><m:mo>˜</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math>.
+When <m:math overflow="scroll"><m:mi>L</m:mi></m:math> is large, comparing <link target-id="uid5" document="m46817"/> with <link target-id="uid1" document="m46819"/> gives</para><equation id="id232842">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>X</m:mi>
+                <m:mo>˜</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:mover accent="true">
+              <m:mi>x</m:mi>
+              <m:mo>˜</m:mo>
+            </m:mover>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>L</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:msubsup>
+            <m:mi>x</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>t</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>t</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>L</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>k</m:mi>
+                <m:mi>L</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id233024">The notation <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>X</m:mi><m:mo>˜</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> instead of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> should remind the reader, that
+<m:math overflow="scroll"><m:mi>x</m:mi></m:math> itself is not periodic.</para>
+      <para id="id233070">If not the entire signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> but only some <m:math overflow="scroll"><m:mi>K</m:mi></m:math>
+samples <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mi>L</m:mi><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> of the signal are given, we may use the DFT as in
+<link target-id="uid6" document="m46804"/> and combine it with <link target-id="uid2" document="m46804"/> to get for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>K</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mi>K</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math></para><equation id="uid1"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>finite</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mtext>energy:</m:mtext>
+            <m:mspace width="2.em"/>
+            <m:mspace width="2.em"/>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>k</m:mi>
+                <m:mi>L</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≃</m:mo>
+            <m:mi>L</m:mi>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>X</m:mi>
+                <m:mo>˜</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mi>L</m:mi>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mspace width="4.pt"/>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id233251">Note that this approximation improves in quality as <m:math overflow="scroll"><m:mi>L</m:mi></m:math> becomes larger; the factor <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:math>
+indicates that <m:math overflow="scroll"><m:mi>K</m:mi></m:math> would have to be made proportionally larger at the same time. For an illustration
+see <link target-id="uid2"/>, <link target-id="fs-id1167583360674"/>, and <link target-id="fs-id1167578651686"/>, left column, with <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>=</m:mo><m:mn>20</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>=</m:mo><m:mn>50</m:mn></m:mrow></m:math>. Imagine that we
+reduce <m:math overflow="scroll"><m:mi>L</m:mi></m:math> to half, i.e. to <m:math overflow="scroll"><m:mrow><m:msup><m:mi>L</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mn>10</m:mn></m:mrow></m:math>, leading to a new signal <m:math overflow="scroll"><m:msup><m:mi>x</m:mi><m:mo>*</m:mo></m:msup></m:math>.
+This would mean to discard half of the samples, thus leading to <m:math overflow="scroll"><m:mrow><m:msup><m:mi>K</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mn>25</m:mn></m:mrow></m:math>.
+Since the discarded samples are practically zero, using <link target-id="uid6" document="m46804"/> shows that
+<m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:msup><m:mi>x</m:mi><m:mo>*</m:mo></m:msup><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mo>≃</m:mo><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mrow><m:mn>2</m:mn><m:mi>k</m:mi></m:mrow></m:msub></m:mrow></m:math>.
+This agrees with <link target-id="uid1"/> since <m:math overflow="scroll"><m:mrow><m:msup><m:mi>L</m:mi><m:mo>*</m:mo></m:msup><m:mo>/</m:mo><m:msup><m:mi>K</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:mi>L</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:msup><m:mi>L</m:mi><m:mo>*</m:mo></m:msup><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>L</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para><figure id="uid2"><subfigure id="fs-id8643846">
+  <media id="uid2_media" alt="signal with 50 sample points">
+   <image mime-type="image/png" src="../../media/continSignal50.png" id="uid2_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/continSignal50.eps" id="uid2_printimage"/>
+  </media>
+ </subfigure>
+ <subfigure id="fs-id6273932">
+      <media id="uid5_media" alt="I DFT I/(sample rate)">
+          <image mime-type="image/png" src="../../media/continDFT50.png" id="uid5_onlineimage" width="300"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/continDFT50.eps" id="uid5_printimage"/>
+        </media>
+ </subfigure>
+<caption>Spectral Estimation via DFT. A finite energy signal
+(Gaussian kernel).</caption></figure><figure id="fs-id1167583360674"><subfigure id="fs-id6622945">
+  <media id="uid3_media" alt="signal with 30 sample points">
+   <image mime-type="image/png" src="../../media/periodicSignal30.png" id="uid3_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/periodicSignal30.eps" id="uid3_printimage"/>
+  </media>
+ </subfigure>
+ <subfigure id="fs-id8702109">
+  <media id="uid6_media" alt="I DFT I/(sample size)">
+   <image mime-type="image/png" src="../../media/periodicDFT30.png" id="uid6_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/periodicDFT30.eps" id="uid6_printimage"/>
+  </media>
+ </subfigure>
+<caption>Spectral Estimation via DFT. The sampled periodic signal
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+(period <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, length <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math>).
+The larger the sample-size <m:math overflow="scroll"><m:mi>K</m:mi></m:math>, the better are the locations (0, 1, 3 and 4)
+and amplitudes (1, 0.5, 0.5 and 0.5) of the delta peaks of <m:math overflow="scroll"><m:mi>X</m:mi></m:math>
+approximated by <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:mrow></m:math>.</caption></figure><figure id="fs-id1167578651686"><subfigure id="fs-id6671788">
+      <media id="uid4_media" alt="signal with 50 sample points">
+          <image mime-type="image/png" src="../../media/periodicSignal50.png" id="uid4_onlineimage" width="300"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/periodicSignal50.eps" id="uid4_printimage"/>
+        </media>
+ </subfigure>
+ <subfigure id="fs-id7132874">
+  <media id="uid7_media" alt="I DFT I/(sample size)">
+   <image mime-type="image/png" src="../../media/periodicDFT50.png" id="uid7_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/periodicDFT50.eps" id="uid7_printimage"/>
+  </media>
+  <caption>
+  </caption>
+ </subfigure>
+<caption>Spectral Estimation via DFT. The sampled periodic signal
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>3</m:mn><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>+</m:mo><m:mo form="prefix">sin</m:mo><m:mo>(</m:mo><m:mn>4</m:mn><m:mo>·</m:mo><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+(period <m:math overflow="scroll"><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>, length <m:math overflow="scroll"><m:mrow><m:mi>L</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math>).
+The larger the sample-size <m:math overflow="scroll"><m:mi>K</m:mi></m:math>, the better are the locations (0, 1, 3 and 4)
+and amplitudes (1, 0.5, 0.5 and 0.5) of the delta peaks of <m:math overflow="scroll"><m:mi>X</m:mi></m:math>
+approximated by <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mrow><m:mo>|</m:mo><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:mrow></m:math>.</caption></figure><para id="id233762">
+        <emphasis effect="bold">Spectrum for periodic signals</emphasis>
+      </para>
+      <para id="id233768">For <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic signals, the Fourier integral <link target-id="uid1" document="m46819"/>
+does not converge in the usual sense. One can still define a
+Fourier transform <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> consisting of Dirac delta functions:</para><equation id="uid8"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>k</m:mi>
+            </m:munder>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>/</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≃</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>k</m:mi>
+            </m:munder>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>x</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mi>δ</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>-</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>/</m:mo>
+              <m:mi>T</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id233906">With this setting we have
+<m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo>∫</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mi>e</m:mi><m:mrow><m:mi>j</m:mi><m:mn>2</m:mn><m:mi>π</m:mi><m:mi>f</m:mi><m:mi>t</m:mi></m:mrow></m:msup><m:mi>d</m:mi><m:mi>f</m:mi></m:mrow></m:math> also for periodic signals.
+Note that the Delta-functions in <link target-id="uid8"/>
+are “infinitely large” at <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>T</m:mi></m:mrow></m:math>, in agreement with
+<link target-id="uid1"/> where <m:math overflow="scroll"><m:mi>L</m:mi></m:math> should ideally be “infinitely large”.</para>
+      <para id="id233998">However, “infinitely large” values are not useful when one wants to read
+off an amplitude. Comparing
+<link target-id="uid8"/>
+and
+<link target-id="uid1"/>
+we see that the DFT <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:math> should be normalized differently
+for non-periodic finite energy signals than for periodic signals.
+Dividing the DFT by the <emphasis effect="italics">sampling rate</emphasis> for <emphasis effect="italics">non-periodic</emphasis> signals provides
+an estimation of the Fourier transform via <link target-id="uid1"/>.
+Dividing the DFT by the <emphasis effect="italics">sample size</emphasis> for <emphasis effect="italics">periodic</emphasis> signals provides
+an estimation of the peak heights of the Dirac delta functions
+in <link target-id="uid8"/>
+(see <link target-id="fs-id1167583360674"/> and <link target-id="fs-id1167578651686"/>).</para><para id="id234065">
+        <emphasis effect="bold">Energy and Power from Sampling</emphasis>
+      </para>
+      <para id="id234071">First of all, note that the energy of a periodic signal is infinite because
+there are infinitely many periods with the same energy. On the other hand,
+the power of a finite energy signal is zero since it is the average energy
+of an infinitely long interval.</para>
+      <para id="id234077">Short, only one measure is meaningful for a signal: either the power or the energy, depending
+on context. Nevertheless, we may compare power and energy of the various ways of representing a
+signal: as a finite energy signal, as a signal on a given finite interval (extending
+it periodically) or through its samples.</para>
+      <para id="id234083">Comparing the power of a <m:math overflow="scroll"><m:mi>T</m:mi></m:math>-periodic signal with its samples over an interval of
+length <m:math overflow="scroll"><m:mi>L</m:mi></m:math>, where <m:math overflow="scroll"><m:mi>L</m:mi></m:math> is an integer multiple of the period <m:math overflow="scroll"><m:mi>T</m:mi></m:math>, we find
+in the frequency domain (using <link target-id="uid2" document="m46804"/> and <link target-id="uid4" document="m46811"/>)</para><equation id="uid9"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>cont</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:msup>
+             <m:mfenced open="|" close="|">
+              <m:msub>
+               <m:mi>X</m:mi>
+               <m:mi>k</m:mi>
+              </m:msub>
+             </m:mfenced>
+             <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+             <m:mfenced open="|" close="|">
+              <m:msub>
+               <m:mi>X</m:mi>
+               <m:mi>k</m:mi>
+              </m:msub>
+             </m:mfenced>
+             <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msup>
+                <m:mi>K</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>x</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>sampled</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id234322">Computing in the time domain (using a Riemann Sum) we arrive at the same conclusion:</para>
+      <equation id="id234328">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>cont</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mfrac>
+                  <m:mi>L</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>n</m:mi>
+                  <m:mfrac>
+                    <m:mi>L</m:mi>
+                    <m:mi>K</m:mi>
+                  </m:mfrac>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mo>-</m:mo>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mi>x</m:mi>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>sampled</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id234549">Comparing the energy for finite energy signals and for their samples on an interval of length
+<m:math overflow="scroll"><m:mi>L</m:mi></m:math> we find</para>
+      <equation id="uid10">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mtext>Energy</m:mtext>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mo>|</m:mo>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+            <m:mo>=</m:mo>
+            <m:mi>L</m:mi>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>cont</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≃</m:mo>
+            <m:mi>L</m:mi>
+            <m:mo>·</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>x</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mtext>sampled</m:mtext>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id234694">where we used <link target-id="uid9"/> in the last step.</para>
+      <para id="id234704">In summary,
+using sufficiently many samples taken over sufficiently large intervals
+should allow to compute the power or energy of signals in either of the three
+representations, thereby approximating power with energy per time over a long interval.</para>
+      <para id="id234709">As an important conclusion we note that the power of a periodic signal should not depend on
+the number of samples taken, at least approximatively, and as long as sufficient many samples
+are taken. We will later make precise how many samples are sufficient. Similar for the energy
+of a finite energy signal.</para>
+      <para id="id234715">As a final remark we note that the name “power spectrum” used for <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math>, <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> and
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>^</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> is appropriate since they indicate how the power is distributed of the
+spectrum of frequencies, i.e., which frequencies contribute much and which less to the power.</para>
+    </section>
+  </content>
+</document>

@@ -1,0 +1,1482 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Models of Noise</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46822</md:content-id>
+  <md:title>Models of Noise</md:title>
+  <md:abstract/>
+  <md:uuid>4faf8a33-08c8-40d0-9304-e7f93db76c8f</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Models of Noise</title>
+      <para id="id137088"><emphasis effect="bold">White Noise</emphasis> In a nutshell, a sequence
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:math> is called <emphasis effect="italics">white noise</emphasis> if its entries
+<m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> are <emphasis effect="italics">independent</emphasis> identically distributed random
+numbers.</para>
+      <list id="id137167" display="block" list-type="bulleted">
+        <item id="uid1">“Independence” means that there is no information or relation
+between the members <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math>; in other words, knowing or observing
+the sequence until time <m:math overflow="scroll"><m:mi>t</m:mi></m:math>, i.e., <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mi>t</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> does not allow
+to predict the next member <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> any better than if nothing
+had been observed.
+</item>
+        <item id="uid2">“Random” means that in principle, an entry can take any
+value in some given set with certain chance, and that it is are not
+in advance which value it will take.
+</item>
+        <item id="uid3">“Identically distributed” means that each entry has the
+same chances to assume a possible value.
+</item>
+      </list>
+      <para id="id137287">White noise is an example of an <emphasis effect="italics">stationary, ergodic</emphasis> series.
+<emphasis effect="italics">Stationarity</emphasis> means that the statistics don't change over
+time. <emphasis effect="italics">Ergodicity</emphasis> means that statistical measures such as mean
+and variance can be estimated by observing enough samples of one
+<emphasis effect="italics">single</emphasis> sequence <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:math>; the mean or
+expectation<footnote id="uid4">Recall that <m:math overflow="scroll"><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>[</m:mo><m:mi>X</m:mi><m:mo>]</m:mo></m:mrow></m:math> denotes the
+expectation of the random variable <m:math overflow="scroll"><m:mi>X</m:mi></m:math>.</footnote> of an entry <m:math overflow="scroll"><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>[</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:math>
+can be estimated as the sample mean <m:math overflow="scroll"><m:mrow><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>+</m:mo><m:msub><m:mi>ε</m:mi><m:mi>N</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+      <para id="id137668">An example of a stationary, <emphasis effect="italics">non ergodic</emphasis> series is the one
+where <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:math> equals 1 or <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> with equal probability, and all
+other <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> are equal to <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:math>. Clearly, the sample mean of
+<emphasis effect="italics">one</emphasis> single sequence is then either 1 or <m:math overflow="scroll"><m:mrow><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math>, but not 0
+as it should.</para>
+      <para id="id137743">An example of white noise is the error <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> introduced by
+quantization, i.e., <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math> where <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:math> is a “typical”
+signal before and <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub></m:math> the signal after quantization. Check of
+Randomness and Independence: as we are observing the first <m:math overflow="scroll"><m:mi>t</m:mi></m:math>
+samples <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mi>t</m:mi></m:msub><m:mo>)</m:mo></m:mrow></m:math> we have no indication whatsoever on the
+quantization error of the <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math>st sample — unless the signal is
+very special. [An example of an atypical signal would be one that is
+already quantized: after observing 500 times an error 0 we start to
+suspect that the future errors will also be 0.] Check of the
+distribution: a quantization done by rounding to the third decimal,
+e.g., will result in errors that lie between
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>00049999</m:mn><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>0005</m:mn><m:mo>]</m:mo></m:mrow></m:math> where all values in this interval are
+equally likely. This means, e.g., that <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is negative with
+chance 1/2 and that, e.g., <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is within <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>0002</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>0003</m:mn><m:mo>]</m:mo></m:mrow></m:math> with
+chance <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>10</m:mn></m:mrow></m:math>. Since this is the same of all entries <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math>, they
+are identically distributed.</para>
+      <para id="id138003">
+        <emphasis effect="bold">Spectral analysis of stationary signals and series</emphasis>
+      </para>
+      <para id="id138012">By their own nature, similarly to periodic signals,
+stationary signals and series have no finite
+energy. As a simple example consider the sequence <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mo>±</m:mo><m:mn>1</m:mn></m:mrow></m:math> with random
+sign. Since <m:math overflow="scroll"><m:mrow><m:msubsup><m:mi>ε</m:mi><m:mi>k</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> for all <m:math overflow="scroll"><m:mi>k</m:mi></m:math>, the energy of the sequence
+is clearly infinite. In order to arrive at a meaningful spectral analysis
+one defines the <emphasis effect="italics">power</emphasis> of a stationary
+signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> as the time average of the energy:</para>
+      <equation id="uid5">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>P</m:mi>
+            <m:mo>:</m:mo>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">lim</m:mo>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>→</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>L</m:mi>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>x</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mi>d</m:mi>
+            <m:mi>t</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id138179">Note that for a periodic signal definition <link target-id="uid5"/> gives the same value as <link target-id="uid3" document="m46811"/>.</para><para id="id138191">While periodic signals possess a natural Fourier expansion into a series, we need to take
+time-averaged, windowed Fourier transforms for stationary signals; also, due to randomness,
+one needs to take averages over different realizations in order to obtain a deterministic
+non-random spectral descriptor. Most useful is the <emphasis effect="italics">power spectrum</emphasis><m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> which corresponds
+to the square of the absolute value of the time-averaged windowed Fourier transform:</para>
+      <equation id="uid6">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>:</m:mo>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">lim</m:mo>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>→</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>L</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mspace width="-1.38885pt"/>
+              <m:mi mathvariant="normal">E</m:mi>
+            </m:mrow>
+            <m:msup>
+              <m:mfenced separators="" open="|" close="|">
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mo>-</m:mo>
+                    <m:mi>L</m:mi>
+                  </m:mrow>
+                  <m:mi>L</m:mi>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>ε</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>f</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mover>
+              <m:mo>=</m:mo>
+              <m:mrow>
+                <m:mi> station </m:mi>
+                <m:mo>.</m:mo>
+              </m:mrow>
+            </m:mover>
+            <m:munder>
+              <m:mo movablelimits="true" form="prefix">lim</m:mo>
+              <m:mrow>
+                <m:mi>L</m:mi>
+                <m:mo>→</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+            </m:munder>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>L</m:mi>
+                <m:mo>+</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:mfrac>
+            <m:mrow>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mspace width="-1.38885pt"/>
+              <m:mi mathvariant="normal">E</m:mi>
+            </m:mrow>
+            <m:msup>
+              <m:mfenced separators="" open="|" close="|">
+                <m:munderover>
+                  <m:mo>∑</m:mo>
+                  <m:mrow>
+                    <m:mi>k</m:mi>
+                    <m:mo>=</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mn>2</m:mn>
+                    <m:mi>L</m:mi>
+                    <m:mo>+</m:mo>
+                    <m:mn>1</m:mn>
+                  </m:mrow>
+                </m:munderover>
+                <m:msub>
+                  <m:mi>ε</m:mi>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:msup>
+                  <m:mi>e</m:mi>
+                  <m:mrow>
+                    <m:mo>-</m:mo>
+                    <m:mi>j</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:mi>π</m:mi>
+                    <m:mi>f</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:mrow>
+                </m:msup>
+              </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id138462">Sometimes it is (erroneously) written as <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:mi>E</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>.
+erroneously because it should be averaged: <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>|</m:mo><m:mi>E</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>.
+The famous Wiener-Khinchine theorem says, that</para>
+      <equation id="uid7">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>∞</m:mi>
+              </m:mrow>
+              <m:mi>∞</m:mi>
+            </m:munderover>
+            <m:mi>r</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>k</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi mathvariant="script">F</m:mi>
+            <m:mfenced separators="" open="{" close="}">
+              <m:mi>r</m:mi>
+              <m:mo>(</m:mo>
+              <m:mi>k</m:mi>
+              <m:mo>)</m:mo>
+            </m:mfenced>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id138661">where <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mrow><m:mo>[</m:mo><m:msub><m:mi>ε</m:mi><m:mi>n</m:mi></m:msub><m:mo>·</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>n</m:mi><m:mo>-</m:mo><m:mi>k</m:mi></m:mrow></m:msub><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mrow><m:mo>[</m:mo><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>·</m:mo><m:msub><m:mi>ε</m:mi><m:mn>0</m:mn></m:msub><m:mo>]</m:mo></m:mrow></m:mrow></m:math>
+is the <emphasis effect="italics">auto-correlation</emphasis> of the process. Note <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>+</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow></m:math>.</para>
+      <para id="id138806"><emphasis effect="bold">Connection to Discrete Fourier transform (DFT)</emphasis> In practice, a
+finite length signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>K</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> is interpreted as
+periodically repeated (with period <m:math overflow="scroll"><m:mi>K</m:mi></m:math>). Its Fourier transform is
+then a periodic series again, called DFT, which can be computed via
+an algorithm called FFT in only <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo form="prefix">log</m:mo><m:mo>(</m:mo><m:mi>K</m:mi><m:mo>)</m:mo></m:mrow></m:math> computations
+according to the formula</para>
+      <equation id="uid8"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mspace width="-0.166667em"/>
+            <m:mtext>DFT:</m:mtext>
+            <m:mspace width="2.em"/>
+            <m:mspace width="2.em"/>
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>ε</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>k</m:mi>
+                <m:mi>n</m:mi>
+                <m:mo>/</m:mo>
+                <m:mi>K</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id139121">Recall that Matlab starts indices always with 1, thus
+interpreting the first entry of the vector <m:math overflow="scroll"><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover></m:math>
+as corresponding to frequency 0 (see
+matlab <code display="inline">help fft</code>).</para><para id="id139149">If we set <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>=</m:mo><m:mn>2</m:mn><m:mi>L</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:math> we find that <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>n</m:mi></m:msub></m:math>
+appears on the right side of <link target-id="uid6"/>.
+If we assume that <m:math overflow="scroll"><m:mi>L</m:mi></m:math> is large so that we can neglect the limit, we find
+that <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> indicates what to expect of the squared FFT coefficients
+(i.e., the FFT-power-spectrum) on average:</para><equation id="uid9"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mrow>
+                <m:mi mathvariant="normal">I</m:mi>
+                <m:mspace width="-1.38885pt"/>
+                <m:mi mathvariant="normal">E</m:mi>
+              </m:mrow>
+            </m:mrow><m:msup>
+            <m:mfenced open="|" close="|">
+            
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>ε</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>n</m:mi>
+            </m:msub>
+            </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:mi>K</m:mi>
+            <m:mo>·</m:mo>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>n</m:mi>
+                <m:mi>K</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id139299">for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mi>K</m:mi></m:mrow></m:math>. Vice versa, the samples of the
+power spectrum <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:math> can be
+estimated from averaging the FFT coefficients over several noise
+signals each of the form <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mn>2</m:mn><m:mi>L</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math>:</para>
+      <equation id="uid10"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mrow>
+              <m:mi>S</m:mi>
+              <m:mrow>
+                <m:mo>(</m:mo>
+                <m:mfrac>
+                  <m:mi>k</m:mi>
+                  <m:mi>K</m:mi>
+                </m:mfrac>
+                <m:mo>)</m:mo>
+              </m:mrow>
+              <m:mo>≃</m:mo>
+              <m:mfrac>
+                <m:mn>1</m:mn>
+                <m:mi>K</m:mi>
+              </m:mfrac>
+              <m:mrow>
+                <m:mi mathvariant="normal">I</m:mi>
+                <m:mspace width="-1.38885pt"/>
+                <m:mi mathvariant="normal">E</m:mi>
+              </m:mrow>
+           
+            </m:mrow>
+<m:msup>
+            <m:mfenced open="|" close="|">
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>ε</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id139483">for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>L</m:mi><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mi>L</m:mi></m:mrow></m:math> (it is more natural to represent <m:math overflow="scroll"><m:mi>S</m:mi></m:math> over a
+symmetric interval; recall that <m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mrow><m:mo>-</m:mo><m:mi>L</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mrow><m:mi>L</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mrow><m:mn>2</m:mn><m:mi>L</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math>).</para><para id="id139640"><emphasis effect="bold">Flat spectrum of zero mean white noise</emphasis>
+      </para><para id="id139649">The power spectrum <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> of white noise with zero mean
+(<m:math overflow="scroll"><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>[</m:mo><m:msub><m:mi>e</m:mi><m:mi>k</m:mi></m:msub><m:mo>]</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>) can be computed as follows. First we find</para>
+      <equation id="id139712">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>r</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>0</m:mn>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mspace width="-1.38885pt"/>
+              <m:mi mathvariant="normal">E</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:msubsup>
+                <m:mi>ε</m:mi>
+                <m:mn>0</m:mn>
+                <m:mn>2</m:mn>
+              </m:msubsup>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>σ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mspace width="1.em"/>
+            <m:mspace width="4.pt"/>
+            <m:mtext>and</m:mtext>
+            <m:mspace width="4.pt"/>
+            <m:mspace width="1.em"/>
+            <m:msub>
+              <m:mi>r</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mrow>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mspace width="-1.38885pt"/>
+              <m:mi mathvariant="normal">E</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:msub>
+                <m:mi>ε</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>·</m:mo>
+            <m:mrow>
+              <m:mi mathvariant="normal">I</m:mi>
+              <m:mspace width="-1.38885pt"/>
+              <m:mi mathvariant="normal">E</m:mi>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>[</m:mo>
+              <m:msub>
+                <m:mi>ε</m:mi>
+                <m:mn>0</m:mn>
+              </m:msub>
+              <m:mo>]</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mn>0</m:mn>
+            <m:mspace width="1.em"/>
+            <m:mi>k</m:mi>
+            <m:mo>≠</m:mo>
+            <m:mn>0</m:mn>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id139867">by independence.
+By <link target-id="uid7"/> we find</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mi>σ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mtext>Power</m:mtext>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id139915">for all <m:math overflow="scroll"><m:mi>f</m:mi></m:math>. Note that the power spectrum of white noise is <emphasis effect="italics">flat</emphasis>.
+Its constant value is equal to the variance of the zero mean noise.
+The constant value must clearly be equal to the power. (Also: <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>ε</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>K</m:mi><m:mo>∑</m:mo><m:msubsup><m:mi>ε</m:mi><m:mi>n</m:mi><m:mn>2</m:mn></m:msubsup><m:mo>≃</m:mo><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mrow><m:mo>[</m:mo><m:msubsup><m:mi>ε</m:mi><m:mn>0</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>]</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> from statistics.)</para>
+      <para id="id140019">Consequently, since the <emphasis effect="italics">mean</emphasis> of the DFT, i.e. <m:math overflow="scroll"><m:mrow><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>|</m:mo></m:mrow><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>n</m:mi></m:msub><m:msup><m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> is constant, the average of the DFT when computed over
+many realizations of the noise is nearly flat<footnote id="uid12">matlab demo:
+plot(mean(abs(fft(0.1*(rand(1000,1000)-0.5),[
+],2).<m:math overflow="scroll"><m:mover accent="true"><m:mspace width="3.33333pt"/><m:mo>ˆ</m:mo></m:mover></m:math>2)));axis([0 1000 0 0.01])</footnote>;
+however,
+the FFT of any single realization will show large oscillations
+(see <link target-id="uid5" document="m46834"/> 3rd).</para><para id="id140110">Nevertheless, the power can be estimated from one realization:
+using <link target-id="uid10"/>, using ergodicity to estimate the expected value
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow><m:mo>[</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>]</m:mo></m:mrow></m:math> simply as the average over all samples,
+and using <link target-id="uid4" document="m46811"/> we get</para><equation id="uid13"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>S</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>k</m:mi>
+                <m:mi>K</m:mi>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+
+
+
+
+
+            <m:mrow>
+              <m:mrow>
+                <m:mi mathvariant="normal">I</m:mi>
+                <m:mspace width="-1.38885pt"/>
+                <m:mi mathvariant="normal">E</m:mi>
+              </m:mrow>
+            </m:mrow>
+            <m:msup>
+            <m:mfenced open="|" close="|">
+            <m:msub>
+              <m:mover accent="true">
+                <m:mi>ε</m:mi>
+                <m:mo>ˆ</m:mo>
+              </m:mover>
+              <m:mi>k</m:mi>
+            </m:msub>
+            </m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+
+
+
+
+
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:mo>·</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>n</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>ε</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mi>n</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>ε</m:mi>
+            </m:msub>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id140310">This computation also confirms that the spectrum of white noise is flat and that its constant value
+is equal to the power.</para>
+      <para id="id140316">In fact, a direct computation from <link target-id="uid8"/> shows that
+the FFT output <m:math overflow="scroll"><m:msub><m:mover accent="true"><m:mi>ε</m:mi><m:mo>^</m:mo></m:mover><m:mi>n</m:mi></m:msub></m:math> is a white noise as well, however
+with variance <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> and so <link target-id="uid10"/>
+(the first approximation in <link target-id="uid13"/>) holds
+for white noise exactly,
+not only approximatively.</para>
+      <para id="id140374">Intuitively, the formula <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> means that all frequencies are present in
+white noise with equal overall-amplitude. The spectrum being flat is
+a direct consequence of the <emphasis effect="italics">independence</emphasis> between the noise
+terms. We should recall, though, that strictly speaking the spectrum
+is flat only as an average over many noise realizations.</para>
+      <para id="id140416"><emphasis effect="bold">Application: Quantization</emphasis> In many application, such as
+inference in wireless communication and such as in quantization in
+signal processing, a commonly accepted model of the effect of a
+source of errors on the signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the so-called
+<emphasis effect="italics">additive white noise model</emphasis>:
+</para>
+      <equation id="uid14"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+            <m:mo>→</m:mo>
+            <m:mrow>
+              <m:mo>+</m:mo>
+              <m:msub>
+                <m:mi>ε</m:mi>
+                <m:mi>k</m:mi>
+              </m:msub>
+            </m:mrow>
+            <m:mo>→</m:mo>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id140510">For a quantization with precision <m:math overflow="scroll"><m:mi>Δ</m:mi></m:math> the error is the
+quantification error <m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math> and it is determined by the
+signal itself. [One could argue, that <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is not random since it
+is completely determined once <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:math> is known. Still, the model is
+useful since we can usually not predict <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:math> from observing
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math>.]</para>
+      <para id="id140638">For quantization using rounding
+(matlab: <code display="inline">round</code><footnote id="uid15">The error <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is in this case uniformly
+distributed on the interval <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>Δ</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mi>Δ</m:mi><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math>.</footnote>)
+it can be shown that the noise power per sample
+amounts to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mi> Quant </m:mi><m:mo>.</m:mo><m:mi> noise </m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mfrac><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mn>12</m:mn></m:mfrac></m:mrow></m:math>.
+When using one more bit for quantization, then the error <m:math overflow="scroll"><m:mi>Δ</m:mi></m:math> is half as
+large, thus the power 4 times smaller, which amounts to roughly -6 dB. In other
+words, the power of the quantization noise is proportional to -6dB times the number
+of bits used.</para>
+      <para id="id140757">Using the analog of Parseval's equation and recalling that
+<m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math> is the power spectrum (analog of the square of the Fourier transform)
+we have indeed:</para>
+      <equation id="uid16">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>Δ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mn>12</m:mn>
+            </m:mfrac>
+            <m:mtext>Rect</m:mtext>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mfrac>
+                <m:mi>f</m:mi>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mi>e</m:mi>
+                </m:msub>
+              </m:mfrac>
+            </m:mfenced>
+            <m:mspace width="2.em"/>
+            <m:mspace width="1.em"/>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mrow>
+                <m:mi> Quant </m:mi>
+                <m:mo>.</m:mo>
+                <m:mi> noise </m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msub>
+                <m:mi>f</m:mi>
+                <m:mi>e</m:mi>
+              </m:msub>
+            </m:mfrac>
+            <m:msubsup>
+              <m:mo>∫</m:mo>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mi>e</m:mi>
+                </m:msub>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:msub>
+                  <m:mi>f</m:mi>
+                  <m:mi>e</m:mi>
+                </m:msub>
+                <m:mo>/</m:mo>
+                <m:mn>2</m:mn>
+              </m:mrow>
+            </m:msubsup>
+            <m:msub>
+              <m:mi>S</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mi>d</m:mi>
+            <m:mi>f</m:mi>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>Δ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mn>12</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id140943">For <m:math overflow="scroll"><m:mi>K</m:mi></m:math> samples of noise taken over a time interval of length <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> we have, thus,
+approximatively</para>
+      <equation id="uid17"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mi>K</m:mi>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+
+            <m:msup>
+<m:mfenced open="|" close="|">
+            <m:msub>
+              <m:mi>ε</m:mi>
+              <m:mi>k</m:mi>
+            </m:msub>
+</m:mfenced>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msup>
+                <m:mi>K</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>ε</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mrow>
+                <m:mi> Quant </m:mi>
+                <m:mo>.</m:mo>
+                <m:mi> noise </m:mi>
+              </m:mrow>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:msup>
+                <m:mi>Δ</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+              <m:mn>12</m:mn>
+            </m:mfrac>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id141127">Note that the FFT increases power by <m:math overflow="scroll"><m:mi>K</m:mi></m:math>. The relation <link target-id="uid17"/>
+becomes exact when taking expected values <m:math overflow="scroll"><m:mrow><m:mi mathvariant="normal">I</m:mi><m:mspace width="-1.38885pt"/><m:mspace width="-0.27771pt"/><m:mi mathvariant="normal">E</m:mi></m:mrow></m:math>. The approximation improves
+the larger <m:math overflow="scroll"><m:mi>K</m:mi></m:math> is, since the left side is an estimator of the variance <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:math>,
+which is <m:math overflow="scroll"><m:mrow><m:msup><m:mi>Δ</m:mi><m:mn>2</m:mn></m:msup><m:mo>/</m:mo><m:mn>12</m:mn></m:mrow></m:math> for quantization with precision <m:math overflow="scroll"><m:mi>Δ</m:mi></m:math>.</para>
+      <para id="id141226"><emphasis effect="bold">Application: Interference</emphasis> A further example of a situation
+where an additive white noise proves useful is wireless transmission
+of a binary signal under interference. Here, bits may flip from 0
+to 1 and vice versa since detection is not perfect. The error
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>x</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math> is here determined by the interfering signal, and the
+configuration of the decoder. Note that the possible values of each
+<m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is either 0 (no flip) or 1 (flip). Without specific
+information on the interference, the chance of a flip is independent
+of the time <m:math overflow="scroll"><m:mi>k</m:mi></m:math>, and independent of the past occurrence of flips.
+Thus, white noise is a very reasonable model for <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math>. Clearly,
+the probability <m:math overflow="scroll"><m:mrow><m:mi>P</m:mi><m:mo>[</m:mo><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>]</m:mo></m:mrow></m:math> will be close to 1 if only little
+inference is present and will decrease the stronger the inference.</para>
+      <para id="id141344"><emphasis effect="bold">Gaussian noise</emphasis> As an important special case we mention
+Gaussian white noise, where the common distribution of the <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math> is
+Gaussian, or “normal”: This model assumption is standard whenever
+nothing is known on the distribution. It makes sense, e.g., as model
+for an overall error which is composed of several small unknown
+errors. (compare Central Limit Theorem)</para>
+      <para id="id141377"><emphasis effect="bold">Colored Noise</emphasis> A sequence <m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>n</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>n</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>n</m:mi><m:mn>3</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:math> is called
+<emphasis effect="italics">colored noise</emphasis> if its terms <m:math overflow="scroll"><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub></m:math> are random and possess a
+relation or dependence between them. Consequently, the power
+spectrum of colored noise is not flat, but possesses certain
+prevalent frequencies — hence the name “colored” (recall that
+the frequencies of light waves correspond to colors).</para>
+      <para id="id141459">One of the most simple ways to produce colored noise is to filter
+white noise. For instance, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>m</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>+</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> is colored since the
+entries <m:math overflow="scroll"><m:msub><m:mi>m</m:mi><m:mi>k</m:mi></m:msub></m:math> are no longer independent: <m:math overflow="scroll"><m:mrow><m:msub><m:mi>m</m:mi><m:mn>0</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:math> and
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>m</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>ε</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math> contain the same number <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mn>1</m:mn></m:msub></m:math> as an additive term.
+Similarly, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>n</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>ε</m:mi><m:mrow><m:mi>k</m:mi><m:mo>+</m:mo><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:math> is colored.</para>
+      <para id="id141642">Adopting a continuous-time notation (for convenience) we write</para>
+      <equation id="id141646">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>m</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>ε</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>+</m:mo>
+            <m:mi>ε</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+            <m:mspace width="2.em"/>
+            <m:mspace width="2.em"/>
+            <m:mi>n</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>ε</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>-</m:mo>
+            <m:mi>ε</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>+</m:mo>
+            <m:mn>1</m:mn>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id141731">with Fourier transform</para>
+      <equation id="id141737">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>M</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>+</m:mo>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>1</m:mn>
+                    <m:mo>+</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>f</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:mi>π</m:mi>
+                        <m:mi>f</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo>+</m:mo>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mo>-</m:mo>
+                        <m:mi>j</m:mi>
+                        <m:mi>π</m:mi>
+                        <m:mi>f</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>π</m:mi>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>E</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:mo form="prefix">cos</m:mo>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>π</m:mi>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mi>π</m:mi>
+                      <m:mi>f</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id141978">and similarly 
+</para>
+      <equation id="id141988">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>N</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>E</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>-</m:mo>
+            <m:mi>E</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi>E</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mn>2</m:mn>
+                  <m:mi>π</m:mi>
+                  <m:mi>f</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:mi>E</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mi>j</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mi>f</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>-</m:mo>
+              <m:msup>
+                <m:mi>e</m:mi>
+                <m:mrow>
+                  <m:mo>-</m:mo>
+                  <m:mi>j</m:mi>
+                  <m:mi>π</m:mi>
+                  <m:mi>f</m:mi>
+                </m:mrow>
+              </m:msup>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:mi>E</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mn>2</m:mn>
+            <m:mi>j</m:mi>
+            <m:mo form="prefix">sin</m:mo>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>π</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mrow>
+            </m:msup>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id142194">
+
+and power spectrum<footnote id="uid18">The same formula for <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>M</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> and
+<m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>N</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> could be obtained by computing it as the Fourier
+transform of the auto-correlation (see <link target-id="uid7"/>);
+indeed, for <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>: <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2</m:mn><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> and <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mo>(</m:mo><m:mi>k</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>
+for all other <m:math overflow="scroll"><m:mi>k</m:mi></m:math>; for <m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> the same except <m:math overflow="scroll"><m:mrow><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>r</m:mi><m:mrow><m:mo>(</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo>-</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>.</footnote>,
+(use that <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msup><m:mo form="prefix">cos</m:mo><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>+</m:mo><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>) and
+<m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msup><m:mo form="prefix">sin</m:mo><m:mn>2</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>-</m:mo><m:mo form="prefix">cos</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>x</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>)
+ 
+</para>
+      <equation id="id142552">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>M</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>E</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mn>4</m:mn>
+            <m:msup>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>π</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>E</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mn>2</m:mn>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>σ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mn>1</m:mn>
+              <m:mo>+</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <equation id="id142739">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>N</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>E</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mn>4</m:mn>
+            <m:msup>
+              <m:mo form="prefix">sin</m:mo>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>π</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:mi>E</m:mi>
+                <m:mrow>
+                  <m:mo>(</m:mo>
+                  <m:mi>f</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mn>2</m:mn>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mo>=</m:mo>
+            <m:mn>2</m:mn>
+            <m:msup>
+              <m:mi>σ</m:mi>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mfenced separators="" open="(" close=")">
+              <m:mn>1</m:mn>
+              <m:mo>-</m:mo>
+              <m:mo form="prefix">cos</m:mo>
+              <m:mfenced separators="" open="(" close=")">
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+              </m:mfenced>
+            </m:mfenced>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id142918">
+ where <m:math overflow="scroll"><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:math> is the total power of the original noise <m:math overflow="scroll"><m:msub><m:mi>ε</m:mi><m:mi>k</m:mi></m:msub></m:math>
+and <m:math overflow="scroll"><m:mrow><m:mi>S</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mo>|</m:mo><m:mi>E</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msup><m:mi>σ</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>.
+Note that neither <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>M</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> nor <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mi>N</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> are flat. Verification
+via matlab is easy.</para>
+    </section>
+  </content>
+</document>

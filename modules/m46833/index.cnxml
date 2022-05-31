@@ -1,0 +1,970 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Sampling: Review</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46833</md:content-id>
+  <md:title>Sampling: Review</md:title>
+  <md:abstract/>
+  <md:uuid>3440cefd-3d47-4eee-bb6f-e1bd5fd4e3f1</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Sampling: Review</title><para id="id277717">Let us consider a signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> which is uniformly sampled meaning that
+the samples are <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mi>τ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> (<m:math overflow="scroll"><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>...</m:mo><m:mo>-</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:mo>...</m:mo></m:mrow></m:math>).
+The sampling frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>τ</m:mi></m:mrow></m:math> is the number of samples per time unit.</para>
+      <para id="id278345">In practical applications, the signal will be sampled only over an interval, say
+of length <m:math overflow="scroll"><m:mi>L</m:mi></m:math> and into <m:math overflow="scroll"><m:mi>K</m:mi></m:math> samples. Then <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>L</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:math> as for discrete signals.</para>
+      <para id="id278383">
+        <emphasis effect="bold">Spectral copies (also called spectral repetitions or images)</emphasis>
+      </para>
+      <para id="id278390">The sampled signal can be written as the Dirac comb of step <m:math overflow="scroll"><m:mi>τ</m:mi></m:math>
+modulated by <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math></para>
+      <equation id="uid1">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:msub>
+                    <m:mi>Δ</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>τ</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id278542">The factor <m:math overflow="scroll"><m:mi>τ</m:mi></m:math> is added to obtain a Fourier transform that does not depend on <m:math overflow="scroll"><m:mi>τ</m:mi></m:math>
+and to preserve an averaging property (the integral of <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub></m:math> provides a good approximation of the integral
+of <m:math overflow="scroll"><m:mi>x</m:mi></m:math> since <m:math overflow="scroll"><m:mrow><m:mo>∫</m:mo><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mi>d</m:mi><m:mi>t</m:mi><m:mo>=</m:mo><m:msubsup><m:mo>∑</m:mo><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mi>∞</m:mi></m:mrow><m:mi>∞</m:mi></m:msubsup><m:mi>τ</m:mi><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mi>τ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is
+the Riemann sum approximating the <m:math overflow="scroll"><m:mrow><m:mo>∫</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mi>d</m:mi><m:mi>t</m:mi></m:mrow></m:math> as a sum of rectangles
+of width <m:math overflow="scroll"><m:mi>τ</m:mi></m:math>.)
+</para>
+      <para id="id278680">Using
+<link target-id="uid13" document="m46815"/> we may write</para><equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:msub>
+                    <m:mi>Δ</m:mi>
+                    <m:mi>τ</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>·</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mi>k</m:mi>
+                      <m:mi>t</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>τ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id278810">Note, that <link target-id="uid2"/> is <emphasis effect="italics">not</emphasis> a Fourier representation
+of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> (the “coefficients” <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> of the sinusoids depend on
+<m:math overflow="scroll"><m:mi>t</m:mi></m:math> instead of <m:math overflow="scroll"><m:mi>k</m:mi></m:math>). Computing the Fourier transform of the
+sampled signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> once more, using <link target-id="uid2"/>, we find</para>
+      <equation id="uid3">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi mathvariant="script">F</m:mi>
+                  <m:mfenced separators="" open="{" close="}">
+                    <m:mi>x</m:mi>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:msup>
+                      <m:mi>e</m:mi>
+                      <m:mrow>
+                        <m:mi>j</m:mi>
+                        <m:mn>2</m:mn>
+                        <m:mi>π</m:mi>
+                        <m:mi>k</m:mi>
+                        <m:mi>t</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>τ</m:mi>
+                      </m:mrow>
+                    </m:msup>
+                  </m:mfenced>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>k</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>X</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id279056">We observe that the Fourier transform, and also the spectrum of the sampled signal is periodic
+with period <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>τ</m:mi></m:mrow></m:math>, the sample rate (see <link target-id="uid7"/> right). However,
+we see now that <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub></m:math> is composed of copies of <m:math overflow="scroll"><m:mi>X</m:mi></m:math>, shifted by a
+multiple of the period, i.e., shifted by <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>·</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math>. These are
+called <emphasis effect="italics">spectral copies</emphasis>.</para><para id="id279141">
+        <emphasis effect="bold">Sampling and the discrete Fourier transform</emphasis>
+      </para>
+      <para id="id279148">Finite energy signals:
+Using <link target-id="uid1"/> again we find the Fourier transform of the sampled
+signal <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+      <equation id="uid4">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>τ</m:mi>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi mathvariant="script">F</m:mi>
+                  <m:mfenced separators="" open="{" close="}">
+                    <m:mi>δ</m:mi>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mfenced>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>f</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>·</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mi>f</m:mi>
+                      <m:mi>n</m:mi>
+                      <m:mi>τ</m:mi>
+                    </m:mrow>
+                  </m:msup>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id279345">Setting now <m:math overflow="scroll"><m:mrow><m:mi>f</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>L</m:mi></m:mrow></m:math> and recalling <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:mo>=</m:mo><m:mi>L</m:mi><m:mo>/</m:mo><m:mi>K</m:mi></m:mrow></m:math> we get approximatively</para>
+      <equation id="uid5"><m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>finite</m:mtext>
+                  <m:mspace width="4.pt"/>
+                  <m:mtext>energy:</m:mtext>
+                  <m:mspace width="2.em"/>
+                  <m:mspace width="2.em"/>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mo>/</m:mo>
+                    <m:mi>L</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>≃</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>τ</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>K</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                    <m:mrow>
+                      <m:mi>K</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mn>2</m:mn>
+                    </m:mrow>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mo>·</m:mo>
+                  <m:msup>
+                    <m:mi>e</m:mi>
+                    <m:mrow>
+                      <m:mo>-</m:mo>
+                      <m:mi>j</m:mi>
+                      <m:mn>2</m:mn>
+                      <m:mi>π</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>k</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>L</m:mi>
+                      <m:mo>)</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mo>(</m:mo>
+                      <m:mi>L</m:mi>
+                      <m:mo>/</m:mo>
+                      <m:mi>K</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:msup>
+                  <m:mo>=</m:mo>
+                  <m:mi>τ</m:mi>
+                  <m:msub>
+                    <m:mover accent="true">
+                      <m:mi>x</m:mi>
+                      <m:mo>ˆ</m:mo>
+                    </m:mover>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation><para id="id279543">This agrees with <link target-id="uid1" document="m46816"/> for finite energy signals and is actually
+valid for all <m:math overflow="scroll"><m:mi>k</m:mi></m:math>, since both sides are periodic with period <m:math overflow="scroll"><m:mi>K</m:mi></m:math>.
+However, it is only useful if <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is of finite energy, similar to <link target-id="uid1" document="m46816"/>.</para><para id="id279577">For periodic signals we could write <m:math overflow="scroll"><m:mi>X</m:mi></m:math> and <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub></m:math> as sums of Dirac delta functions as in
+<link target-id="uid8" document="m46816"/>. Doing so, <link target-id="uid3"/>
+confirms that also periodic signals possess spectral copies when sampled.</para><para id="id279609">For periodic functions, the relation
+<link target-id="uid5"/>
+shows
+that the terms <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:mrow></m:math> will attempt to approximate the
+Dirac-shape of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub></m:math>, meaning that the values of <m:math overflow="scroll"><m:mrow><m:mi>τ</m:mi><m:msub><m:mover accent="true"><m:mi>x</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub></m:mrow></m:math> will be huge
+for <m:math overflow="scroll"><m:mrow><m:mi>k</m:mi><m:mo>/</m:mo><m:mi>L</m:mi></m:mrow></m:math> close to a peak location but very small otherwise (see
+<link target-id="uid2"/>, <link target-id="uid3"/>, and <link target-id="uid4"/>, compare discussion after <link target-id="uid8" document="m46816"/>). In order to identify the amplitude
+<m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>k</m:mi></m:msub></m:math> of the Dirac delta functions better,
+one uses the earlier approximation</para><equation id="uid6"><m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mtext>periodic:</m:mtext>
+                  <m:mspace width="2.em"/>
+                  <m:mspace width="2.em"/>
+                  <m:msub>
+                    <m:mi>X</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>≃</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mfrac>
+                    <m:mn>1</m:mn>
+                    <m:mi>K</m:mi>
+                  </m:mfrac>
+                  <m:msub>
+                    <m:mover accent="true">
+                      <m:mi>x</m:mi>
+                      <m:mo>ˆ</m:mo>
+                    </m:mover>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo>.</m:mo>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+
+
+
+<figure id="uid7" orient="horizontal">
+
+ <media id="uid7_media" alt="Sampling at 300 dpi appears to be sufficient to keep the quality of the image.">
+  <image mime-type="image/png" src="../../media/SmallMaledives300dpi.png" id="uid7_onlineimage" width="200"/>
+  <image mime-type="application/postscript" for="pdf" src="../../media/SmallMaledives300dpi.eps" id="uid7_printimage"/>
+ </media>
+ <caption>Sampling at 300 dpi appears to be sufficient to keep the quality of the image.</caption>
+</figure>
+
+
+
+<figure id="fs-id1172751698283">
+ <media id="fs-id1167142240795" alt="Sampling at 50 dpi introduces aliasing.">
+  <image mime-type="image/png" src="../../media/SmallMaledives50dpi.png" id="uid8_onlineimage" width="200"/>
+  <image mime-type="application/postscript" for="pdf" src="../../media/SmallMaledives50dpi.eps" id="uid8_printimage"/>
+ </media>
+ <caption>Sampling at 50 dpi introduces aliasing.</caption>
+</figure>
+
+<figure id="fs-id1172772628393">
+ <media id="uid9_media" alt="Sampling of a detail at 500dpi reveals high-frequency content.">
+  <image mime-type="image/png" src="../../media/SmallMaledives500dpiDetail.png" id="uid9_onlineimage" width="200"/>
+  <image mime-type="application/postscript" for="pdf" src="../../media/SmallMaledives500dpiDetail.eps" id="uid9_printimage"/>
+ </media>
+ <caption>Sampling of a detail at 500dpi reveals high-frequency content. These frequencies will leak from the spectral copies into the low frequencies of the main spectral copy when sampled at too low a frequency.</caption>
+</figure>
+
+
+
+<para id="id279828">
+        <emphasis effect="bold">Aliasing</emphasis>
+      </para>
+      <para id="id279835">Assume that the continuous-time signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is <emphasis effect="italics">bandlimited</emphasis>,
+meaning there is some <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mi>B</m:mi></m:mrow></m:math>.
+If the sample rate had been too small, namely</para>
+      <equation id="id279915">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mo>&lt;</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>B</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id279939">then this copies would overlap and the original signal can not be recovered.
+The sampled signal
+shows artifacts called <emphasis effect="italics">aliasing</emphasis> (recouvrement); these artifacts
+manifest is erroneous
+low frequency content. Such content spills or leaks from the spectral copies into the main spectral period (see <link target-id="uid7"/>).</para><para id="id279955"><emphasis effect="bold">Nyquist Shannon sampling theorem</emphasis>:</para>
+      <para id="id279963"><emphasis effect="italics">Assume that the continuous-time signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> is
+</emphasis>bandlimited<emphasis effect="italics">,
+meaning there is some <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>&gt;</m:mo><m:mn>0</m:mn></m:mrow></m:math> such that <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi mathvariant="script">F</m:mi><m:mfenced separators="" open="{" close="}"><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mfenced><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> whenever <m:math overflow="scroll"><m:mrow><m:mo>|</m:mo><m:mi>f</m:mi><m:mo>|</m:mo><m:mo>&gt;</m:mo><m:mi>B</m:mi></m:mrow></m:math>.</emphasis></para>
+      <para id="id280081">
+        <emphasis effect="italics">If this signal <m:math overflow="scroll"><m:mi>x</m:mi></m:math> is sampled uniformly at a sufficient rate,
+namely at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>, then <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> can be mathematically reconstructed
+perfectly from only those discrete samples.
+</emphasis>
+      </para>
+      <para id="id280135">
+        <emphasis effect="bold">Reconstruction (Ideal low pass filtering)</emphasis>
+      </para>
+      <para id="id280142">If the sample rate has been high enough though, namely</para>
+      <equation id="uid10">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mo>&gt;</m:mo>
+            <m:mn>2</m:mn>
+            <m:mi>B</m:mi>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id280174">then, the Fourier transform of the original signal can be recovered by
+cutting off the periodic copies:</para>
+      <equation id="uid11">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>X</m:mi>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>·</m:mo>
+            <m:mtext>Rect</m:mtext>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mfrac>
+                <m:mi>f</m:mi>
+                <m:mrow>
+                  <m:mn>2</m:mn>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                </m:mrow>
+              </m:mfrac>
+              <m:mo>)</m:mo>
+            </m:mrow>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id280246">where <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:math> has to be chosen such that <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:mi>B</m:mi></m:mrow></m:math> (see
+<link target-id="uid13" document="m46833"/> right). (The first copy to be cut off lies over the
+interval <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>+</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math>.) A possible choice is <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>.</para><para id="id280370">In the time domain, this corresponds to convolving the sampled
+signal with the ideal low-pass filter (<m:math overflow="scroll"><m:mtext>sinc</m:mtext></m:math>). More precisely:
+Translating <link target-id="uid11"/> into the time domain, then using the
+linearity of the convolution and <link target-id="uid1"/>, we find the
+ideal low-pass filtering (reconstruction) formula:
+</para>
+      <equation id="uid12">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:mi>x</m:mi>
+                  <m:mo>(</m:mo>
+                  <m:mi>t</m:mi>
+                  <m:mo>)</m:mo>
+                </m:mrow>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>e</m:mi>
+                  </m:msub>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow/>
+              </m:mtd>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mi>τ</m:mi>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mi>δ</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>t</m:mi>
+                    <m:mo>-</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mn>2</m:mn>
+                  <m:msub>
+                    <m:mi>f</m:mi>
+                    <m:mi>c</m:mi>
+                  </m:msub>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mi>t</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+            <m:mtr>
+              <m:mtd/>
+              <m:mtd>
+                <m:mo>=</m:mo>
+              </m:mtd>
+              <m:mtd columnalign="left">
+                <m:mrow>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>τ</m:mi>
+                    <m:mn>2</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:mi>x</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>n</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mn>2</m:mn>
+                    <m:msub>
+                      <m:mi>f</m:mi>
+                      <m:mi>c</m:mi>
+                    </m:msub>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mi>t</m:mi>
+                      <m:mo>-</m:mo>
+                      <m:mi>n</m:mi>
+                      <m:mi>τ</m:mi>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id280668">Note that the pre-factor <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>τ</m:mi><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> takes into account the
+mismatch between sampling rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> and the cut-off frequency
+<m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:math>. When choosing <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>, it disappears (becomes 1).</para>
+      <para id="id280774"><emphasis effect="bold">Practical reconstruction</emphasis>: Recall that the sinc filter is not
+realizable since it requires using all samples of the past and the
+future. Since a bandlimited signal can not be time-limited at the
+same time (Heisenberg), this would in theory lead to infinitely many
+operations.</para>
+
+
+      
+<para id="id281104">If <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>, then a filter different from the ideal sinc-filter can be used. In fact, the reconstruction <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>*</m:mo><m:mi>b</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> is valid for any low-pass filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math> (not only for <m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mtext>sinc</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>) as long as we assure that the spectrum of the filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math> is equal to 1 for all
+frequencies in <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math> and zero for frequencies larger <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:mi>B</m:mi></m:mrow></m:math>. (Note that we do not specify the phase). Usually, one designs a filter such that</para>
+      <list id="id281286" display="block" list-type="enumerated">
+        <item id="uid17">The filter's spectrum equals 1 in an interval <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub><m:mo>]</m:mo></m:mrow></m:math> called
+<emphasis effect="italics">passing band</emphasis>. It must contain the signal's
+frequency-band <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math>.
+</item>
+        <item id="uid18">The filter <emphasis effect="italics">attenuates</emphasis> all frequencies beyond <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub></m:mrow></m:math>.
+</item>
+        <item id="uid19">The <emphasis effect="italics">transition band</emphasis> of the filter is <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub><m:mo>]</m:mo></m:mrow></m:math>.
+This range of frequencies can be chosen as
+large as <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math> by setting <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub><m:mo>=</m:mo><m:mi>B</m:mi></m:mrow></m:math> and as short as desired,
+but always containing the point <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>
+by setting <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>p</m:mi></m:msub></m:math> smaller but as close to <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math> as desired.
+</item>
+      </list>
+
+<figure id="uid13"><subfigure id="fs-id1169257819013">
+  <media id="uid13_media" alt="The Dirac Comb modulated by a signal.">
+   <image mime-type="image/png" src="../../media/Sampled-signal.png" id="uid13_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/Sampled-signal.eps" id="uid13_printimage"/>
+  </media>
+  <caption>The Dirac Comb modulated by a signal.</caption>
+ </subfigure>
+ <subfigure id="fs-id1169257809337">
+  <media id="uid14_media" alt="The spectrum of the sampled signal">
+   <image mime-type="image/png" src="../../media/TransitionBand.png" id="uid14_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/TransitionBand.eps" id="uid14_printimage"/>
+  </media>
+  <caption>The spectrum of the sampled signal (note the spectral copies) and a practical reconstruction filter: It's passing band contains the band <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math> of the signal
+and it attenuates all spectral copies.</caption>
+ </subfigure>
+</figure><figure id="uid15"><subfigure id="fs-id1169210578880">
+  <media id="uid15_media" alt="digital filter in black">
+   <image mime-type="image/png" src="../../media/filter0125.png" id="uid15_onlineimage" width="400"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125.eps" id="uid15_printimage"/>
+  </media>
+  <caption>The low-pass FIR filter of length 61 and ideal cutoff at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>8</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>125</m:mn></m:mrow></m:math>
+as produced by Matlab. The filter values are in red. For comparison in blue the corresponding samples of the ideal filter <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mtext>sinc</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> at
+<m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>-</m:mo><m:mn>30</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mo>-</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mn>30</m:mn></m:mrow></m:math>. 
+  </caption>
+ </subfigure>
+ <subfigure id="fs-id1169257815422">
+  <media id="uid16_media" alt="idfti squared of filter, idfti squared of since for comparison">
+   <image mime-type="image/png" src="../../media/filter0125fft.png" id="uid16_onlineimage" width="400"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125fft.eps" id="uid16_printimage"/>
+  </media>
+  <caption>DFT of the signals on the left.
+The actual transition band of the filter is <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>1</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>15</m:mn><m:mo>]</m:mo></m:mrow></m:math>.
+Note that the sinc-samples provide a filter with sharper cutoff but slightly lower quality in the pass-band since it requires infinitely many samples. The power computed from either side (recall <link target-id=""/>) is
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:msup><m:mn>003</m:mn><m:mo>'</m:mo></m:msup><m:mn>891</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:msup><m:mn>237</m:mn><m:mo>'</m:mo></m:msup><m:mn>4</m:mn><m:mo>/</m:mo><m:mn>61</m:mn><m:mo>≃</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>/</m:mo></m:mrow></m:math>length.
+  </caption>
+ </subfigure>
+</figure><para id="id281560">All this assures that we keep the entire spectral information of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+contained in <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:mi>B</m:mi><m:mo>,</m:mo><m:mi>B</m:mi><m:mo>]</m:mo></m:mrow></m:math>, yet remove all spectral copies (see
+<link target-id="uid13"/>). Sampling an ideal reconstruction filter is a method to a
+design a low pass filter. Here, point 2 in the above list helps avoiding
+aliasing in such a filter. However, the resulting filters are not ideal
+as FIR filters possible since not all samples can be used, resulting
+in Gibbs-like phenomena (see <link target-id="uid15"/> on the right).</para><para id="id281612">Matlab uses the command <code display="inline">fir1</code> to compute finite impulse response filters (FIR).
+A larger transition band allows for shorter filters to be used, thus
+speeding up computation.
+<link target-id="uid15"/> shows a length 61 FIR filter with ideal cutoff frequency at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>8</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>125</m:mn></m:mrow></m:math>.
+Its transition band is roughly <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>10</m:mn><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>15</m:mn><m:mo>]</m:mo></m:mrow></m:math>.
+As is common in digital filtering, the
+sampling frequency is assumed to be <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math>.</para><para id="id281706">
+        <emphasis effect="bold">Power and Energy from Sampling</emphasis>
+      </para>
+      <para id="id281714">We summarize a few facts.</para>
+      <para id="id281718"><emphasis effect="italics">Good quality when above Nyquist</emphasis>
+We are now in a position to make more precise how many samples are enough to well
+approximate the power of a signal via <link target-id="uid9" document="m46816"/>,
+or its energy per time over a large interval via <link target-id="uid10" document="m46816"/>,
+depending on the context. Roughly, the signal must be sampled at least at Nyquist rate
+so that the samples and their DFT faithfully represent the signal and its Fourier transform.
+Clearly, sampling at a much higher rate than Nyquist will improve the approximation.</para><para id="id281734"><emphasis effect="italics">Power independent of sampling rate</emphasis>
+We conclude that changing the sampling rate will not change power, as long as we stay
+above Nyquist, and at least approximately. Before we study how to change the sampling rate in the
+next sections, we give a quick demonstration of <link target-id="uid10" document="m46816"/> using a simple band-limited signal:
+a filter.</para><para id="id281746"><emphasis effect="italics">Ideal filter and FIR filter</emphasis>
+The energy of the ideal filter with cutoff frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:math> is
+<m:math overflow="scroll"><m:mrow><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo><m:mn>2</m:mn></m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mtext>sinc</m:mtext><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:msup><m:mrow><m:mo>|</m:mo><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>2</m:mn><m:mo>·</m:mo><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:mrow></m:math> which follows easily
+from the power spectrum being 1 on an interval of length <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mo>·</m:mo><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:mrow></m:math> and zero else, using
+Plancherel. To compute the power of a <emphasis effect="italics">digital low pass FIR filter</emphasis><m:math overflow="scroll"><m:mrow><m:mi>b</m:mi><m:mo>=</m:mo><m:mo>(</m:mo><m:msub><m:mi>b</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:mo>...</m:mo><m:mo>,</m:mo><m:msub><m:mi>b</m:mi><m:mrow><m:mi>K</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:msub><m:mo>)</m:mo></m:mrow></m:math> of length <m:math overflow="scroll"><m:mi>K</m:mi></m:math>
+with approximate cutoff frequency <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub></m:math>
+we study its DFT <m:math overflow="scroll"><m:mover accent="true"><m:mi>b</m:mi><m:mo>ˆ</m:mo></m:mover></m:math>: we note that <m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:mi>b</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> for roughly <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mi>K</m:mi></m:mrow></m:math> of the
+indices <m:math overflow="scroll"><m:mi>k</m:mi></m:math> and <m:math overflow="scroll"><m:mrow><m:msub><m:mover accent="true"><m:mi>b</m:mi><m:mo>ˆ</m:mo></m:mover><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for the other indices.
+Note that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and
+<m:math overflow="scroll"><m:mrow><m:mn>0</m:mn><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math> for a digital filter. Using <link target-id="uid4" document="m46811"/> we find</para><equation id="uid20"><m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>P</m:mi>
+              <m:mi>b</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msup>
+                <m:mi>K</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:munderover>
+              <m:mo>∑</m:mo>
+              <m:mrow>
+                <m:mi>k</m:mi>
+                <m:mo>=</m:mo>
+                <m:mn>0</m:mn>
+              </m:mrow>
+              <m:mrow>
+                <m:mi>K</m:mi>
+                <m:mo>-</m:mo>
+                <m:mn>1</m:mn>
+              </m:mrow>
+            </m:munderover>
+            <m:msup>
+              <m:mrow>
+                <m:mo>|</m:mo>
+                <m:msub>
+                  <m:mover accent="true">
+                    <m:mi>b</m:mi>
+                    <m:mo>ˆ</m:mo>
+                  </m:mover>
+                  <m:mi>k</m:mi>
+                </m:msub>
+                <m:mo>|</m:mo>
+              </m:mrow>
+              <m:mn>2</m:mn>
+            </m:msup>
+            <m:mo>≃</m:mo>
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:msup>
+                <m:mi>K</m:mi>
+                <m:mn>2</m:mn>
+              </m:msup>
+            </m:mfrac>
+            <m:mn>2</m:mn>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mi>K</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>2</m:mn>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mo>/</m:mo>
+            <m:mi>K</m:mi>
+            <m:mo>=</m:mo>
+            <m:mn>2</m:mn>
+            <m:msub>
+              <m:mi>f</m:mi>
+              <m:mi>c</m:mi>
+            </m:msub>
+            <m:mo>/</m:mo>
+            <m:mi>L</m:mi>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation><para id="id282217">This fits perfectly with <link target-id="uid10" document="m46816"/> since for a digital filter <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> and, thus, <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>=</m:mo><m:mi>L</m:mi></m:mrow></m:math>.
+The approximation becomes better, the sharper the transition band of the filter <m:math overflow="scroll"><m:mi>b</m:mi></m:math>, i.e.,
+the longer the filter is.</para><para id="id282268">Compare again with <link target-id="uid15" document="m46833"/> for a concrete filter with length <m:math overflow="scroll"><m:mrow><m:mi>K</m:mi><m:mo>=</m:mo><m:mn>61</m:mn></m:mrow></m:math>, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>8</m:mn><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mn>125</m:mn></m:mrow></m:math> and
+power <m:math overflow="scroll"><m:mrow><m:msub><m:mi>P</m:mi><m:mi>b</m:mi></m:msub><m:mo>=</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:msup><m:mn>003</m:mn><m:mo>'</m:mo></m:msup><m:mn>891</m:mn></m:mrow></m:math>.</para></section>
+  </content>
+</document>

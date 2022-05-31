@@ -1,0 +1,637 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Interpolation and Upsampling</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m46821</md:content-id>
+  <md:title>Interpolation and Upsampling</md:title>
+  <md:abstract/>
+  <md:uuid>ab562897-fe99-475c-882f-7b262e3c4c19</md:uuid>
+</metadata>
+
+<content>
+    <section id="cid1">
+      <title>Interpolation and Upsampling 
+Interpolation
+</title>
+      <para id="id62186">Let us now look at increasing the sample rate. Since it is less obvious how
+to achieve this, let us first consult theory.</para>
+      <para id="id62191">Given are the samples <m:math overflow="scroll"><m:mrow><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>n</m:mi><m:mi>τ</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>
+of a band-limited
+signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> taken at frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>τ</m:mi></m:mrow></m:math> is above the
+Nyquist rate <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>. We want to compute the samples <m:math overflow="scroll"><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub></m:math> of <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+at a higher sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub><m:mo>=</m:mo><m:mi>N</m:mi><m:mo>·</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math>. This means that the new sampling step
+should be <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub><m:mo>=</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>τ</m:mi><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math> or, <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:mi>x</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mi>τ</m:mi><m:mo>/</m:mo><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</para>
+      <para id="id62927">Since the original sampling rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math> is above Nyquist, we can in theory
+reconstruct the entire signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> using the reconstruction formula
+<link target-id="uid12" document="m46833"/> using <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>. Once the continuous-time (finite energy) signal <m:math overflow="scroll"><m:mrow><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+is obtained, we only need to sample it at <m:math overflow="scroll"><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>τ</m:mi><m:mo>/</m:mo><m:mi>N</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub></m:mrow></m:math>. This reads as follows</para><equation id="uid1"><m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:mi>z</m:mi>
+                  <m:mrow>
+                    <m:mo>(</m:mo>
+                    <m:mi>k</m:mi>
+                    <m:mi>τ</m:mi>
+                    <m:mo>)</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mi>x</m:mi>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mi>k</m:mi>
+                    <m:mfrac>
+                      <m:mi>τ</m:mi>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mover>
+                    <m:mo>=</m:mo>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mn>28</m:mn>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                  </m:mover>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mfrac>
+                          <m:mi>τ</m:mi>
+                          <m:mi>N</m:mi>
+                        </m:mfrac>
+                        <m:mo>-</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mi>τ</m:mi>
+                      </m:mrow>
+                      <m:mi>τ</m:mi>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>n</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>x</m:mi>
+                    <m:mi>n</m:mi>
+                  </m:msub>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>n</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:mfenced>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation><para id="id63227">This formula allows indeed to compute <m:math overflow="scroll"><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub></m:math> from <m:math overflow="scroll"><m:msub><m:mi>x</m:mi><m:mi>n</m:mi></m:msub></m:math>, at least in principle.
+However, a closer look at theory is required to understand the effect when using
+only finite many samples.
+The reconstruction formula <link target-id="uid12" document="m46833"/> is best understood in the frequency domain: it
+amounts to removing the spectral copies of <m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> via filtering
+with cut-off frequency <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>. To make this filtering step visible we need to write
+<link target-id="uid1"/> in form of a convolution. To this end, we write</para><equation id="uid2">
+        <m:math overflow="scroll" mode="display">
+          <m:mtable displaystyle="true">
+            <m:mtr>
+              <m:mtd columnalign="right">
+                <m:mrow>
+                  <m:msub>
+                    <m:mi>z</m:mi>
+                    <m:mi>k</m:mi>
+                  </m:msub>
+                  <m:mo>=</m:mo>
+                  <m:munderover>
+                    <m:mo>∑</m:mo>
+                    <m:mrow>
+                      <m:mi>m</m:mi>
+                      <m:mo>=</m:mo>
+                      <m:mo>-</m:mo>
+                      <m:mi>∞</m:mi>
+                    </m:mrow>
+                    <m:mi>∞</m:mi>
+                  </m:munderover>
+                  <m:msub>
+                    <m:mi>y</m:mi>
+                    <m:mi>m</m:mi>
+                  </m:msub>
+                  <m:mtext>sinc</m:mtext>
+                  <m:mfenced separators="" open="(" close=")">
+                    <m:mfrac>
+                      <m:mrow>
+                        <m:mi>k</m:mi>
+                        <m:mo>-</m:mo>
+                        <m:mi>m</m:mi>
+                      </m:mrow>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                  </m:mfenced>
+                  <m:mo>=</m:mo>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mi>m</m:mi>
+                    </m:msub>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:mtext>sinc</m:mtext>
+                    <m:mfenced separators="" open="(" close=")">
+                      <m:mfrac>
+                        <m:mi>m</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                    </m:mfenced>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                  <m:mo>=</m:mo>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:mi>N</m:mi>
+                    <m:mo>·</m:mo>
+                    <m:msub>
+                      <m:mi>y</m:mi>
+                      <m:mi>m</m:mi>
+                    </m:msub>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                  <m:mo>*</m:mo>
+                  <m:mrow>
+                    <m:mo>{</m:mo>
+                    <m:mfrac>
+                      <m:mn>1</m:mn>
+                      <m:mi>N</m:mi>
+                    </m:mfrac>
+                    <m:mtext>sinc</m:mtext>
+                    <m:mrow>
+                      <m:mo>(</m:mo>
+                      <m:mfrac>
+                        <m:mi>m</m:mi>
+                        <m:mi>N</m:mi>
+                      </m:mfrac>
+                      <m:mo>)</m:mo>
+                    </m:mrow>
+                    <m:mo>}</m:mo>
+                  </m:mrow>
+                </m:mrow>
+              </m:mtd>
+            </m:mtr>
+          </m:mtable>
+        </m:math>
+      </equation>
+      <para id="id63477">where the new sequence <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub></m:math> is obtained by “upsampling” and is given as:</para>
+      <equation id="id63496">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>m</m:mi>
+            </m:msub>
+            <m:mo>=</m:mo>
+            <m:mfenced separators="" open="{" close="">
+              <m:mtable>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:msub>
+                      <m:mi>x</m:mi>
+                      <m:mi>n</m:mi>
+                    </m:msub>
+                  </m:mtd>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mtext>if</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>N</m:mi>
+                        <m:mo>=</m:mo>
+                        <m:mi>n</m:mi>
+                      </m:mrow>
+                      <m:mspace width="4.pt"/>
+                      <m:mtext>is</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mtext>integer</m:mtext>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+                <m:mtr>
+                  <m:mtd columnalign="left">
+                    <m:mn>0</m:mn>
+                  </m:mtd>
+                  <m:mtd columnalign="left">
+                    <m:mrow>
+                      <m:mtext>if</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mrow>
+                        <m:mi>m</m:mi>
+                        <m:mo>/</m:mo>
+                        <m:mi>N</m:mi>
+                      </m:mrow>
+                      <m:mspace width="4.pt"/>
+                      <m:mtext>is</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mtext>not</m:mtext>
+                      <m:mspace width="4.pt"/>
+                      <m:mtext>integer</m:mtext>
+                    </m:mrow>
+                  </m:mtd>
+                </m:mtr>
+              </m:mtable>
+            </m:mfenced>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id63605">The convolution <link target-id="uid2"/> allows for more
+convenient data processing via <emphasis effect="italics">digital filtering</emphasis> and for a
+simple spectral interpretation.</para>
+      <para id="id63620"><emphasis effect="bold">Interpolation by <m:math overflow="scroll"><m:mi>N</m:mi></m:math></emphasis> or resampling
+at <m:math overflow="scroll"><m:mi>N</m:mi></m:math> times larger rate consists of the following steps:</para>
+      <list id="id63650" display="block" list-type="enumerated">
+        <item id="uid3"><emphasis effect="bold">Up-sampling</emphasis> (in French: “interpolation”)
+
+<equation id="id63683"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>→</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mrow><m:mo>↑</m:mo><m:mi>N</m:mi></m:mrow><m:mo>→</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:munder><m:munder accentunder="true"><m:mrow><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mn>0</m:mn></m:mrow><m:mo>︸</m:mo></m:munder><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munder><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:munder><m:munder accentunder="true"><m:mrow><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mn>0</m:mn></m:mrow><m:mo>︸</m:mo></m:munder><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munder><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:munder><m:munder accentunder="true"><m:mrow><m:mn>0</m:mn><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:mn>0</m:mn></m:mrow><m:mo>︸</m:mo></m:munder><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:munder><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>3</m:mn></m:msub><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+        <item id="uid4"><emphasis effect="bold">Multiplication</emphasis> by <m:math overflow="scroll"><m:mi>N</m:mi></m:math>
+and <emphasis effect="bold">Low-pass filtering</emphasis> at cutoff frequency <m:math overflow="scroll"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>N</m:mi></m:mrow></m:mfrac></m:math>
+using the ideal filter
+<m:math overflow="scroll"><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mtext>sinc</m:mtext><m:mo>(</m:mo><m:mfrac><m:mi>m</m:mi><m:mi>N</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow></m:math>:
+
+<equation id="id64055"><m:math overflow="scroll" mode="display"><m:mtable displaystyle="true"><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>(</m:mo><m:msub><m:mi>y</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>y</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>→</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mrow><m:mo>·</m:mo><m:mi>N</m:mi></m:mrow><m:mo>→</m:mo><m:mrow><m:mo>∩</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>2</m:mn><m:mi>N</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>→</m:mo><m:mrow><m:mo>{</m:mo><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub><m:mo>}</m:mo></m:mrow><m:mo>*</m:mo><m:mrow><m:mo>{</m:mo><m:mtext>sinc</m:mtext><m:mrow><m:mo>(</m:mo><m:mfrac><m:mi>m</m:mi><m:mi>N</m:mi></m:mfrac><m:mo>)</m:mo></m:mrow><m:mo>}</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:msub><m:mi>z</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:msub><m:mi>z</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+      </list>
+
+
+<figure id="uid5"><subfigure id="fs-id1167409604069">
+ <media id="uid5_media" alt="digital filter upsampled by n=3 in black; sinc/N for comparison">
+  <image mime-type="image/png" src="../../media/filter0125up.png" id="uid5_onlineimage" width="300"/>
+  <image mime-type="application/postscript" for="pdf" src="../../media/filter0125up.eps" id="uid5_printimage"/>
+  </media>
+ </subfigure>
+ <subfigure id="fs-id1167403871802">
+  <media id="uid6_media" alt="IDFTI squared of filter up sampled by n=3; idfti squared of sinc/n for comparison">
+   <image mime-type="image/png" src="../../media/filter0125upfft.png" id="uid6_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125upfft.eps" id="uid6_printimage"/>
+  </media>
+  <caption>
+  </caption>
+ </subfigure>
+<caption>The result of upsampling the filter from <link target-id="uid15" document="m46833"/> by a factor <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> on the left, and its power spectrum <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mtext>DFT</m:mtext><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> on the right (black and red). Again, the ideal sinc filter (divided by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> to adjust for the zero-samples) in blue for comparison. Note that the filter's cutoff frequency has decreased by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> (contraction of the spectrum by <m:math overflow="scroll"><m:mi>N</m:mi></m:math>) and that its <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mtext>DFT</m:mtext><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> values have not changed (see text). The power computed from either side is 0.001'297 and has decreased by a factor <m:math overflow="scroll"><m:mi>N</m:mi></m:math> from the original power of 0.003'829: only upsampling of a signal with
+<m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> decreases power by the upsampling factor.</caption></figure><para id="id64485">
+        <emphasis effect="bold">Spectral picture of Interpolation by <m:math overflow="scroll"><m:mi>N</m:mi></m:math></emphasis>
+      </para>
+      <para id="id64498">In analogy to the decimation we set <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Then, the samples of <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+taken at the same rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> constitute the samples of <m:math overflow="scroll"><m:mi>x</m:mi></m:math> taken at rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub></m:math>.
+Analogously to the decimation we find quickly</para>
+      <equation id="id64583">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:mi>z</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>x</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>t</m:mi>
+            <m:mo>/</m:mo>
+            <m:mi>N</m:mi>
+            <m:mo>)</m:mo>
+            <m:mspace width="2.em"/>
+            <m:mi>Z</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>f</m:mi>
+            <m:mo>)</m:mo>
+            <m:mo>=</m:mo>
+            <m:mi>N</m:mi>
+            <m:mi>X</m:mi>
+            <m:mo>(</m:mo>
+            <m:mi>f</m:mi>
+            <m:mi>N</m:mi>
+            <m:mo>)</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64642">which indicates how the spectrum at rate <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub><m:mo>=</m:mo><m:mi>N</m:mi><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> is obtained: the spectrum
+at rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> gets contracted in the frequency axis by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> and expanded in amplitude
+by <m:math overflow="scroll"><m:mi>N</m:mi></m:math>. </para><para id="id64749">Note that the spectral copies of <m:math overflow="scroll"><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub></m:math> are at distance <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> just like those
+of <m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub></m:math>.</para><figure id="uid7"><subfigure id="fs-id1167393715312">
+  <media id="uid7_media" alt="interpolated digital filter in black; sinc for comparison">
+   <image mime-type="image/png" src="../../media/filter0125interp.png" id="uid7_onlineimage" width="300"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/filter0125interp.eps" id="uid7_printimage"/>
+  </media>
+</subfigure>
+<subfigure id="uid8"><media id="uid8_media" alt="IDFTI squared of interpolated filter; idfti squared of sinc for comparison">
+          <image mime-type="image/png" src="../../media/filter0125interpfft.png" id="uid8_onlineimage" width="300"><!-- NOTE: attribute width changes image size online (pixels). original width is 875. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/filter0125interpfft.eps" id="uid8_printimage"/>
+        </media>
+        
+      <caption/>
+</subfigure>
+<caption>The result of interpolating (upsampling and filtering) the filter from <link target-id="uid15" document="m46833"/> by a factor <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>3</m:mn></m:mrow></m:math> on the left, and its power spectrum <m:math overflow="scroll"><m:msup><m:mrow><m:mo>|</m:mo><m:mtext>DFT</m:mtext><m:mo>|</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:math> on the right (black and red). Again, the ideal sinc filter (no need to divide by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> since the zero-samples are now corrected through the filtering step) in blue for comparison. Note that the fundamental period contains now only one spectral copy, as it should, as a result from the filtering. The spectrum is contracted by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> in frequency and expanded in amplitude by <m:math overflow="scroll"><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup></m:math>. The power computed from either side is 0.003'891 and almost identical to the original power of 0.003'829: interpolation of a signal with <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> does not change power.</caption></figure><para id="eip-895">We may break the procedure down into the individual steps:</para><para id="eip-367">(i) Upsampling (introducing the zero-samples) leaves the Fourier transform, and thus the spectrum
+almost intact, leading only to a rescaling of the frequencies
+(contraction of <m:math overflow="scroll"><m:mi>X</m:mi></m:math>): 
+Indeed, the Fourier transform <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math> of the samples <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub></m:math> becomes</para><equation id="id64795">
+        <m:math overflow="scroll" mode="display">
+          <m:mrow>
+            <m:msub>
+              <m:mi>Y</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>m</m:mi>
+            </m:munder>
+            <m:mi>τ</m:mi>
+            <m:msub>
+              <m:mi>y</m:mi>
+              <m:mi>m</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>m</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:munder>
+              <m:mo>∑</m:mo>
+              <m:mi>n</m:mi>
+            </m:munder>
+            <m:mi>τ</m:mi>
+            <m:msub>
+              <m:mi>x</m:mi>
+              <m:mi>n</m:mi>
+            </m:msub>
+            <m:msup>
+              <m:mi>e</m:mi>
+              <m:mrow>
+                <m:mo>-</m:mo>
+                <m:mi>j</m:mi>
+                <m:mn>2</m:mn>
+                <m:mi>π</m:mi>
+                <m:mi>f</m:mi>
+                <m:mi>n</m:mi>
+                <m:mi>N</m:mi>
+                <m:mi>τ</m:mi>
+              </m:mrow>
+            </m:msup>
+            <m:mo>=</m:mo>
+            <m:msub>
+              <m:mi>X</m:mi>
+              <m:mi>e</m:mi>
+            </m:msub>
+            <m:mrow>
+              <m:mo>(</m:mo>
+              <m:mi>N</m:mi>
+              <m:mi>f</m:mi>
+              <m:mo>)</m:mo>
+            </m:mrow>
+            <m:mo>.</m:mo>
+          </m:mrow>
+        </m:math>
+      </equation>
+      <para id="id64926">The corresponding signal <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> (with samples <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub></m:math> at sampling rate
+<m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>) is not of interest. If you want to know about it any way,
+see <link target-id="id65041">Comment 7</link>. Note, however, that the fundamental period of <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math>
+amounts to <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> and contains <m:math overflow="scroll"><m:mi>N</m:mi></m:math> copies of <m:math overflow="scroll"><m:mrow><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>N</m:mi><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+(see <link target-id="uid5" document="m46821"/>).</para><para id="id65041"><emphasis effect="bold">Comment 7</emphasis> 
+For clarity: the Fourier transform of <m:math overflow="scroll"><m:mi>y</m:mi></m:math> is found by
+removing the spectral copies of <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math><emphasis effect="italics">outside <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mo>-</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>,</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn><m:mo>]</m:mo></m:mrow></m:math></emphasis>.
+These copies are caused by sampling. The Fourier transform of <m:math overflow="scroll"><m:mi>y</m:mi></m:math> consists of <m:math overflow="scroll"><m:mi>N</m:mi></m:math> contracted copies
+of <m:math overflow="scroll"><m:mi>X</m:mi></m:math> at distance <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math> of each other which are caused by upsampling. Using the reconstruction
+formula <link target-id="uid12" document="m46833"/> with the samples <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub></m:math>, sample rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> and
+correct pass-band <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math> yields the signal <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mo>∑</m:mo><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub><m:mtext>sinc</m:mtext><m:mfenced separators="" open="(" close=")"><m:mfrac><m:mrow><m:mi>t</m:mi><m:mo>-</m:mo><m:mi>m</m:mi><m:mi>τ</m:mi></m:mrow><m:mi>τ</m:mi></m:mfrac></m:mfenced></m:mrow></m:math>. Using that <m:math overflow="scroll"><m:mrow><m:mtext>sinc</m:mtext><m:mo>(</m:mo><m:mn>0</m:mn><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow></m:math> while
+<m:math overflow="scroll"><m:mrow><m:mtext>sinc</m:mtext><m:mo>(</m:mo><m:mi>m</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> for all integer <m:math overflow="scroll"><m:mrow><m:mi>m</m:mi><m:mo>≠</m:mo><m:mn>0</m:mn></m:mrow></m:math> we find quickly that the samples of
+<m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> are indeed <m:math overflow="scroll"><m:mrow><m:mi>y</m:mi><m:mrow><m:mo>(</m:mo><m:mi>k</m:mi><m:mi>τ</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mi>k</m:mi></m:msub></m:mrow></m:math>, i.e.,
+<m:math overflow="scroll"><m:mrow><m:mo>(</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mo>.</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>1</m:mn></m:msub><m:mo>,</m:mo><m:mn>0</m:mn><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mn>0</m:mn><m:mo>,</m:mo><m:msub><m:mi>x</m:mi><m:mn>2</m:mn></m:msub><m:mo>,</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>.</m:mo><m:mo>)</m:mo></m:mrow></m:math>.
+
+
+
+
+</para><para id="id65468">(ii) Multiplication with <m:math overflow="scroll"><m:mi>N</m:mi></m:math> restores the average value of the samples.
+The Fourier transform is now <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:msub><m:mi>X</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> which consists of copies of <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>, or <m:math overflow="scroll"><m:mrow><m:mi>Z</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:math>,
+at distance <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>N</m:mi></m:mrow></m:math> (as for <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>e</m:mi></m:msub></m:math>, there are <m:math overflow="scroll"><m:mi>N</m:mi></m:math> copies in one period).</para>
+      <para id="id65587">(iii) The digital low-pass filtering of <m:math overflow="scroll"><m:mrow><m:mo>{</m:mo><m:mi>N</m:mi><m:msub><m:mi>y</m:mi><m:mi>m</m:mi></m:msub><m:mo>}</m:mo></m:mrow></m:math> at cut-off
+frequency <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math> removes all of the copies of <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+except the ones centered at 0, <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>, <m:math overflow="scroll"><m:mrow><m:mn>2</m:mn><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:math> etc. and leaves only one copy per period,
+in other words, only copies at distance <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>.
+What remains is exactly <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> as we have pointed out earlier.
+(see <link target-id="uid7"/>).</para><para id="id65726">
+        <emphasis effect="bold">Power and Interpolation</emphasis>
+      </para>
+      <para id="id65732">Similarly as with the decimation
+the power of a periodic signal does not change under interpolation.
+In fact, we only need to use <m:math overflow="scroll"><m:mrow><m:mi>Z</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>N</m:mi><m:mi>X</m:mi><m:mo>(</m:mo><m:mi>f</m:mi><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+and replace <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> by <m:math overflow="scroll"><m:mi>N</m:mi></m:math> in the computation
+done with the decimation. We conclude that
+<emphasis effect="italics">the power of discrete samples does not change under interpolation</emphasis>
+provided that <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&gt;</m:mo><m:mn>2</m:mn><m:mi>B</m:mi></m:mrow></m:math>, at least
+approximatively.</para>
+      <para id="id65820">To verify this, let us move through the 3 steps above. Step (i), upsampling, reduces power by a factor <m:math overflow="scroll"><m:mi>N</m:mi></m:math> since the sum of squares of the samples is the same (the zeros
+added don't contribute), but there are now <m:math overflow="scroll"><m:mi>N</m:mi></m:math> times more samples. Power is an average.</para>
+      <para id="id65842">Step (ii) obviously multiplies power with <m:math overflow="scroll"><m:msup><m:mi>N</m:mi><m:mn>2</m:mn></m:msup></m:math>. Step (iii), the low-pass filtering,
+removes <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> spectral copies and leaves only 1, thus divides power by <m:math overflow="scroll"><m:mi>N</m:mi></m:math>. All steps
+together leave the power as it is.</para>
+      
+
+<figure id="uid10" orient="vertical"><title>Interpolation</title><subfigure id="a1111111">
+  <media id="uid10_media" alt="x sub e F">
+   <image mime-type="image/png" src="../../media/Xe2digital.png" id="uid10_onlineimage" width="200"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/Xe2digital.eps" id="uid10_printimage" print-width="200"/>
+  </media>
+  <caption><m:math overflow="scroll">
+            <m:mrow>
+              <m:mo>↑</m:mo>
+              <m:mi>N</m:mi>
+            </m:mrow>
+          </m:math>
+<newline/>
+signal is correctly sampled (<m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>/</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>&lt;</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>)</caption>
+ </subfigure>
+
+<subfigure id="a3333333"><media id="uid12_media" alt="Y sub e F = X sub e NF">
+          <image mime-type="image/png" src="../../media/YeNdigital.png" id="uid12_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 1491. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/YeNdigital.eps" id="uid12_printimage" print-width="200"/>
+        </media><caption><m:math overflow="scroll">
+            <m:mo>∩</m:mo>
+          </m:math>
+          <m:math overflow="scroll">
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>N</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:math>
+ <newline/>
+inserting <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>-</m:mo><m:mn>1</m:mn></m:mrow></m:math> zeroes contracts the Fourier transform by a factor <m:math overflow="scroll"><m:mi>N</m:mi></m:math>
+        </caption>
+ </subfigure>
+
+<subfigure id="a5555555"><media id="uid14_media" alt="X sub u NF">
+          <image mime-type="image/png" src="../../media/Xu(Nf)digital.png" id="uid14_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/Xu_Nf_digital.eps" id="uid14_printimage" print-width="200"/>
+        </media>
+      <caption><m:math overflow="scroll">
+            <m:mrow>
+              <m:mo>·</m:mo>
+              <m:mi>N</m:mi>
+            </m:mrow>
+          </m:math>
+ <newline/>
+digital low-pass filtering with cut-off frequency at <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+leaves only one of the contracted copies per period 1, i.e., it leaves
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>X</m:mi><m:mi>u</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>
+        </caption></subfigure>
+
+
+<subfigure id="a7777777"><media id="uid16_media" alt="z sub e F = N X sub U NF">
+          <image mime-type="image/png" src="../../media/ZeN(f)digital.png" id="uid16_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/ZeN_f_digital.eps" id="uid16_printimage" print-width="200"/>
+        </media>
+      <caption>If <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:mfrac><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>
+<newline/>
+multiplying with <m:math overflow="scroll"><m:mi>N</m:mi></m:math> leads to <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:msub><m:mi>X</m:mi><m:mi>u</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>N</m:mi><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> where <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>x</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>/</m:mo><m:mi>N</m:mi><m:mo>)</m:mo></m:mrow></m:math>. Sampling <m:math overflow="scroll"><m:mi>z</m:mi></m:math> at rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> provides the desired
+samples at rate <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>u</m:mi></m:msub></m:math> of <m:math overflow="scroll"><m:mi>x</m:mi></m:math>.
+        </caption></subfigure>
+
+<subfigure id="a9999999"><media id="uid18_media" alt="y sub e F = X sub e NF">
+          <image mime-type="image/png" src="../../media/transition-up.png" id="uid18_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 747. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/transition-up.eps" id="uid18_printimage" print-width="200"/>
+        </media>
+      <caption>
+<newline/>
+        If <m:math overflow="scroll"><m:mrow><m:mi>B</m:mi><m:mo>&lt;</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mn>2</m:mn></m:mrow></m:math>, then a transition band
+<m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mfrac><m:mi>B</m:mi><m:mrow><m:mi>N</m:mi><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:mfrac><m:mo>,</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>N</m:mi></m:mfrac><m:mo>-</m:mo><m:mfrac><m:mi>B</m:mi><m:mrow><m:mi>N</m:mi><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mrow></m:mfrac><m:mo>]</m:mo></m:mrow></m:math> is feasible</caption></subfigure><caption>Interpolation illustrated in the Spectral Domain with <m:math overflow="scroll"><m:mrow><m:mi>N</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>.
+<newline/>
+Horizontal arrows indicate spectral copies. To keep the sample rate at the
+same value <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> one changes from 
+
+<m:math overflow="scroll"><m:msub><m:mi>X</m:mi><m:mi>u</m:mi></m:msub></m:math>, resp.
+
+<m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>d</m:mi></m:msub></m:math> 
+to 
+
+<m:math overflow="scroll"><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub></m:math> (see d). </caption></figure><figure id="uid15" orient="vertical"><title>Decimation</title><subfigure id="a2222222">
+  <media id="uid11_media" alt="x sub e F">
+   <image mime-type="image/png" src="../../media/Xedown.png" id="uid11_onlineimage" width="200"/>
+   <image mime-type="application/postscript" for="pdf" src="../../media/Xedown.eps" id="uid11_printimage" print-width="200"/>
+  </media>
+  <caption><m:math overflow="scroll">
+            <m:mo>∩</m:mo>
+          </m:math>
+          <m:math overflow="scroll">
+            <m:mfrac>
+              <m:mn>1</m:mn>
+              <m:mrow>
+                <m:mn>2</m:mn>
+                <m:mi>M</m:mi>
+              </m:mrow>
+            </m:mfrac>
+          </m:math>
+<newline/>
+<m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math> marks the center of the first spectral copy after decimation
+</caption></subfigure>
+
+<subfigure id="a4444444"><media id="uid13_media" alt="Y sub e F">
+          <image mime-type="image/png" src="../../media/Yedown.png" id="uid13_onlineimage" width="200"/>
+          <image mime-type="application/postscript" for="pdf" src="../../media/Yedown.eps" id="uid13_printimage" print-width="200"/>
+        </media>
+      <caption><m:math overflow="scroll">
+            <m:mrow>
+              <m:mo>↓</m:mo>
+              <m:mi>M</m:mi>
+            </m:mrow>
+          </m:math>
+<newline/>
+digital low-pass filtering with (ideal) cut-off frequency at <m:math overflow="scroll"><m:mrow><m:mn>1</m:mn><m:mo>/</m:mo><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>M</m:mi><m:mo>)</m:mo></m:mrow></m:math>
+ensures no aliasing after decimation; the 
+<emphasis effect="italics">new utilized bandwidth</emphasis>
+ is <m:math overflow="scroll"><m:mrow><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mrow><m:mo>(</m:mo><m:mn>2</m:mn><m:mi>M</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>;
+high frequency information might be lost, resulting in a new signal <m:math overflow="scroll"><m:mi>y</m:mi></m:math>.</caption></subfigure>
+
+<subfigure id="a6666666"><media id="uid15_media" alt="X sub d F">
+          <image mime-type="image/png" src="../../media/Yddown.png" id="uid15_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 1495. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/Yddown.eps" id="uid15_printimage" print-width="200"/>
+        </media>
+      <caption>adjusting sampling rate
+<newline/>
+After decimation only the samples <m:math overflow="scroll"><m:msub><m:mi>y</m:mi><m:mrow><m:mi>k</m:mi><m:mi>M</m:mi></m:mrow></m:msub></m:math> remain, corresponding to a sampling
+of <m:math overflow="scroll"><m:mi>y</m:mi></m:math> at <m:math overflow="scroll"><m:mrow><m:msub><m:mi>f</m:mi><m:mi>d</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mo>/</m:mo><m:mi>M</m:mi></m:mrow></m:math>, with Fourier transform <m:math overflow="scroll"><m:mrow><m:msub><m:mi>Y</m:mi><m:mi>d</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>.</caption></subfigure>
+
+
+<subfigure id="a8888888"><media id="uid17_media" alt="z sub e F = 1 over M times Y sub d f over m">
+          <image mime-type="image/png" src="../../media/Zedown.png" id="uid17_onlineimage" width="200"><!-- NOTE: attribute width changes image size online (pixels). original width is 1500. --></image>
+          <image mime-type="application/postscript" for="pdf" src="../../media/Zedown.eps" id="uid17_printimage" print-width="200"/>
+        </media>
+      <caption>If <m:math overflow="scroll"><m:mrow><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:mo>&lt;</m:mo><m:mfrac><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:math>
+The samples <m:math overflow="scroll"><m:mrow><m:msub><m:mi>z</m:mi><m:mi>k</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>y</m:mi><m:mrow><m:mi>k</m:mi><m:mi>M</m:mi></m:mrow></m:msub></m:mrow></m:math> correspond to <m:math overflow="scroll"><m:mrow><m:mi>z</m:mi><m:mo>(</m:mo><m:mi>t</m:mi><m:mo>)</m:mo><m:mo>=</m:mo><m:mi>y</m:mi><m:mo>(</m:mo><m:mi>M</m:mi><m:mi>t</m:mi><m:mo>)</m:mo></m:mrow></m:math> sampled at <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math>, and
+<m:math overflow="scroll"><m:mrow><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mn>1</m:mn><m:mo>/</m:mo><m:mi>M</m:mi><m:mo>)</m:mo></m:mrow><m:mo>·</m:mo><m:msub><m:mi>Y</m:mi><m:mi>d</m:mi></m:msub><m:mrow><m:mo>(</m:mo><m:mi>f</m:mi><m:mo>/</m:mo><m:mi>M</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math> (see text).
+</caption>
+</subfigure>
+
+
+<subfigure id="a1010101010"><media id="uid19_media" alt="y sub d F transition band">
+          <image mime-type="image/png" src="../../media/transition-down.png" id="uid19_onlineimage" width="200"/><image mime-type="application/postscript" for="pdf" src="../../media/transition-down.eps" id="uid19_printimage" print-width="200"/></media>
+
+<caption>Choosing the <emphasis effect="italics">new utilized bandwidth</emphasis> to be <m:math overflow="scroll"><m:mrow><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:mo>&lt;</m:mo><m:mfrac><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub><m:mrow><m:mn>2</m:mn><m:mi>M</m:mi></m:mrow></m:mfrac></m:mrow></m:math>, then a transition band <m:math overflow="scroll"><m:mrow><m:mo>[</m:mo><m:mfrac><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mfrac><m:mo>,</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>M</m:mi></m:mfrac><m:mo>-</m:mo><m:mfrac><m:msup><m:mi>B</m:mi><m:mo>*</m:mo></m:msup><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:mfrac><m:mo>]</m:mo></m:mrow></m:math> is feasible
+</caption>
+</subfigure>
+
+
+<caption>Decimation illustrated in the Spectral Domain with <m:math overflow="scroll"><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mn>2</m:mn></m:mrow></m:math>.
+<newline/>
+Horizontal arrows indicate spectral copies. To keep the sample rate at the same value <m:math overflow="scroll"><m:msub><m:mi>f</m:mi><m:mi>e</m:mi></m:msub></m:math> one changes from <m:math overflow="scroll"><m:msub><m:mi>Y</m:mi><m:mi>d</m:mi></m:msub></m:math> to <m:math overflow="scroll"><m:msub><m:mi>Z</m:mi><m:mi>e</m:mi></m:msub></m:math> (see d).
+</caption></figure></section>
+  </content>
+</document>
